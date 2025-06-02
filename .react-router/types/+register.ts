@@ -12,4 +12,8 @@ declare module "react-router" {
 
 type Params = {
   "/": {};
+  "/login": {};
+  "/forgot-password": {};
+  "/register": {};
+  "/reset-password": {};
 };
