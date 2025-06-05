@@ -16,4 +16,7 @@ type Params = {
   "/forgot-password": {};
   "/register": {};
   "/reset-password": {};
+  "/lessons": {};
+  "/blog": {};
+  "/grammer": {};
 };

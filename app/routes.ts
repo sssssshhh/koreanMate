@@ -18,4 +18,16 @@ export default [
         "/reset-password",
         "features/auth/pages/reset-password.tsx"
       ),
+      route(
+        "/lessons",
+        "features/lessons/pages/lessons.tsx"
+      ),
+      route(
+        "/blog",
+        "features/lessons/pages/blog.tsx"
+      ),
+      route(
+        "/grammer",
+        "features/lessons/pages/grammer.tsx"
+      )
 ] satisfies RouteConfig;
