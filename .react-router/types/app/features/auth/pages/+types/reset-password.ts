@@ -1,5 +1,5 @@
 // React Router generated types for route:
-// api/auth/pages/reset-password.tsx
+// features/auth/pages/reset-password.tsx
 
 import type * as T from "react-router/route-module"
 
@@ -9,8 +9,8 @@ type Module = typeof import("../reset-password.js")
 
 export type Info = {
   parents: [Parent0],
-  id: "api/auth/pages/reset-password"
-  file: "api/auth/pages/reset-password.tsx"
+  id: "features/auth/pages/reset-password"
+  file: "features/auth/pages/reset-password.tsx"
   path: "/reset-password"
   params: {} & { [key: string]: string | undefined }
   module: Module

@@ -1,17 +1,17 @@
 // React Router generated types for route:
-// api/stories/pages/grammer.tsx
+// features/stories/pages/blog.tsx
 
 import type * as T from "react-router/route-module"
 
 import type { Info as Parent0 } from "../../../../+types/root.js"
 
-type Module = typeof import("../grammer.js")
+type Module = typeof import("../blog.js")
 
 export type Info = {
   parents: [Parent0],
-  id: "api/stories/pages/grammer"
-  file: "api/stories/pages/grammer.tsx"
-  path: "/grammer"
+  id: "features/stories/pages/blog"
+  file: "features/stories/pages/blog.tsx"
+  path: "/blog"
   params: {} & { [key: string]: string | undefined }
   module: Module
   loaderData: T.CreateLoaderData<Module>
