@@ -17,6 +17,13 @@ type Params = {
   "/register": {};
   "/reset-password": {};
   "/stories": {};
+  "/stories/:storyId": {
+    "storyId": string;
+  };
+  "/stories/:storyId/:chapterId": {
+    "storyId": string;
+    "chapterId": string;
+  };
   "/blog": {};
   "/grammer": {};
 };

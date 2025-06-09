@@ -23,6 +23,14 @@ export default [
         "features/stories/pages/stories.tsx"
     ),
     route(
+        "/stories/:storyId",
+        "features/stories/pages/chapters.tsx"
+    ),
+    route(
+        "/stories/:storyId/:chapterId",
+        "features/chapters/pages/content.tsx"
+    ),
+    route(
         "/blog",
         "features/stories/pages/blog.tsx"
     ),
