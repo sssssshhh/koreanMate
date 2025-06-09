@@ -4,30 +4,30 @@ export default [
     index("common/pages/home-page.tsx"),
     route(
         "/login",
-        "features/auth/pages/login.tsx"
-      ),
-      route(
+        "api/auth/pages/login.tsx"
+    ),
+    route(
         "/forgot-password",
-        "features/auth/pages/forgot-password.tsx"
-      ),
-      route(
+        "api/auth/pages/forgot-password.tsx"
+    ),
+    route(
         "/register",
-        "features/auth/pages/register.tsx"
-      ),
-      route(
+        "api/auth/pages/register.tsx"
+    ),
+    route(
         "/reset-password",
-        "features/auth/pages/reset-password.tsx"
-      ),
-      route(
-        "/lessons",
-        "features/lessons/pages/lessons.tsx"
-      ),
-      route(
+        "api/auth/pages/reset-password.tsx"
+    ),
+    route(
+        "/stories",
+        "api/stories/pages/stories.tsx"
+    ),
+    route(
         "/blog",
-        "features/lessons/pages/blog.tsx"
-      ),
-      route(
+        "api/stories/pages/blog.tsx"
+    ),
+    route(
         "/grammer",
-        "features/lessons/pages/grammer.tsx"
-      )
+        "api/stories/pages/grammer.tsx"
+    )
 ] satisfies RouteConfig;

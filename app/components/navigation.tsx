@@ -22,7 +22,7 @@ export default function Navigation({isLoggedIn}: {isLoggedIn: boolean}){
                 </Link>
                 <NavigationMenu className="px-20">
                     <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                        <Link to="/lessons">Lessons</Link>
+                        <Link to="/stories">Stories</Link>
                     </NavigationMenuLink>
                     <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
                         <Link to="/blog">Blog</Link>
