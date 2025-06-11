@@ -1,0 +1,55 @@
+{
+    "stories": [
+      {
+        "id": "기숙사",
+        "sentences": [
+          {
+            "id": "sen1",
+            "original": "오늘 기숙사에 왔어요.",
+            "pronunciation": "오늘 기숙싸에 와써요",
+            "meaningUnit": "오늘 / 기숙사에 왔어요.",
+            "translations": {
+              "en": "I came to the dormitory today."
+            },
+            "wordMetadata": [
+              {
+                "word": "오늘",
+                "definition": "오늘 (n. – today)"
+              },
+              {
+                "word": "기숙사에",
+                "definition": "기숙사 (n. – dormitory) / 에 (particle – location marker: at, in, to)"
+              },
+              {
+                "word": "왔어요",
+                "definition": "오다 (v. – to come) / -았어요 (past tense polite ending)"
+              }
+            ]
+          }
+        ],
+        "recordingSentences": [
+          {
+            "id": "sen1",
+            "recordingSentence": "택시를 타고 공항에 갔어요."
+          }
+        ]
+      }
+    ],
+    "quizzes": [
+      {
+        "id": "quiz1",
+        "question": "저는 학교에 가요.",
+        "answer": true,
+        "explanation": "✔ The verb 가요 (go) shows movement toward a place, so ‘-에’ is correct."
+      }
+    ],
+    "grammer": {
+        "title": "",
+        "description": ""
+    },
+    "cultureNote": {
+        "title": "한국의 새 학기",
+        "description": "🏫 Culture Note: New School Year in Korea. In Korea, the new school year begins in March. Most schools start on March 1st, which is the official start of both the spring semester and new student admissions. This is different from many Western countries where school starts in August or September.For Korean students, March means new classmates, new teachers, and often a new school—just like in this story, where the narrator moves into a dormitory and meets a new roommate."
+    }
+  }
+  
