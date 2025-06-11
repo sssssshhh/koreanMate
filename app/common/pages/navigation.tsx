@@ -9,8 +9,8 @@ import {
     NavigationMenuTrigger,
     navigationMenuTriggerStyle,
     NavigationMenuViewport,
-  } from "~/components/ui/navigation-menu"
-import { Button, buttonVariants } from "./ui/button"
+  } from "~/common/components/ui/navigation-menu"
+  import { Button } from "~/common/components/ui/button";
 
 export default function Navigation({isLoggedIn}: {isLoggedIn: boolean}){
    
