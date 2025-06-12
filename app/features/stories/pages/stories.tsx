@@ -6,20 +6,20 @@ export default function Stories(){
     const [stories, setStories] = useState<Story[]>([])
     const [loading, setLoading] = useState(true)
 
-    useEffect(() => {
-        const fetchStories = async () => {
-          try {
-            const data = await getStories()
-            setStories(data)
-          } catch (error) {
-            console.error('Failed to load stories:', error)
-          } finally {
-            setLoading(false)
-          }
-        }
+    // useEffect(() => {
+    //     const fetchStories = async () => {
+    //       try {
+    //         const data = await getStories()
+    //         setStories(data)
+    //       } catch (error) {
+    //         console.error('Failed to load stories:', error)
+    //       } finally {
+    //         setLoading(false)
+    //       }
+    //     }
     
-        fetchStories()
-      }, [])
+    //     fetchStories()
+    //   }, [])
 
     return (
         <div>
