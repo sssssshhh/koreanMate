@@ -1,0 +1,1 @@
+import{w as t}from"./with-props-B-xR-PRX.js";import{o as e}from"./chunk-D4RADZKF-WTj2GTo_.js";const i=t(function(){return e.jsx("div",{className:"container mx-auto px-4 py-8 text-black",children:"Register"})});export{i as default};

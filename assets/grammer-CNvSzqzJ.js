@@ -1,0 +1,1 @@
+import{w as m}from"./with-props-B-xR-PRX.js";import{o as r}from"./chunk-D4RADZKF-WTj2GTo_.js";const n=m(function(){return r.jsx("div",{children:r.jsx("h1",{children:"Grammer"})})});export{n as default};

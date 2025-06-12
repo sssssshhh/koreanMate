@@ -1,0 +1,1 @@
+import{w as t}from"./with-props-B-xR-PRX.js";import{o as r}from"./chunk-D4RADZKF-WTj2GTo_.js";const n=t(function(){return r.jsx("div",{children:r.jsx("h1",{children:"Chapters"})})});export{n as default};

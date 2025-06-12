@@ -1,0 +1,1 @@
+import{w as t}from"./with-props-B-xR-PRX.js";import{o}from"./chunk-D4RADZKF-WTj2GTo_.js";import{B as n}from"./button-CKZ7e0jO.js";const m=t(function(){return o.jsx("div",{className:"container mx-auto px-4 py-8",children:o.jsx(n,{children:"test"})})});export{m as default};

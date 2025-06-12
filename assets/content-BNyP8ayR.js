@@ -1,0 +1,1 @@
+import{w as n}from"./with-props-B-xR-PRX.js";import{o as t}from"./chunk-D4RADZKF-WTj2GTo_.js";const s=n(function(){return t.jsx("div",{children:t.jsx("h1",{children:"content"})})});export{s as default};

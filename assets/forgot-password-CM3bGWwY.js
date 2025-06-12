@@ -1,0 +1,1 @@
+import{w as o}from"./with-props-B-xR-PRX.js";import{o as t}from"./chunk-D4RADZKF-WTj2GTo_.js";const n=o(function(){return t.jsx("div",{className:"container mx-auto px-4 py-8 text-black",children:"ForgotPassword"})});export{n as default};
