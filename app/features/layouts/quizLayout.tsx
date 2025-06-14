@@ -1,6 +1,6 @@
 import type { Quiz } from "@/features/content/types";
 
-export default function QuizLayout({ quiz }: { quiz: Quiz }) {
+export default function QuizLayout({ quizes }: { quizes: Quiz[] }) {
     return (
       <div className="guest-layout">
         <header>
