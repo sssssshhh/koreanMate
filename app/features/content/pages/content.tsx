@@ -1,12 +1,14 @@
 import { useParams, Link } from "react-router"
 import sampleData from "../sample.json"
 import SentenceLayout from "@/features/layouts/sentenceLayout"
+import AudioLayout from "@/features/layouts/audioLayout"
 
 // http://localhost:5174/stories/story1/chapter1
 
 export default function Content() {
     const { storyId, chapterId } = useParams()
     const content = sampleData.stories.find(s => s.id === chapterId)
+    const audios = sampleData.audios
     
     return (
         <div className="p-6">
@@ -31,8 +33,9 @@ export default function Content() {
                             />
                         </div>
                     </div>
-                    <SentenceLayout sentences={content.sentences} />
-                </div>
+                        <SentenceLayout sentences={content.sentences} />
+                        <AudioLayout audio={audios} />
+                    </div>
             )}
         </div>
     )

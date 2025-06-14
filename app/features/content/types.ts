@@ -29,6 +29,11 @@ export type WordMeta = {
   definition: string
 }
 
+export type Audio = {
+  id: number
+  audio: string
+}
+
 export type Quiz = {
   id: string
   question: string

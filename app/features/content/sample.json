@@ -61,13 +61,17 @@
         ]
       }
     ],
-    "quizzes": [
+    "quizes": [
       {
         "id": "quiz1",
         "question": "저는 학교에 가요.",
         "answer": true,
         "explanation": "✔ The verb 가요 (go) shows movement toward a place, so ‘-에’ is correct."
       }
+    ],
+    "audios": [
+      {"id":1, "audio": ""},
+      {"id":2, "audio": ""}
     ],
     "grammer": {
         "title": "",
