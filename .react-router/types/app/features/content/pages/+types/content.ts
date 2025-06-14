@@ -1,5 +1,5 @@
 // React Router generated types for route:
-// features/chapters/pages/content.tsx
+// features/content/pages/content.tsx
 
 import type * as T from "react-router/route-module"
 
@@ -9,8 +9,8 @@ type Module = typeof import("../content.js")
 
 export type Info = {
   parents: [Parent0],
-  id: "features/chapters/pages/content"
-  file: "features/chapters/pages/content.tsx"
+  id: "features/content/pages/content"
+  file: "features/content/pages/content.tsx"
   path: "/stories/:storyId/:chapterId"
   params: {"storyId": string; "chapterId": string} & { [key: string]: string | undefined }
   module: Module

@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router"
-import sampleData from "../../content/sample.json"
+import sampleData from "../sample.json"
 import SentenceLayout from "@/features/layouts/sentenceLayout"
 
 // http://localhost:5174/stories/story1/chapter1

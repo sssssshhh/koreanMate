@@ -20,11 +20,11 @@ export default [
     ),
     route(
         "/stories/:storyId",
-        "features/stories/pages/chapters.tsx"
+        "features/chapters/pages/chapters.tsx"
     ),
     route(
         "/stories/:storyId/:chapterId",
-        "features/chapters/pages/content.tsx"
+        "features/content/pages/content.tsx"
     ),
     route(
         "/blog",

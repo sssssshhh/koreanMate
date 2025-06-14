@@ -1,6 +1,5 @@
 import type { Sentence, SentenceLayoutProps } from "@/features/chapters/types";
 
-
 export default function SentenceLayout({ sentences }: SentenceLayoutProps) {
     return (
         <div className="border rounded-lg">
