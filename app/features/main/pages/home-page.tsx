@@ -1,10 +1,10 @@
-import GuestLayout from "~/features/layouts/guestLayout";
-import Chapters from "~/features/stories/pages/chapters";
+import GuestLayout from "@/features/layouts/guestLayout";
+import MainLayout from "@/features/layouts/mainLayout";
 
 export default function HomePage() {
   let isLoggedIn = true;
   return (isLoggedIn ? 
-      <Chapters />
+      <MainLayout />
     : <GuestLayout />
   );
 }
