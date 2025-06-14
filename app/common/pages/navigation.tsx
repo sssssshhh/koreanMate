@@ -13,7 +13,7 @@ import {
   import { Button } from "~/common/components/ui/button";
 
 export default function Navigation({isLoggedIn}: {isLoggedIn: boolean}){
-   
+
     return (
         <nav className="flex px-20 h-16 items-center justify-between fixed top-0 left-0 right-0 z-50">
             <div className="flex items-center">
@@ -22,7 +22,7 @@ export default function Navigation({isLoggedIn}: {isLoggedIn: boolean}){
                 </Link>
                 <NavigationMenu className="px-20">
                     <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                        <Link to="/stories">Stories</Link>
+                        <Link to="/">Stories</Link>
                     </NavigationMenuLink>
                     <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
                         <Link to="/blog">Blog</Link>

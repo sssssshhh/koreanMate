@@ -16,7 +16,6 @@ type Params = {
   "/forgot-password": {};
   "/register": {};
   "/reset-password": {};
-  "/stories": {};
   "/stories/:storyId": {
     "storyId": string;
   };
