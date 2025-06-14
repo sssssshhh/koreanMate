@@ -35,7 +35,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <Navigation isLoggedIn={false} />
-        {children}
+        <main className="pt-16">
+          {children}
+        </main>
         <ScrollRestoration />
         <Scripts />
       </body>

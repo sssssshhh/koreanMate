@@ -1,7 +1,10 @@
 {
     "stories": [
       {
-        "id": "기숙사",
+        "id": "chapter1",
+        "level": "A2",
+        "title": "기숙사",
+        "thumbnail": "https://picsum.photos/200/300",
         "sentences": [
           {
             "id": "sen1",
@@ -23,6 +26,29 @@
               {
                 "word": "왔어요",
                 "definition": "오다 (v. – to come) / -았어요 (past tense polite ending)"
+              }
+            ]
+          },
+          {
+            "id": "sen2",
+            "original": "방에 친구가 있어요.",
+            "pronunciation": "방에 친구가 이써요",
+            "meaningUnit": "방에 / 친구가 있어요.",
+            "translations": {
+              "en": "There is a friend in the room."
+            },
+            "wordMetadata": [
+              {
+                "word": "방에",
+                "definition": " 방 (n. – room) / 에 (particle – location marker)"
+              },
+              {
+                "word": "친구가",
+                "definition": "친구 (n. – friend) / 가 (particle – subject marker)"
+              },
+              {
+                "word": "있어요",
+                "definition": "있다 (v. – to exist, to be (there)) / -어요 (present polite ending)"
               }
             ]
           }
