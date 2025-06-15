@@ -1,14 +1,18 @@
 export type ChapterContent = {
   stories: StoryBlock[]
-  quizzes: Quiz[]
-  grammar: Grammar
-  cultureNote: CultureNote
+  quizzes?: Quiz[]
+  grammar?: Grammar
+  cultureNote?: CultureNote
 }
 
 export type StoryBlock = {
   id: string
   sentences: Sentence[]
-  recordingSentences?: recordingSentence[] // 선택적으로 녹음 대상 문장만 분리
+  recordingSentences?: recordingSentence[]
+  quizes?: Quiz[]
+  audios?: Audio[]
+  grammar?: Grammar
+  cultureNote?: CultureNote
 }
 
 export type Sentence = {
