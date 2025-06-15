@@ -38,7 +38,7 @@ export default function Content() {
                             </div>
                         </div>
                         {sentences && <SentenceLayout sentences={sentences} />}
-                        {audios && <AudioLayout audio={audios} />}
+                        {audios && <AudioLayout audios={audios} />}
                     </div>
                     <div className="w-2/5">
                         {quizes && <QuizLayout quizes={quizes} />}

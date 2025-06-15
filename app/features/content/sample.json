@@ -68,11 +68,17 @@
           }
         ],
         "audios": [
-          {"id":1, "audio": ""},
-          {"id":2, "audio": ""}
+          {
+            "id":1, 
+            "audio": "/audio/sen1.mp3"
+          },
+          {
+            "id":2, 
+            "audio": "/audio/sen2.mp3"
+          }
         ],
         "grammer": {
-          "title": "",
+          "title": "명사 뒤에 붙는 것",
           "description": ""
       },
       "cultureNote": {
