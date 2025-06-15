@@ -9,8 +9,9 @@ import QuizLayout from "@/features/layouts/quizLayout"
 export default function Content() {
     const { storyId, chapterId } = useParams()
     const content = sampleData.stories.find(s => s.id === chapterId)
-    const audios = sampleData.audios
-    const quizes = sampleData.quizes
+    const sentences = content?.sentences
+    const audios = content?.audios
+    const quizes = content?.quizes
     
     return (
         <div className="p-6">
@@ -36,11 +37,11 @@ export default function Content() {
                                 />
                             </div>
                         </div>
-                        <SentenceLayout sentences={content.sentences} />
+                        {sentences && <SentenceLayout sentences={sentences} />}
                         {audios && <AudioLayout audio={audios} />}
                     </div>
                     <div className="w-2/5">
-                        <QuizLayout quizes={quizes} />
+                        {quizes && <QuizLayout quizes={quizes} />}
                     </div>
                 </div>
             )}

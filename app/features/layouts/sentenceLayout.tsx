@@ -14,7 +14,6 @@ export default function SentenceLayout({ sentences }: SentenceLayoutProps) {
                 <div key={sentence.id}>
                   <div className="p-4">
                     <p className="font-medium">{sentence.original}</p>
-                    <p className="text-gray-600">{sentence.translations.en}</p>
                   </div>
                 </div>
               ))}

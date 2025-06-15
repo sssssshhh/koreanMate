@@ -1,4 +1,6 @@
 // React Router generated types for route:
+// features/chapters/pages/chapters.tsx
+
 import type * as T from "react-router/route-module"
 
 import type { Info as Parent0 } from "../../../../+types/root.js"
