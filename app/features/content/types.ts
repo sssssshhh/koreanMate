@@ -18,8 +18,8 @@ export type StoryBlock = {
 export type Sentence = {
   id: string
   original: string
-  audioUrl: string // 오디오 URL
-  translations: Record<string, string> // ex: { en: '...', ja: '...' }
+  audioUrl: string
+  translations: Record<string, string>
   wordMetadata?: WordMeta[]
 }
 

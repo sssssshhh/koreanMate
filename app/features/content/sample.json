@@ -14,7 +14,7 @@
             "translations": {
               "en": "I came to the dormitory today."
             },
-            "wordMetadata": [
+            "wordDefinitions": [
               {
                 "word": "오늘",
                 "definition": "오늘 (n. – today)"
@@ -37,7 +37,7 @@
             "translations": {
               "en": "There is a friend in the room."
             },
-            "wordMetadata": [
+            "wordDefinitions": [
               {
                 "word": "방에",
                 "definition": " 방 (n. – room) / 에 (particle – location marker)"

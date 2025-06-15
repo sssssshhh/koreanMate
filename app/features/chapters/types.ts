@@ -12,10 +12,12 @@ export type Chapter = {
     translations: {
         en: string;
     };
-    wordMetadata: {
-        word: string;
-        definition: string;
-    }[];
+    wordDefinitions: WordDefinition[];
+}
+
+export type WordDefinition = {
+    word: string;
+    definition: string;
 }
 
 export type SentenceLayoutProps = {
