@@ -40,8 +40,9 @@ export type Audio = {
 
 export type Quiz = {
   id: string
-  question: string
-  answer: boolean
+  level: string
+  words: string[]
+  answer: string[]  
   explanation: string
 }
 

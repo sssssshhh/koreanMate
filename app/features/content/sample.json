@@ -62,8 +62,9 @@
         "quizes": [
           {
             "id": "quiz1",
-            "question": "저는 학교에 가요.",
-            "answer": true,
+            "level": "A2",
+            "words": ["저는", "학교에", "가요."],
+            "answer": ["저는", "학교에", "가요."],
             "explanation": "✔ The verb 가요 (go) shows movement toward a place, so ‘-에’ is correct."
           }
         ],
