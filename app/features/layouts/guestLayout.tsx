@@ -1,17 +1,44 @@
 import { Link } from "react-router"
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/common/components/ui/card"
+import { Button } from "@/common/components/ui/button"
 
 export default function GuestLayout() {
     return (
-      <div className="guest-layout">
-        <header>
-          <h1>어서 오세요!</h1>
-        </header>
+      <div className="h-full w-full flex flex-row justify-center items-center gap-2">
         <Link
-          to="/stories/story1"
-          className="inline-block mt-4 px-4 py-2 bg-blue-500 text-white rounded"
+        to="/stories/story1"
+        className="text-black"
         >
-        go to Chapters
-      </Link>
+          <Card className="w-[400px] transition-transform duration-200 hover:scale-105">
+            <CardHeader>
+              <img src="https://placehold.co/400x400" alt="level" className="w-full h-full object-cover" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-md">Dear Diary</div>
+            </CardContent>
+          </Card>
+        </Link>
+        <Link
+        to="/stories/story1"
+        className="text-black"
+        >
+          <Card className="w-[400px] transition-transform duration-200 hover:scale-105">
+            <CardHeader>
+              <img src="https://placehold.co/400x400" alt="level" className="w-full h-full object-cover" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-md">K-Days</div>
+            </CardContent>
+          </Card>
+        </Link>
       </div>
     )
   }
