@@ -1,3 +1,4 @@
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/common/components/ui/accordion"
 import { useParams, Link } from "react-router"
 
 export default function Chapters(){
@@ -5,13 +6,25 @@ export default function Chapters(){
 
     return (
         <div>
-            <h1>Story ID: {storyId}</h1>
-            <Link
-            to="/stories/story1/chapter1"
-            className="inline-block mt-4 px-4 py-2 bg-blue-500 text-white rounded"
-        >
-        go to content
-        </Link>
+            <Accordion       
+            type="single"
+            collapsible
+            className="w-full"
+            defaultValue="item-1">
+                <AccordionItem value="item-1">
+                    <AccordionTrigger>조용한 도서관에서의 아침 공부</AccordionTrigger>
+                    <AccordionContent className="flex flex-col gap-4 text-balance">
+                        <Link
+                        to={`/stories/${storyId}/chapter1`}
+                        >
+                            조용한 도서관에서의 아침 공부
+                        </Link>
+                    </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="item-2">
+                    <AccordionTrigger>민지와 함께하는 공부 </AccordionTrigger>
+                </AccordionItem>
+            </Accordion>
         </div>
     )
 }
