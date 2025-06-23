@@ -17,12 +17,17 @@ export default function Chapters(){
                         <Link
                         to={`/stories/${storyId}/chapter1`}
                         >
-                            조용한 도서관에서의 아침 공부
+                            go to next page
                         </Link>
                     </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-2">
                     <AccordionTrigger>민지와 함께하는 공부 </AccordionTrigger>
+                    <Link
+                        to={`/stories/${storyId}/chapter1`}
+                        >
+                            go to next page
+                        </Link>
                 </AccordionItem>
             </Accordion>
         </div>
