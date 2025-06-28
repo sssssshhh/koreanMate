@@ -27,6 +27,18 @@ export default [
         "features/content/pages/content.tsx"
     ),
     route(
+        "/stories/:storyId/:chapterId/quiz",
+        "features/content/pages/quiz.tsx"
+    ),
+    route(
+        "/stories/:storyId/:chapterId/recording",
+        "features/content/pages/recording.tsx"
+    ),
+    route(
+        "/stories/:storyId/:chapterId/complete",
+        "features/content/pages/complete.tsx"
+    ),
+    route(
         "/blog",
         "features/stories/pages/blog.tsx"
     ),

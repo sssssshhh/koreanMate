@@ -7,34 +7,37 @@ import {
   CardHeader,
   CardTitle,
 } from "@/common/components/ui/card"
+import { Link } from "react-router"
 
 export default function MainLayout() {
-    return (
-      <div className="flex flex-row justify-center items-center">
-        <Card className="w-full max-w-sm">
+  return (
+    <div className="h-full w-full flex flex-row justify-center items-center gap-2">
+      <Link
+      to="/stories/story1"
+      className="text-black"
+      >
+        <Card className="w-[400px] transition-transform duration-200 hover:scale-105">
           <CardHeader>
             <img src="https://placehold.co/400x400" alt="level" className="w-full h-full object-cover" />
           </CardHeader>
           <CardContent>
-            <CardTitle>어서 오세요</CardTitle>
+            <div className="text-md">Dear Diary</div>
           </CardContent>
         </Card>
-        <Card className="w-full max-w-sm">
+      </Link>
+      <Link
+      to="/stories/story1"
+      className="text-black"
+      >
+        <Card className="w-[400px] transition-transform duration-200 hover:scale-105">
           <CardHeader>
             <img src="https://placehold.co/400x400" alt="level" className="w-full h-full object-cover" />
           </CardHeader>
           <CardContent>
-            <CardTitle>어서 오세요</CardTitle>
+            <div className="text-md">K-Days</div>
           </CardContent>
         </Card>
-        <Card className="w-full max-w-sm">
-          <CardHeader>
-            <img src="https://placehold.co/400x400" alt="level" className="w-full h-full object-cover" />
-          </CardHeader>
-          <CardContent>
-            <CardTitle>어서 오세요</CardTitle>
-          </CardContent>
-        </Card>
-      </div>
-    )
+      </Link>
+    </div>
+  )
   }

@@ -1,8 +1,8 @@
 import { useParams, Link } from "react-router"
-import sampleData from "../sample.json"
+import { Button } from "@/common/components/ui/button"
+import sampleData from "@/features/content/sample.json"
 import SentenceLayout from "@/features/layouts/sentenceLayout"
 import AudioLayout from "@/features/layouts/audioLayout"
-import QuizLayout from "@/features/layouts/quizLayout"
 
 // http://localhost:5174/stories/story1/chapter1
 
@@ -39,9 +39,15 @@ export default function Content() {
                         </div>
                         {sentences && <SentenceLayout sentences={sentences} />}
                         {audios && <AudioLayout audios={audios} />}
-                    </div>
-                    <div className="w-2/5">
-                        {quizes && <QuizLayout quizes={quizes} />}
+                        {quizes && (
+                            <div className="mt-6">
+                                <Button asChild>
+                                    <Link to={`/stories/${storyId}/${chapterId}/quiz`}>
+                                        Go to Quiz
+                                    </Link>
+                                </Button>
+                            </div>
+                        )}
                     </div>
                 </div>
             )}

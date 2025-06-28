@@ -23,6 +23,18 @@ type Params = {
     "storyId": string;
     "chapterId": string;
   };
+  "/stories/:storyId/:chapterId/quiz": {
+    "storyId": string;
+    "chapterId": string;
+  };
+  "/stories/:storyId/:chapterId/recording": {
+    "storyId": string;
+    "chapterId": string;
+  };
+  "/stories/:storyId/:chapterId/complete": {
+    "storyId": string;
+    "chapterId": string;
+  };
   "/blog": {};
   "/grammer": {};
 };
