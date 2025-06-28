@@ -6,7 +6,7 @@ import { Button } from "@/common/components/ui/button";
 
 export default function Quiz() {
 const { storyId, chapterId } = useParams()
-const quizes = sampleData.stories.find(s => s.id === chapterId)?.quizes;
+const quizes = sampleData.story.find(s => s.id === chapterId)?.quizes;
 
 const [quizIdx, setQuizIdx] = useState(0)
 const [selected, setSelected] = useState<string[]>([])

@@ -8,7 +8,7 @@ import AudioLayout from "@/features/layouts/audioLayout"
 
 export default function Content() {
     const { storyId, chapterId } = useParams()
-    const content = sampleData.stories.find(s => s.id === chapterId)
+    const content = sampleData.story.find(s => s.id === chapterId)
     const sentences = content?.sentences
     const audios = content?.audios
     const quizes = content?.quizes
