@@ -1,9 +1,13 @@
-import { Button } from "@/common/components/ui/button";
+import { Link } from "react-router";
 
 export default function Login() {
-    return (
-      <div className="container mx-auto px-4 py-8">
-        <Button>test</Button>
-      </div>
-    );
-  }
+
+  return (
+    <div>
+      <button>
+        <Link to={`/Register`}>
+            login
+        </Link></button>
+    </div>
+  );
+}

@@ -1,7 +1,188 @@
+import { useState } from "react";
+import { Link } from "react-router";
+import { signUp } from 'aws-amplify/auth';
+
+interface SignUpData {
+  email: string;
+  password: string;
+}
+
 export default function Register() {
-    return (
-      <div className="container mx-auto px-4 py-8 text-black">
-        Register
+  const [formData, setFormData] = useState<SignUpData>({
+    email: "",
+    password: "",
+  });
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const validateForm = () => {
+    if (!formData.email || !formData.password) {
+      setMessage({ type: "error", text: "Please fill in all fields." });
+      return false;
+    }
+
+    if (formData.password !== confirmPassword) {
+      setMessage({ type: "error", text: "The password does not match." });
+      return false;
+    }
+
+    if (formData.password.length < 8) {
+      setMessage({ type: "error", text: "The password must be at least 8 characters long." });
+      return false;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setMessage({ type: "error", text: "Please enter a valid email address." });
+      return false;
+    }
+
+    return true;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!validateForm()) return;
+
+    setIsLoading(true);
+
+    try {       
+      const { isSignUpComplete, userId, nextStep } = await signUp({
+        username: formData.email,
+        password: formData.password,
+        options: {
+          userAttributes: {
+            email: formData.email,
+          },
+        },
+      });
+    } catch (error: any) {
+      console.error("Sign Up Error:", error);
+      console.error("Error Details:", {
+        name: error.name,
+        message: error.message,
+        code: error.code
+      });
+      
+      setMessage({ 
+        type: "error", 
+        text: getErrorMessage(error.message) 
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const getErrorMessage = (errorMessage: string): string => {
+    console.log("Error Message:", errorMessage);
+    
+    if (errorMessage.includes('UsernameExistsException')) {
+      return 'The email already exists.';
+    }
+    if (errorMessage.includes('InvalidPasswordException')) {
+      return 'The password must be at least 8 characters long and include uppercase and lowercase letters, numbers, and special characters.';
+    }
+    if (errorMessage.includes('NotAuthorizedException')) {
+      return 'The username or password is incorrect.';
+    }
+    if (errorMessage.includes('InvalidParameterException')) {
+      return 'The input information is incorrect.';
+    }
+    return `An error occurred: ${errorMessage}`;
+  };
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-md bg-white rounded-lg shadow-md p-6">
+        <div className="text-center mb-6">
+          <h1 className="text-2xl font-bold text-gray-900">Sign Up</h1>
+        </div>
+        
+        <form onSubmit={handleSubmit} className="space-y-4">
+          {message && (
+            <div className={`p-3 rounded-md ${
+              message.type === "error" 
+                ? "bg-red-50 border border-red-200 text-red-800" 
+                : "bg-green-50 border border-green-200 text-green-800"
+            }`}>
+              {message.text}
+            </div>
+          )}
+
+          <div className="space-y-2">
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+            email
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              placeholder="example@email.com"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required
+            />
+          </div>
+
+          <div className="space-y-2">
+            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+            password
+            </label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              value={formData.password}
+              onChange={handleInputChange}
+              placeholder="8 characters or more, include uppercase and lowercase letters, numbers, and special characters"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required
+            />
+          </div>
+
+          <div className="space-y-2">
+            <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
+            confirm password
+            </label>
+            <input
+              id="confirmPassword"
+              name="confirmPassword"
+              type="password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              placeholder="confirm password"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required
+            />
+          </div>
+
+          <button
+            type="submit"
+            disabled={isLoading}
+            className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {isLoading ? "Processing..." : "Sign Up"}
+          </button>
+
+          <div className="text-center text-sm text-gray-600">
+            Already have an account?{" "}
+            <Link to="/login" className="text-blue-600 hover:text-blue-500">
+              Login
+            </Link>
+          </div>
+        </form>
       </div>
-    );
-  }
+    </div>
+  );
+}

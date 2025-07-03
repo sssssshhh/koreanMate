@@ -2,6 +2,7 @@
   "name": "koreanmate",
   "private": true,
   "type": "module",
+  "homepage": "/",
   "scripts": {
     "build": "react-router build",
     "dev": "react-router dev",
@@ -9,19 +10,23 @@
     "typecheck": "react-router typegen && tsc"
   },
   "dependencies": {
+    "@aws-amplify/core": "^6.12.2",
+    "@aws-sdk/client-cognito-identity-provider": "^3.839.0",
     "@radix-ui/react-accordion": "^1.2.11",
     "@radix-ui/react-navigation-menu": "^1.2.13",
     "@radix-ui/react-slot": "^1.2.3",
     "@react-router/node": "^7.5.3",
     "@react-router/serve": "^7.5.3",
+    "amazon-cognito-identity-js": "^6.3.15",
+    "aws-amplify": "^6.15.2",
+    "aws-sdk": "^2.1692.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "isbot": "^5.1.27",
     "lucide-react": "^0.513.0",
-    "oidc-client-ts": "^3.2.1",
+    "oidc-client-ts": "^3.3.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-oidc-context": "^3.3.0",
     "react-router": "^7.5.3",
     "tailwind-merge": "^3.3.0"
   },

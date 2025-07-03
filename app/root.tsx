@@ -10,6 +10,10 @@ import {
 import type { Route } from "./+types/root";
 import "./app.css";
 import Navigation from "./common/pages/navigation";
+import { configureAmplify } from "./lib/amplify-config";
+
+// Amplify 초기화
+configureAmplify();
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
