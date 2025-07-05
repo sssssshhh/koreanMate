@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router";
-import { signUp } from 'aws-amplify/auth';
+import { signUp, signInWithRedirect } from 'aws-amplify/auth';
+import { Button } from "@/common/components/ui/button";
 
 interface SignUpData {
   email: string;
@@ -74,10 +75,6 @@ export default function Register() {
         code: error.code
       });
       
-      setMessage({ 
-        type: "error", 
-        text: getErrorMessage(error.message) 
-      });
     } finally {
       setIsLoading(false);
     }
@@ -167,13 +164,25 @@ export default function Register() {
             />
           </div>
 
-          <button
+          <Button
             type="submit"
             disabled={isLoading}
             className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isLoading ? "Processing..." : "Sign Up"}
-          </button>
+          </Button>
+
+          <div className="mt-4">
+            <Button
+              type="button"
+              onClick={() => {
+                window.location.href = "https://ap-northeast-1yqlvcbctk.auth.ap-northeast-1.amazoncognito.com/oauth2/authorize?identity_provider=Google&response_type=code&client_id=4fq95s8bn126sm56e769tunmk6&redirect_uri=http://localhost:5173/";
+              }}
+              className="w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700"
+            >
+              Sign in with Google
+            </Button>
+          </div>
 
           <div className="text-center text-sm text-gray-600">
             Already have an account?{" "}

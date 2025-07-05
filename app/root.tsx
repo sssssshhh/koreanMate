@@ -12,7 +12,7 @@ import "./app.css";
 import Navigation from "./common/pages/navigation";
 import { configureAmplify } from "./lib/amplify-config";
 
-// Amplify 초기화
+// init Amplify 
 configureAmplify();
 
 export const links: Route.LinksFunction = () => [
