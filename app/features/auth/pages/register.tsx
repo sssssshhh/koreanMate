@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { signUp, signInWithRedirect } from 'aws-amplify/auth';
 import { Button } from "@/common/components/ui/button";
 
@@ -9,6 +9,7 @@ interface SignUpData {
 }
 
 export default function Register() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState<SignUpData>({
     email: "",
     password: "",
@@ -67,6 +68,7 @@ export default function Register() {
           },
         },
       });
+      navigate('/login');
     } catch (error: any) {
       console.error("Sign Up Error:", error);
       console.error("Error Details:", {
