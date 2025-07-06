@@ -11,6 +11,7 @@ import {
     NavigationMenuViewport,
 } from "@/common/components/ui/navigation-menu"
 import { Button } from "@/common/components/ui/button";
+import { signOut } from "aws-amplify/auth";
 
 export default function Navigation({isLoggedIn}: {isLoggedIn: boolean}){
 
@@ -31,14 +32,21 @@ export default function Navigation({isLoggedIn}: {isLoggedIn: boolean}){
                         <Link to="/grammer">Grammer</Link>
                     </NavigationMenuLink>
                 </NavigationMenu>
-                {isLoggedIn ? null : (
-                    <div className="flex items-center gap-4">
-                        <Button asChild variant="secondary">
-                            <Link to="/login">Login</Link>
-                        </Button>
-                        <Button asChild variant="secondary">
-                            <Link to="/register">Register</Link>
-                        </Button>
+                {isLoggedIn ? 
+                    <div></div>
+                    : (
+                <div className="flex items-center gap-6">
+                    <Button asChild variant="secondary" onClick={() => {
+                        signOut();
+                    }}>
+                        <h2>Logout</h2>
+                    </Button>
+                    <Button asChild variant="secondary">
+                        <Link to="/login">Login</Link>
+                    </Button>
+                    <Button asChild variant="secondary">
+                        <Link to="/register">Register</Link>
+                    </Button>
                 </div>)}
             </div>
       </nav>

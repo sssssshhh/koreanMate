@@ -14,7 +14,6 @@ export default function ResetPassword() {
         e.preventDefault();
         try {
             const result = await confirmResetPassword({ username: email, confirmationCode: code, newPassword: password });
-            console.log("✅ Auth result:", result);
         } catch (error) {
             console.error("❌ Auth Failed:", error);
         } finally {
