@@ -13,7 +13,6 @@ export default function Complete() {
             const nextNumber = currentNumber + 1;
             return `chapter${nextNumber}`;
         }
-        // 매치되지 않으면 기본값 반환
         return "chapter1";
     };
     

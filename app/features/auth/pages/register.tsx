@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
-import { signUp, signInWithRedirect } from 'aws-amplify/auth';
+import { signUp } from 'aws-amplify/auth';
 import { Button } from "@/common/components/ui/button";
 
 interface SignUpData {
@@ -26,6 +26,7 @@ export default function Register() {
     }));
   };
 
+  // TODO: 공통 로직으로 전환
   const validateForm = () => {
     if (!formData.email || !formData.password) {
       setMessage({ type: "error", text: "Please fill in all fields." });

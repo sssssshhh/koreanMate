@@ -38,6 +38,11 @@ export default function Login() {
         <input type="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         <Button type="submit">login</Button>
       </form>
+      <Button onClick={() => {
+        navigate('/forgot-password');
+      }}>
+        forgot password
+      </Button>
       <Button>
         <Link to={`/Register`}>
             register
