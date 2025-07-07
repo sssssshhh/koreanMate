@@ -48,6 +48,18 @@ export default function Login() {
             register
         </Link>
       </Button>
+
+      <div className="mt-4">
+        <Button
+          type="button"
+          onClick={() => {
+            window.location.href = "https://ap-northeast-1yqlvcbctk.auth.ap-northeast-1.amazoncognito.com/oauth2/authorize?identity_provider=Google&response_type=code&client_id=4fq95s8bn126sm56e769tunmk6&redirect_uri=http://localhost:5173/";
+          }}
+          className="w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700"
+        >
+          Sign in with Google
+        </Button>
+      </div>
     </div>
   );
 }

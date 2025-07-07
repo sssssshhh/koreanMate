@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { signUp } from 'aws-amplify/auth';
 import { Button } from "@/common/components/ui/button";
@@ -17,6 +17,7 @@ export default function Register() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -25,7 +26,6 @@ export default function Register() {
       [name]: value,
     }));
   };
-
   // TODO: 공통 로직으로 전환
   const validateForm = () => {
     if (!formData.email || !formData.password) {
