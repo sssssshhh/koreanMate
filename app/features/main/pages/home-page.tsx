@@ -1,20 +1,30 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import MainLayout from "@/features/layouts/mainLayout";
+import { deductPoint, fetchTotalPoints, grantPointTemp } from "@/features/point/services/pointAPI";
+import { PointType, type Point } from "@/features/point/type";
 
 export default function HomePage() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    grantPointTemp({
+        userId: "abc123",
+        pointId: "123456",
+        amount: 10
+    })
+    // fetchTotalPoints("abc123");
+    //  deductPoint("abc123", 10);
+
+
     const urlParams  = new URLSearchParams(window.location.search);
     const code = urlParams.get("code");
 
     async function fetchToken() {
-        console.log("🔑 fetchToken");
         if (!code) return;
         console.log("🔑 code:", code);
         const response = await fetch(
-        "https://ap-northeast-1yqlvcbctk.auth.ap-northeast-1.amazoncognito.com/oauth2/token",
+        "https://ap-northeast-1yqlvcbctk.auth.us-east-1.amazoncognito.com/oauth2/token",
         {
           method: "POST",
           headers: {

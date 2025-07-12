@@ -10,6 +10,7 @@ import {
 import { Link } from "react-router"
 
 export default function MainLayout() {
+  
   return (
     <div className="h-full w-full flex flex-row justify-center items-center gap-2">
       <Link

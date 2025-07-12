@@ -1,0 +1,28 @@
+@startuml
+actor User
+participant "웹 앱" as WebApp
+participant "AWS Cognito" as Cognito
+participant "Lambda 함수\n(PostConfirmation)" as Lambda
+participant "로그인 페이지" as LoginPage
+participant "메인 페이지" as MainPage
+
+User -> WebApp : 수동 회원가입 or 구글 로그인 클릭
+WebApp -> Cognito : 사용자 인증 요청
+
+alt 이메일 중복 아님
+  Cognito -> Lambda : PostConfirmation 트리거
+  Lambda -> Cognito : 유저 상태 confirmed로 변경
+
+  alt 수동 회원가입
+    Cognito -> WebApp : 인증 완료 응답
+    WebApp -> LoginPage : 로그인 페이지로 이동
+  else 구글 로그인
+    Cognito -> WebApp : 인증 완료 응답
+    WebApp -> MainPage : 메인 페이지로 이동
+  end
+
+else 이메일 중복
+  Cognito --> WebApp : 에러 반환 (중복 이메일)
+  WebApp --> User : "이미 등록된 이메일입니다." 표시
+end
+@enduml
