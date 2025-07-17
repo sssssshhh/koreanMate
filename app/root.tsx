@@ -6,6 +6,8 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
+import { useEffect, useState } from "react";
+import { fetchAuthSession } from "aws-amplify/auth";
 
 import type { Route } from "./+types/root";
 import "./app.css";
@@ -14,6 +16,7 @@ import { configureAmplify } from "./lib/amplify-config";
 
 // init Amplify 
 configureAmplify();
+
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -29,6 +32,31 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    async function checkAuthStatus() {
+      try {
+        // Amplify 세션 확인
+        const session = await fetchAuthSession();
+        const hasValidSession = session.tokens !== undefined;
+        
+        // localStorage 토큰 확인 (Google OAuth 등)
+        const hasLocalStorageToken = localStorage.getItem("access_token") || localStorage.getItem("id_token");
+        
+        setIsLoggedIn(hasValidSession || !!hasLocalStorageToken);
+      } catch (error) {
+        console.error("Auth check failed:", error);
+        setIsLoggedIn(false);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    checkAuthStatus();
+  }, []);
+
   return (
     <html lang="en">
       <head>
@@ -38,7 +66,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <Navigation isLoggedIn={false} />
+        <Navigation isLoggedIn={isLoggedIn} isLoading={isLoading} />
         <main className="p-16 h-full w-full">
           {children}
         </main>

@@ -1,7 +1,7 @@
 import type { Point } from "@/features/point/type";
 
 export async function grantPoint(point: Point): Promise<void> {
-    const response = await fetch("https://cfn5sk6i5d.execute-api.us-east-1.amazonaws.com/v1/points/grant", {
+    const response = await fetch("https://s8kmgytpe1.execute-api.us-east-1.amazonaws.com/v1/points/grant", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -12,7 +12,8 @@ export async function grantPoint(point: Point): Promise<void> {
     if (response.ok) {
         console.log("Point granted successfully");
     } else {
-        throw new Error("Failed to grant point");
+        const result = await response.json();
+        throw new Error(`Failed to grant point: ${result.message || response.statusText}`);
     }
 }
 
@@ -33,26 +34,28 @@ export async function deductPoint(userId: String, amount: number): Promise<void>
         body: JSON.stringify({userId, amount}),
     });
 
-    const result = await response.json();
-
     if (response.ok) {
-        console.log("Deducted point successfully:", result.message);
+        console.log("Point deducted successfully");
     } else {
-        console.log("Deducted point failed:", result.message);
+        const result = await response.json();
+        throw new Error(`Failed to deduct point: ${result.message || response.statusText}`);
     }
 }
 
-// how to use
-    // deductPoint("abc123", 10);
+export async function fetchTotalPoints(userId: string): Promise<number> {
+    const response = await fetch(`https://6361oi0aah.execute-api.us-east-1.amazonaws.com/v1/points/total?userId=${userId}`);
+    const result = await response.json();
 
-export async function fetchTotalPoints(userId: string) {
-    const res = await fetch(`https://6361oi0aah.execute-api.us-east-1.amazonaws.com/v1/points/total?userId=${userId}`);
-    const data = await res.json();
-    console.log("Remaining points:", data.totalPoints);
+    if (response.ok) {
+        console.log("Remaining points:", result.totalPoints);
+        return result.totalPoints;
+    } else {
+        throw new Error(`Failed to fetch total points: ${result.message || result.statusText}`);
+    }
 }
 
 export async function grantPointTemp(point: Point): Promise<void> {
-    const response = await fetch("https://jk859xrw81.execute-api.us-east-1.amazonaws.com/v1/points/grantTemp", {
+    const response = await fetch("https://d0emspcwka.execute-api.us-east-1.amazonaws.com/v1/points/daily", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

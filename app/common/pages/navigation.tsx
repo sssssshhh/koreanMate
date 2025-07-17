@@ -13,7 +13,21 @@ import {
 import { Button } from "@/common/components/ui/button";
 import { signOut } from "aws-amplify/auth";
 
-export default function Navigation({isLoggedIn}: {isLoggedIn: boolean}){
+export default function Navigation({isLoggedIn, isLoading}: {isLoggedIn: boolean; isLoading: boolean}){
+
+    const handleLogout = async () => {
+        try {
+            await signOut();
+            // localStorage 토큰들도 제거
+            localStorage.removeItem("access_token");
+            localStorage.removeItem("id_token");
+            localStorage.removeItem("refresh_token");
+            // 페이지 새로고침으로 상태 업데이트
+            window.location.reload();
+        } catch (error) {
+            console.error("Logout failed:", error);
+        }
+    };
 
     return (
         <nav className="flex px-20 h-16 items-center justify-between fixed top-0 left-0 right-0 z-50">
@@ -32,22 +46,26 @@ export default function Navigation({isLoggedIn}: {isLoggedIn: boolean}){
                         <Link to="/grammer">Grammer</Link>
                     </NavigationMenuLink>
                 </NavigationMenu>
-                {isLoggedIn ? 
-                    <div></div>
-                    : (
-                <div className="flex items-center gap-6">
-                    <Button asChild variant="secondary" onClick={() => {
-                        signOut();
-                    }}>
-                        <h2>Logout</h2>
-                    </Button>
-                    <Button asChild variant="secondary">
-                        <Link to="/login">Login</Link>
-                    </Button>
-                    <Button asChild variant="secondary">
-                        <Link to="/register">Register</Link>
-                    </Button>
-                </div>)}
+                {isLoading ? (
+                    <div className="flex items-center gap-6">
+                        <span className="text-sm text-gray-500">Loading...</span>
+                    </div>
+                ) : isLoggedIn ? (
+                    <div className="flex items-center gap-6">
+                        <Button asChild variant="secondary" onClick={handleLogout}>
+                            <span>Logout</span>
+                        </Button>
+                    </div>
+                ) : (
+                    <div className="flex items-center gap-6">
+                        <Button asChild variant="secondary">
+                            <Link to="/login">Login</Link>
+                        </Button>
+                        <Button asChild variant="secondary">
+                            <Link to="/register">Register</Link>
+                        </Button>
+                    </div>
+                )}
             </div>
       </nav>
     )

@@ -3,9 +3,9 @@ import { Amplify } from "aws-amplify";
 const amplifyConfig = {
     Auth: {
       Cognito: {
-        userPoolId: 'ap-northeast-1_YqlVcbCtk',
-        userPoolClientId: '4fq95s8bn126sm56e769tunmk6',
-        region: 'ap-northeast-1',
+        userPoolId: 'us-east-1_qPlNi92Vm',
+        userPoolClientId: '1185ddfcdmpk9hcd502j504lna',
+        region: 'us-east-1',
         loginWith: {
           email: true,
         },

@@ -1,20 +1,20 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import MainLayout from "@/features/layouts/mainLayout";
-import { deductPoint, fetchTotalPoints, grantPointTemp } from "@/features/point/services/pointAPI";
+import { deductPoint, fetchTotalPoints, grantPoint, grantPointTemp } from "@/features/point/services/pointAPI";
 import { PointType, type Point } from "@/features/point/type";
 
 export default function HomePage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    grantPointTemp({
-        userId: "abc123",
-        pointId: "123456",
+    grantPoint({
+        userId: "abc12345",
+        pointId: "12345678",
         amount: 10
     })
     // fetchTotalPoints("abc123");
-    //  deductPoint("abc123", 10);
+    // deductPoint("abc123", 10);
 
 
     const urlParams  = new URLSearchParams(window.location.search);
