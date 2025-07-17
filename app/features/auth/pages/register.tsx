@@ -179,7 +179,8 @@ export default function Register() {
             <Button
               type="button"
               onClick={() => {
-                window.location.href = "https://ap-northeast-1yqlvcbctk.auth.ap-northeast-1.amazoncognito.com/oauth2/authorize?identity_provider=Google&response_type=code&client_id=4fq95s8bn126sm56e769tunmk6&redirect_uri=http://localhost:5173/";
+                window.location.href = 
+                "https://us-east-1qplni92vm.auth.us-east-1.amazoncognito.com/oauth2/authorize?identity_provider=Google&response_type=code&client_id=1185ddfcdmpk9hcd502j504lna&redirect_uri=http://localhost:5173/";
               }}
               className="w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700"
             >
