@@ -24,7 +24,7 @@ export default function HomePage() {
         if (!code) return;
         console.log("🔑 code:", code);
         const response = await fetch(
-        "https://ap-northeast-1yqlvcbctk.auth.us-east-1.amazoncognito.com/oauth2/token",
+        "https://us-east-1qplni92vm.auth.us-east-1.amazoncognito.com/oauth2/token",
         {
           method: "POST",
           headers: {
@@ -32,7 +32,7 @@ export default function HomePage() {
           },
           body: new URLSearchParams({
             grant_type: "authorization_code",
-            client_id: "4fq95s8bn126sm56e769tunmk6",
+            client_id: "1185ddfcdmpk9hcd502j504lna",
             code: code as string,
             redirect_uri: "http://localhost:5173/",
           }),
