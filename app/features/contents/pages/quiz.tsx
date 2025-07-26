@@ -1,5 +1,5 @@
-import type { Quiz } from "@/features/content/types";
-import sampleData from "@/features/content/sample.json"
+import type { Quiz } from "@/features/contents/types";
+import sampleData from "@/features/contents/sample.json"
 import { useState } from "react";
 import { Link, useParams } from "react-router";
 import { Button } from "@/common/components/ui/button";

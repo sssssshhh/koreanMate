@@ -91,20 +91,20 @@ type RouteFiles = {
     id: "features/chapters/pages/chapters";
     page: "/stories/:storyId";
   };
-  "features/content/pages/content.tsx": {
-    id: "features/content/pages/content";
+  "features/contents/pages/content.tsx": {
+    id: "features/contents/pages/content";
     page: "/stories/:storyId/:chapterId";
   };
-  "features/content/pages/quiz.tsx": {
-    id: "features/content/pages/quiz";
+  "features/contents/pages/quiz.tsx": {
+    id: "features/contents/pages/quiz";
     page: "/stories/:storyId/:chapterId/quiz";
   };
-  "features/content/pages/recording.tsx": {
-    id: "features/content/pages/recording";
+  "features/contents/pages/recording.tsx": {
+    id: "features/contents/pages/recording";
     page: "/stories/:storyId/:chapterId/recording";
   };
-  "features/content/pages/complete.tsx": {
-    id: "features/content/pages/complete";
+  "features/contents/pages/complete.tsx": {
+    id: "features/contents/pages/complete";
     page: "/stories/:storyId/:chapterId/complete";
   };
   "features/stories/pages/blog.tsx": {

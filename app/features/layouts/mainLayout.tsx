@@ -8,12 +8,12 @@ import {
   CardTitle,
 } from "@/common/components/ui/card"
 import { Link } from "react-router"
-import { deleteCurrentUserAccount } from "../auth/services/deleteAccount";
+import { handleDeleteUser } from "../auth/services/deleteAccount";
 
 export default function MainLayout() {
 
   const handleDeleteAccount = () => {
-    deleteCurrentUserAccount();
+    handleDeleteUser();
   };
   
   return (
@@ -47,7 +47,9 @@ export default function MainLayout() {
       <div>
       <h2>회원 설정</h2>
       <button
-        onClick={handleDeleteAccount}
+        onClick={() => {
+          handleDeleteAccount();
+        }}
         className="mt-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
       >
         회원 탈퇴

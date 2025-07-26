@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router"
 import { Button } from "@/common/components/ui/button"
-import sampleData from "@/features/content/sample.json"
+import sampleData from "@/features/contents/sample.json"
 import SentenceLayout from "@/features/layouts/sentenceLayout"
 import AudioLayout from "@/features/layouts/audioLayout"
 

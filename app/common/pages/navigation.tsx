@@ -1,14 +1,8 @@
 import { Link } from "react-router"
 import {
     NavigationMenu,
-    NavigationMenuContent,
-    NavigationMenuIndicator,
-    NavigationMenuItem,
     NavigationMenuLink,
-    NavigationMenuList,
-    NavigationMenuTrigger,
     navigationMenuTriggerStyle,
-    NavigationMenuViewport,
 } from "@/common/components/ui/navigation-menu"
 import { Button } from "@/common/components/ui/button";
 import { signOut } from "aws-amplify/auth";
@@ -18,11 +12,12 @@ export default function Navigation({isLoggedIn, isLoading}: {isLoggedIn: boolean
     const handleLogout = async () => {
         try {
             await signOut();
-            // localStorage 토큰들도 제거
-            localStorage.removeItem("access_token");
-            localStorage.removeItem("id_token");
-            localStorage.removeItem("refresh_token");
-            // 페이지 새로고침으로 상태 업데이트
+            // // localStorage 토큰들도 제거 for google, apple oath
+            // localStorage.removeItem("access_token");
+            // localStorage.removeItem("id_token");
+            // localStorage.removeItem("refresh_token");
+
+            // Update state with page reload
             window.location.reload();
         } catch (error) {
             console.error("Logout failed:", error);
@@ -67,6 +62,6 @@ export default function Navigation({isLoggedIn, isLoading}: {isLoggedIn: boolean
                     </div>
                 )}
             </div>
-      </nav>
+        </nav>
     )
 }

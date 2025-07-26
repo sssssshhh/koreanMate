@@ -24,19 +24,19 @@ export default [
     ),
     route(
         "/stories/:storyId/:chapterId",
-        "features/content/pages/content.tsx"
+        "features/contents/pages/content.tsx"
     ),
     route(
         "/stories/:storyId/:chapterId/quiz",
-        "features/content/pages/quiz.tsx"
+        "features/contents/pages/quiz.tsx"
     ),
     route(
         "/stories/:storyId/:chapterId/recording",
-        "features/content/pages/recording.tsx"
+        "features/contents/pages/recording.tsx"
     ),
     route(
         "/stories/:storyId/:chapterId/complete",
-        "features/content/pages/complete.tsx"
+        "features/contents/pages/complete.tsx"
     ),
     route(
         "/blog",

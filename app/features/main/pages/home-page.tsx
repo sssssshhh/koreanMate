@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import MainLayout from "@/features/layouts/mainLayout";
-import { deductPoint, fetchTotalPoints, grantPoint, grantPointTemp } from "@/features/point/services/pointAPI";
+import { deductPoint, fetchTotalPoints, grantPoint, grantPointTemp } from "@/features/point/APIs/pointAPI";
 import { PointType, type Point } from "@/features/point/type";
 
 export default function HomePage() {
@@ -23,6 +23,7 @@ export default function HomePage() {
     async function fetchToken() {
         if (!code) return;
         console.log("🔑 code:", code);
+
         const response = await fetch(
         "https://us-east-1qplni92vm.auth.us-east-1.amazoncognito.com/oauth2/token",
         {
@@ -34,7 +35,7 @@ export default function HomePage() {
             grant_type: "authorization_code",
             client_id: "1185ddfcdmpk9hcd502j504lna",
             code: code as string,
-            redirect_uri: "http://localhost:5173/",
+            redirect_uri: "http://localhost:5173/", // TODO: 배포 후 수정
           }),
         }
       );

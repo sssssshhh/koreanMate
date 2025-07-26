@@ -17,7 +17,6 @@ import { configureAmplify } from "./lib/amplify-config";
 // init Amplify 
 configureAmplify();
 
-
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
@@ -38,14 +37,18 @@ export function Layout({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     async function checkAuthStatus() {
       try {
-        // Amplify 세션 확인
+        // Amplify Session Check
         const session = await fetchAuthSession();
         const hasValidSession = session.tokens !== undefined;
+        console.log("🔑 hasValidSession:", hasValidSession);
         
-        // localStorage 토큰 확인 (Google OAuth 등)
-        const hasLocalStorageToken = localStorage.getItem("access_token") || localStorage.getItem("id_token");
+        setIsLoggedIn(hasValidSession);
         
-        setIsLoggedIn(hasValidSession || !!hasLocalStorageToken);
+        // Local Storage Token Check (Google OAuth 등)
+        // const hasLocalStorageToken = localStorage.getItem("access_token") || localStorage.getItem("id_token");
+        
+        // setIsLoggedIn(hasValidSession || !!hasLocalStorageToken);
+
       } catch (error) {
         console.error("Auth check failed:", error);
         setIsLoggedIn(false);
