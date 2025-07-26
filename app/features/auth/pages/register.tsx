@@ -2,11 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { signUp } from 'aws-amplify/auth';
 import { Button } from "@/common/components/ui/button";
-
-interface SignUpData {
-  email: string;
-  password: string;
-}
+import { validateForm, type SignUpData } from "@/features/auth/utils/validation";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -26,40 +22,19 @@ export default function Register() {
       [name]: value,
     }));
   };
-  // TODO: 공통 로직으로 전환
-  const validateForm = () => {
-    if (!formData.email || !formData.password) {
-      setMessage({ type: "error", text: "Please fill in all fields." });
-      return false;
-    }
-
-    if (formData.password !== confirmPassword) {
-      setMessage({ type: "error", text: "The password does not match." });
-      return false;
-    }
-
-    if (formData.password.length < 8) {
-      setMessage({ type: "error", text: "The password must be at least 8 characters long." });
-      return false;
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
-      setMessage({ type: "error", text: "Please enter a valid email address." });
-      return false;
-    }
-
-    return true;
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!validateForm()) return;
+    const validation = validateForm(formData, confirmPassword);
+    if (!validation.isValid) {
+      setMessage({ type: "error", text: validation.message });
+      return;
+    }
 
     setIsLoading(true);
 
-    try {       
+    try {
       const { isSignUpComplete, userId, nextStep } = await signUp({
         username: formData.email,
         password: formData.password,
@@ -81,24 +56,6 @@ export default function Register() {
     } finally {
       setIsLoading(false);
     }
-  };
-
-  const getErrorMessage = (errorMessage: string): string => {
-    console.log("Error Message:", errorMessage);
-    
-    if (errorMessage.includes('UsernameExistsException')) {
-      return 'The email already exists.';
-    }
-    if (errorMessage.includes('InvalidPasswordException')) {
-      return 'The password must be at least 8 characters long and include uppercase and lowercase letters, numbers, and special characters.';
-    }
-    if (errorMessage.includes('NotAuthorizedException')) {
-      return 'The username or password is incorrect.';
-    }
-    if (errorMessage.includes('InvalidParameterException')) {
-      return 'The input information is incorrect.';
-    }
-    return `An error occurred: ${errorMessage}`;
   };
 
   return (
