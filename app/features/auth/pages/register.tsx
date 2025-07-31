@@ -9,6 +9,8 @@ export default function Register() {
   const [formData, setFormData] = useState<SignUpData>({
     email: "",
     password: "",
+    familyName: "",
+    givenName: "",
   });
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -41,6 +43,8 @@ export default function Register() {
         options: {
           userAttributes: {
             email: formData.email,
+            family_name: formData.familyName,
+            given_name: formData.givenName,
           },
         },
       });
@@ -87,6 +91,38 @@ export default function Register() {
               value={formData.email}
               onChange={handleInputChange}
               placeholder="example@email.com"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required
+            />
+          </div>
+
+          <div className="space-y-2">
+            <label htmlFor="familyName" className="block text-sm font-medium text-gray-700">
+            family name
+            </label>
+            <input
+              id="familyName"
+              name="familyName"
+              type="text"
+              value={formData.familyName}
+              onChange={handleInputChange}
+              placeholder="Doe"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required
+            />
+          </div>
+
+          <div className="space-y-2">
+            <label htmlFor="givenName" className="block text-sm font-medium text-gray-700">
+            given name
+            </label>
+            <input
+              id="givenName"
+              name="givenName"
+              type="text"
+              value={formData.givenName}
+              onChange={handleInputChange}
+              placeholder="John"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               required
             />
