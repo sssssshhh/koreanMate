@@ -53,8 +53,14 @@ export default function Login() {
         <Button
           type="button"
           onClick={() => {
+            if (!import.meta.env.VITE_CLIENT_ID) {
+              throw new Error('VITE_CLIENT_ID environment variable is required');
+            }
+            if (!import.meta.env.VITE_REDIRECT_URI) {
+              throw new Error('VITE_REDIRECT_URI environment variable is required');
+            }
             window.location.href = 
-            "https://us-east-1qplni92vm.auth.us-east-1.amazoncognito.com/oauth2/authorize?identity_provider=Google&response_type=code&client_id=1185ddfcdmpk9hcd502j504lna&redirect_uri=http://localhost:5173/";
+            `https://us-east-1qplni92vm.auth.us-east-1.amazoncognito.com/oauth2/authorize?identity_provider=Google&response_type=code&client_id=${import.meta.env.VITE_CLIENT_ID}&redirect_uri=${import.meta.env.VITE_REDIRECT_URI}`;
           }}                    
 
           className="w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700"

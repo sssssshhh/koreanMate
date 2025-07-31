@@ -33,9 +33,9 @@ export default function HomePage() {
           },
           body: new URLSearchParams({
             grant_type: "authorization_code",
-            client_id: "1185ddfcdmpk9hcd502j504lna",
+            client_id: import.meta.env.VITE_CLIENT_ID,
             code: code as string,
-            redirect_uri: "http://localhost:5173/", // TODO: 배포 후 수정
+            redirect_uri: import.meta.env.VITE_REDIRECT_URI,
           }),
         }
       );

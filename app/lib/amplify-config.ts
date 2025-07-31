@@ -3,8 +3,8 @@ import { Amplify } from "aws-amplify";
 const amplifyConfig = {
     Auth: {
       Cognito: {
-        userPoolId: 'us-east-1_qPlNi92Vm',
-        userPoolClientId: '1185ddfcdmpk9hcd502j504lna',
+        userPoolId: import.meta.env.VITE_USER_POOL_ID,
+        userPoolClientId: import.meta.env.VITE_CLIENT_ID,
         region: 'us-east-1',
         loginWith: {
           email: true,
@@ -14,5 +14,8 @@ const amplifyConfig = {
   };
 
 export function configureAmplify() {
+    if (!import.meta.env.VITE_CLIENT_ID) {
+        throw new Error('VITE_CLIENT_ID environment variable is required');
+    }
     Amplify.configure(amplifyConfig);
 }
