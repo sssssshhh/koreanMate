@@ -3,16 +3,18 @@ import { useNavigate } from "react-router";
 import MainLayout from "@/features/layouts/mainLayout";
 import { deductPoint, fetchTotalPoints, grantPoint, grantPointTemp } from "@/features/point/APIs/pointAPI";
 import { PointType, type Point } from "@/features/point/type";
+import { useAuth } from "@/features/auth/contexts/AuthContext";
 
 export default function HomePage() {
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   useEffect(() => {
-    grantPoint({
-        userId: "abc12345",
-        pointId: "12345678",
-        amount: 10
-    })
+    // grantPoint({
+    //     userId: "abc12345",
+    //     pointId: "12345678",
+    //     amount: 10
+    // })
     // fetchTotalPoints("abc123");
     // deductPoint("abc123", 10);
 
@@ -25,7 +27,7 @@ export default function HomePage() {
         console.log("🔑 code:", code);
 
         const response = await fetch(
-        "https://us-east-1qplni92vm.auth.us-east-1.amazoncognito.com/oauth2/token",
+        `https://${import.meta.env.VITE_COGNITO_DOMAIN}.auth.us-east-1.amazoncognito.com/oauth2/token`,
         {
           method: "POST",
           headers: {
@@ -47,12 +49,16 @@ export default function HomePage() {
         localStorage.setItem("id_token", data.id_token);
         localStorage.setItem("access_token", data.access_token);
         localStorage.setItem("refresh_token", data.refresh_token);
+        
+        // Update global auth state
+        login();
+        
         navigate("/");
       }
     }
 
     fetchToken();
-  }, [navigate]);
+  }, [navigate, login]);
 
   return (
     <MainLayout />

@@ -5,20 +5,14 @@ import {
     navigationMenuTriggerStyle,
 } from "@/common/components/ui/navigation-menu"
 import { Button } from "@/common/components/ui/button";
-import { signOut } from "aws-amplify/auth";
+import { useAuth } from "@/features/auth/contexts/AuthContext";
 
 export default function Navigation({isLoggedIn, isLoading}: {isLoggedIn: boolean; isLoading: boolean}){
+    const { logout } = useAuth();
 
     const handleLogout = async () => {
         try {
-            await signOut();
-            // // localStorage 토큰들도 제거 for google, apple oath
-            // localStorage.removeItem("access_token");
-            // localStorage.removeItem("id_token");
-            // localStorage.removeItem("refresh_token");
-
-            // Update state with page reload
-            window.location.reload();
+            await logout();
         } catch (error) {
             console.error("Logout failed:", error);
         }

@@ -1,12 +1,12 @@
 export interface SignUpData {
   email: string;
   password: string;
-  familyName: string;
-  givenName: string;
+  familyName?: string;
+  givenName?: string;
 }
 
 export function validateForm(formData: SignUpData, confirmPassword: string): { isValid: boolean; message: string } {
-  if (!formData.email || !formData.password || !formData.familyName || !formData.givenName) {
+  if (!formData.email || !formData.password) {
     return { isValid: false, message: "Please fill in all fields." };
   }
 

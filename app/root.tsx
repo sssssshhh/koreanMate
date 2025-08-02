@@ -13,6 +13,7 @@ import type { Route } from "./+types/root";
 import "./app.css";
 import Navigation from "./common/pages/navigation";
 import { configureAmplify } from "./lib/amplify-config";
+import { AuthProvider, useAuth } from "./features/auth/contexts/AuthContext";
 
 // init Amplify 
 configureAmplify();
@@ -30,35 +31,8 @@ export const links: Route.LinksFunction = () => [
   },
 ];
 
-export function Layout({ children }: { children: React.ReactNode }) {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    async function checkAuthStatus() {
-      try {
-        // Amplify Session Check
-        const session = await fetchAuthSession();
-        const hasValidSession = session.tokens !== undefined;
-        console.log("🔑 hasValidSession:", hasValidSession);
-        
-        setIsLoggedIn(hasValidSession);
-        
-        // Local Storage Token Check (Google OAuth 등)
-        // const hasLocalStorageToken = localStorage.getItem("access_token") || localStorage.getItem("id_token");
-        
-        // setIsLoggedIn(hasValidSession || !!hasLocalStorageToken);
-
-      } catch (error) {
-        console.error("Auth check failed:", error);
-        setIsLoggedIn(false);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
-    checkAuthStatus();
-  }, []);
+function LayoutContent({ children }: { children: React.ReactNode }) {
+  const { isLoggedIn, isLoading } = useAuth();
 
   return (
     <html lang="en">
@@ -77,6 +51,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Scripts />
       </body>
     </html>
+  );
+}
+
+export function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <AuthProvider>
+      <LayoutContent>{children}</LayoutContent>
+    </AuthProvider>
   );
 }
 

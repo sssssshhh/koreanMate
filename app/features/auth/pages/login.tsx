@@ -2,15 +2,17 @@ import { fetchAuthSession, signIn } from "aws-amplify/auth";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { Button } from "@/common/components/ui/button";
+import { useAuth } from "@/features/auth/contexts/AuthContext";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(email, password);
+
     try {
       await signIn({ username: email, password });
 
@@ -18,12 +20,12 @@ export default function Login() {
       const idToken = session.tokens?.idToken?.toString();
       const accessToken = session.tokens?.accessToken?.toString();
   
-      console.log("idToken:", idToken);
-      console.log("accessToken:", accessToken);
-  
       if (accessToken) localStorage.setItem("access_token", accessToken);
       if (idToken) localStorage.setItem("id_token", idToken);
 
+      // Update global auth state
+      login();
+      
       navigate('/');  
     
     } catch (error) {
@@ -59,8 +61,11 @@ export default function Login() {
             if (!import.meta.env.VITE_REDIRECT_URI) {
               throw new Error('VITE_REDIRECT_URI environment variable is required');
             }
+            if (!import.meta.env.VITE_COGNITO_DOMAIN) {
+              throw new Error('VITE_COGNITO_DOMAIN environment variable is required');
+            }
             window.location.href = 
-            `https://us-east-1qplni92vm.auth.us-east-1.amazoncognito.com/oauth2/authorize?identity_provider=Google&response_type=code&client_id=${import.meta.env.VITE_CLIENT_ID}&redirect_uri=${import.meta.env.VITE_REDIRECT_URI}`;
+            `https://${import.meta.env.VITE_COGNITO_DOMAIN}.auth.us-east-1.amazoncognito.com/oauth2/authorize?identity_provider=Google&response_type=code&client_id=${import.meta.env.VITE_CLIENT_ID}&redirect_uri=${import.meta.env.VITE_REDIRECT_URI}`;
           }}                    
 
           className="w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700"
