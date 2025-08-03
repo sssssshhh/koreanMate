@@ -1,10 +1,4 @@
 import { Link } from "react-router"
-import {
-    NavigationMenu,
-    NavigationMenuLink,
-    navigationMenuTriggerStyle,
-} from "@/common/components/ui/navigation-menu"
-import { Button } from "@/common/components/ui/button";
 import { useAuth } from "@/features/auth/contexts/AuthContext";
 
 export default function Navigation({isLoggedIn, isLoading}: {isLoggedIn: boolean; isLoading: boolean}){
@@ -19,43 +13,68 @@ export default function Navigation({isLoggedIn, isLoading}: {isLoggedIn: boolean
     };
 
     return (
-        <nav className="flex px-20 h-16 items-center justify-between fixed top-0 left-0 right-0 z-50">
-            <div className="flex items-center">
-                <Link to="/" className="font-bold tracking-tighter text-lg">
-                KoreanMate
-                </Link>
-                <NavigationMenu className="px-20">
-                    <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                        <Link to="/">Stories</Link>
-                    </NavigationMenuLink>
-                    <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                        <Link to="/blog">Blog</Link>
-                    </NavigationMenuLink>
-                    <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                        <Link to="/grammer">Grammer</Link>
-                    </NavigationMenuLink>
-                </NavigationMenu>
-                {isLoading ? (
-                    <div className="flex items-center gap-6">
-                        <span className="text-sm text-gray-500">Loading...</span>
+        <nav>
+            {/* TODO check:self-stretch data-property data-show-icon*/}
+            <div className="self-stretch flex flex-col justify-start items-start">
+                <div className="self-stretch flex flex-col justify-start items-start">
+                    <div className="self-stretch px-28 py-2.5 bg-white inline-flex justify-start items-center gap-10">
+                        <div className="flex-1 flex justify-between items-center">
+                            <div className="pt-2.5 flex justify-center items-center gap-2.5">
+                                <div className="justify-start text-blue-600 text-2xl font-black">
+                                    <Link to="/">
+                                        Korean Mate
+                                    </Link>
+                                </div>
+                            </div>
+                            <div className="pt-3.5 flex justify-start items-end gap-28 text-black text-base font-bold tracking-tight">
+                                <Link to="/">Learn</Link>
+                                <Link to="/">Give</Link>
+                                <Link to="/">My page</Link>
+                            </div>
+                            {isLoggedIn ? 
+                                <div className="pt-3.5 flex justify-start items-center gap-2.5">
+                                    <div data-property-1="blue" data-property-2="default" data-show-icon="false" className="px-5 py-2.5 bg-blue-600 rounded-full flex justify-center items-center gap-2.5">
+                                        <div className="justify-start text-white text-base font-bold tracking-tight">Log our</div>
+                                    </div>
+                                </div>
+                                    :
+                                <div className="pt-3.5 flex justify-start items-center gap-2.5">
+                                    <div data-property-1="blue" data-property-2="default" data-show-icon="false" className="px-5 py-2.5 bg-blue-600 rounded-full flex justify-center items-center gap-2.5">
+                                        <Link to="/login" className="justify-start text-white text-base font-bold tracking-tight">Log in</Link>
+                                    </div>
+                                    <div data-property-1="orange" data-property-2="default" data-show-icon="false" className="px-5 py-2.5 bg-orange-600 rounded-full flex justify-center items-center gap-2.5">
+                                        <Link to="/register" className="text-white text-base font-bold tracking-tight">Join us!</Link>
+                                    </div>
+                                </div>
+                            }
+                        </div>
                     </div>
-                ) : isLoggedIn ? (
-                    <div className="flex items-center gap-6">
-                        <Button asChild variant="secondary" onClick={handleLogout}>
-                            <span>Logout</span>
-                        </Button>
-                    </div>
-                ) : (
-                    <div className="flex items-center gap-6">
-                        <Button asChild variant="secondary">
-                            <Link to="/login">Login</Link>
-                        </Button>
-                        <Button asChild variant="secondary">
-                            <Link to="/register">Register</Link>
-                        </Button>
-                    </div>
-                )}
+                    {/* TODO:이게 왜 필요하지? */}
+                    <div className="self-stretch h-7 bg-white"></div>
+                </div>
             </div>
+
+
+            {/* {isLoading ? (
+                <div className="flex items-center gap-6">
+                    <span className="text-sm text-gray-500">Loading...</span>
+                </div>
+            ) : isLoggedIn ? (
+                <div className="flex items-center gap-6">
+                    <Button asChild variant="secondary" onClick={handleLogout}>
+                        <span>Logout</span>
+                    </Button>
+                </div>
+            ) : (
+                <div className="flex items-center gap-6">
+                    <Button asChild variant="secondary">
+                        <Link to="/login">Login</Link>
+                    </Button>
+                    <Button asChild variant="secondary">
+                        <Link to="/register">Register</Link>
+                    </Button>
+                </div>
+            )} */}
         </nav>
     )
 }

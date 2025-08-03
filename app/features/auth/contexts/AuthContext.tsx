@@ -23,8 +23,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const session = await fetchAuthSession();
       const hasValidSession = session.tokens !== undefined;
       
-      console.log("🔑 hasValidSession:", hasValidSession);
-      
       setIsLoggedIn(hasValidSession);
       
       if (hasValidSession && session.tokens) {

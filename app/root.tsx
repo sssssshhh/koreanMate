@@ -44,7 +44,7 @@ function LayoutContent({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <Navigation isLoggedIn={isLoggedIn} isLoading={isLoading} />
-        <main className="p-16 h-full w-full">
+        <main>
           {children}
         </main>
         <ScrollRestoration />
