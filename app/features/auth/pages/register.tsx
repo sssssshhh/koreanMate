@@ -1,34 +1,52 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { signUp } from 'aws-amplify/auth';
-import { Button } from "@/common/components/ui/button";
 import { validateForm, type SignUpData } from "@/features/auth/utils/validation";
+import { useForm } from "react-hook-form";
+import { Form, FormDescription, FormMessage } from "@/common/components/ui/form";
+import { FormControl } from "@/common/components/ui/form";
+import { FormLabel } from "@/common/components/ui/form";
+import { FormItem } from "@/common/components/ui/form";
+import { FormField } from "@/common/components/ui/form";
+import { Input } from "@/common/components/ui/input";
+import { Button } from "@/common/components/ui/button";
+
+interface RegisterFormData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
 
 export default function Register() {
-  const navigate = useNavigate();
-  const [formData, setFormData] = useState<SignUpData>({
-    email: "",
-    password: "",
-    familyName: "",
-    givenName: "",
+  const form = useForm<RegisterFormData>({
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    },
   });
-  const [confirmPassword, setConfirmPassword] = useState("");
+  
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
-  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+  const onSubmit = async (data: RegisterFormData) => {
+    if (data.password !== data.confirmPassword) {
+      setMessage({ type: "error", text: "Passwords do not match" });
+      return;
+    }
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    const validation = validateForm(formData, confirmPassword);
+    const validation = validateForm({
+      email: data.email,
+      password: data.password,
+      familyName: data.lastName,
+      givenName: data.firstName,
+    }, data.confirmPassword);
+
     if (!validation.isValid) {
       setMessage({ type: "error", text: validation.message });
       return;
@@ -38,165 +56,151 @@ export default function Register() {
 
     try {
       const { isSignUpComplete, userId, nextStep } = await signUp({
-        username: formData.email,
-        password: formData.password,
+        username: data.email,
+        password: data.password,
         options: {
           userAttributes: {
-            email: formData.email,
-            family_name: formData.familyName,
-            given_name: formData.givenName,
+            email: data.email,
+            family_name: data.lastName,
+            given_name: data.firstName,
           },
         },
       });
       navigate('/login');
     } catch (error: any) {
       console.error("Sign Up Error:", error);
-      console.error("Error Details:", {
-        name: error.name,
-        message: error.message,
-        code: error.code
-      });
-      
+      setMessage({ type: "error", text: error.message || "Registration failed" });
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="w-full max-w-md bg-white rounded-lg shadow-md p-6">
-        <div className="text-center mb-6">
-          <h1 className="text-2xl font-bold text-gray-900">Sign Up</h1>
-        </div>
+    <div className="min-h-screen flex items-center justify-center bg-[#FFFDD0] py-12 px-4 sm:px-6 lg:px-8">
+      <div className="w-[1284px] h-[1092px] px-6 relative bg-white border-l border-r border-t border-amber-200 flex flex-col justify-center items-center gap-7 overflow-hidden">
+      
         
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {message && (
-            <div className={`p-3 rounded-md ${
-              message.type === "error" 
-                ? "bg-red-50 border border-red-200 text-red-800" 
-                : "bg-green-50 border border-green-200 text-green-800"
-            }`}>
-              {message.text}
-            </div>
-          )}
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+            {message && (
+              <div className={`p-3 rounded-md ${
+                message.type === "error" 
+                  ? "bg-red-50 border border-red-200 text-red-800" 
+                  : "bg-green-50 border border-green-200 text-green-800"
+              }`}>
+                {message.text}
+              </div>
+            )}
 
-          <div className="space-y-2">
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-            email
-            </label>
-            <input
-              id="email"
+            <FormField
+              control={form.control}
+              name="firstName"
+              rules={{ required: "First name is required" }}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>First Name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Enter your first name" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="lastName"
+              rules={{ required: "Last name is required" }}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Last Name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Enter your last name" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
               name="email"
-              type="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              placeholder="example@email.com"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              required
-            />
-          </div>
-
-          <div className="space-y-2">
-            <label htmlFor="familyName" className="block text-sm font-medium text-gray-700">
-            family name
-            </label>
-            <input
-              id="familyName"
-              name="familyName"
-              type="text"
-              value={formData.familyName}
-              onChange={handleInputChange}
-              placeholder="Doe"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              required
-            />
-          </div>
-
-          <div className="space-y-2">
-            <label htmlFor="givenName" className="block text-sm font-medium text-gray-700">
-            given name
-            </label>
-            <input
-              id="givenName"
-              name="givenName"
-              type="text"
-              value={formData.givenName}
-              onChange={handleInputChange}
-              placeholder="John"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              required
-            />
-          </div>
-
-          <div className="space-y-2">
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-            password
-            </label>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              value={formData.password}
-              onChange={handleInputChange}
-              placeholder="8 characters or more, include uppercase and lowercase letters, numbers, and special characters"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              required
-            />
-          </div>
-
-          <div className="space-y-2">
-            <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
-            confirm password
-            </label>
-            <input
-              id="confirmPassword"
-              name="confirmPassword"
-              type="password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              placeholder="confirm password"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              required
-            />
-          </div>
-
-          <Button
-            type="submit"
-            disabled={isLoading}
-            className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {isLoading ? "Processing..." : "Sign Up"}
-          </Button>
-
-          <div className="mt-4">
-            <Button
-              type="button"
-              onClick={() => {
-                if (!import.meta.env.VITE_CLIENT_ID) {
-                  throw new Error('VITE_CLIENT_ID environment variable is required');
+              rules={{ 
+                required: "Email is required",
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: "Invalid email address"
                 }
-                if (!import.meta.env.VITE_REDIRECT_URI) {
-                  throw new Error('VITE_REDIRECT_URI environment variable is required');
-                }
-                if (!import.meta.env.VITE_COGNITO_DOMAIN) {
-                  throw new Error('VITE_COGNITO_DOMAIN environment variable is required');
-                }
-                window.location.href = 
-                `https://${import.meta.env.VITE_COGNITO_DOMAIN}.auth.us-east-1.amazoncognito.com/oauth2/authorize?identity_provider=Google&response_type=code&client_id=${import.meta.env.VITE_CLIENT_ID}&redirect_uri=${import.meta.env.VITE_REDIRECT_URI}`;
               }}
-              className="w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700"
-            >
-              Sign in with Google
-            </Button>
-          </div>
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Email address</FormLabel>
+                  <FormControl>
+                    <Input type="email" placeholder="Enter your email" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-          <div className="text-center text-sm text-gray-600">
-            Already have an account?{" "}
-            <Link to="/login" className="text-blue-600 hover:text-blue-500">
-              Login
-            </Link>
-          </div>
-        </form>
+            <FormField
+              control={form.control}
+              name="password"
+              rules={{ 
+                required: "Password is required",
+                minLength: {
+                  value: 8,
+                  message: "Password must be at least 8 characters"
+                }
+              }}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Password</FormLabel>
+                  <FormControl>
+                    <Input type="password" placeholder="Enter your password" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="confirmPassword"
+              rules={{ 
+                required: "Please confirm your password",
+                validate: (value) => {
+                  const password = form.getValues("password");
+                  return value === password || "Passwords do not match";
+                }
+              }}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Confirm Password</FormLabel>
+                  <FormControl>
+                    <Input type="password" placeholder="Confirm your password" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <Button
+              type="submit"
+              disabled={isLoading}
+              className="w-full"
+            >
+              {isLoading ? "Processing..." : "Sign Up"}
+            </Button>
+
+            <div className="text-center text-sm text-gray-600">
+              Already have an account?{" "}
+              <Link to="/login" className="text-blue-600 hover:text-blue-500">
+                Login
+              </Link>
+            </div>
+          </form>
+        </Form>
       </div>
     </div>
   );

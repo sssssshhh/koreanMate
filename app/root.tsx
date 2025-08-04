@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import {
   isRouteErrorResponse,
   Links,
@@ -6,7 +7,6 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
-import { useEffect, useState } from "react";
 import { fetchAuthSession } from "aws-amplify/auth";
 
 import type { Route } from "./+types/root";
@@ -14,6 +14,7 @@ import "./app.css";
 import Navigation from "./common/pages/navigation";
 import { configureAmplify } from "./lib/amplify-config";
 import { AuthProvider, useAuth } from "./features/auth/contexts/AuthContext";
+import Footer from "./common/pages/footer";
 
 // init Amplify 
 configureAmplify();
@@ -47,6 +48,7 @@ function LayoutContent({ children }: { children: React.ReactNode }) {
         <main>
           {children}
         </main>
+        <Footer />
         <ScrollRestoration />
         <Scripts />
       </body>
