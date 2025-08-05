@@ -76,12 +76,20 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#FFFDD0] py-12 px-4 sm:px-6 lg:px-8">
-      <div className="w-[1284px] h-[1092px] px-6 relative bg-white border-l border-r border-t border-amber-200 flex flex-col justify-center items-center gap-7 overflow-hidden">
-      
+    <div className="h-ull¥ bg-[#FFFDD0] pt-[100px] pl-[116px] pr-[116px] pb-[100px]">
+      <div className="w-full h-full bg-white border-l border-r border-t border-amber-200 flex flex-col justify-center items-center gap-7 overflow-hidden p-8">
+        <div className="flex flex-col justify-start items-center pb-10">
+            <img 
+              src="/images/Signin.svg" 
+              alt="Sign in" 
+              className="pb-4"
+            />
+          <div className="text-stone-950 text-4xl font-normal pb-2">Ready to start learning Korean?</div>
+          <div className="text-neutral-400 text-base font-normal font-['Lato']">Start your learning journey with KoreanMate.</div>
+        </div>
         
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 w-full max-w-md">
             {message && (
               <div className={`p-3 rounded-md ${
                 message.type === "error" 
@@ -184,21 +192,33 @@ export default function Register() {
                 </FormItem>
               )}
             />
-
+          <div className="flex flex-col justify-center items-center pt-14 gap-4">
             <Button
               type="submit"
               disabled={isLoading}
               className="w-full"
+              bgColor="#0057FF"
             >
-              {isLoading ? "Processing..." : "Sign Up"}
+              {isLoading ? "Processing..." : "Sign Up with email"}
             </Button>
-
-            <div className="text-center text-sm text-gray-600">
-              Already have an account?{" "}
-              <Link to="/login" className="text-blue-600 hover:text-blue-500">
-                Login
-              </Link>
-            </div>
+            <Button
+              type="submit"
+              disabled={isLoading}
+              className="w-full"
+              bgColor="#0F0F0F"
+            >
+              {isLoading ? "Processing..." : "Sign Up with apple"}
+            </Button>
+            <Button
+              type="submit"
+              disabled={isLoading}
+              className="w-full"
+              bgColor="#FFFFFF"
+              textColor="#000000"
+            >
+              {isLoading ? "Processing..." : "Sign Up with Google"}
+            </Button>
+          </div>
           </form>
         </Form>
       </div>

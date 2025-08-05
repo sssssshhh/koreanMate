@@ -40,17 +40,30 @@ function Button({
   variant,
   size,
   asChild = false,
+  bgColor,
+  textColor,
   ...props
 }: React.ComponentProps<"button"> &
   VariantProps<typeof buttonVariants> & {
     asChild?: boolean
+    bgColor?: string
+    textColor?: string
   }) {
   const Comp = asChild ? Slot : "button"
+
+  const buttonStyle = {
+    ...(bgColor && { backgroundColor: bgColor }),
+    ...(textColor && { color: textColor })
+  } as React.CSSProperties
 
   return (
     <Comp
       data-slot="button"
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={cn(
+        buttonVariants({ variant, size, className }),
+        bgColor && "hover:opacity-90"
+      )}
+      style={Object.keys(buttonStyle).length > 0 ? buttonStyle : undefined}
       {...props}
     />
   )
