@@ -10,6 +10,8 @@ import { FormItem } from "@/common/components/ui/form";
 import { FormField } from "@/common/components/ui/form";
 import { Input } from "@/common/components/ui/input";
 import { Button } from "@/common/components/ui/button";
+import { Icon } from "@/common/components/ui/icon";
+import AuthLayout from "@/features/auth/layouts/AuthLayout";
 
 interface RegisterFormData {
   firstName: string;
@@ -76,136 +78,132 @@ export default function Register() {
   };
 
   return (
-    <div className="h-full bg-[#FFFDD0] pt-[100px] pl-[116px] pr-[116px] pb-[100px]">
-      <div className="w-full h-full bg-white rounded-lg border-l border-r border-t pt-8 pb-8 border-amber-200 flex flex-col justify-center items-center overflow-hidden relative">
-        {/* Left side vector image - positioned near form bottom-left */}
-        <img
-          src="/images/signin_left.svg" 
-          alt="Sign in decoration" 
-          className="absolute -left-1 bottom-20 z-10"
-        />
-        
-        {/* Right side vector image - positioned near form bottom-right */}
-        <img
-          src="/images/signin_right.svg" 
-          alt="Sign in decoration" 
-          className="absolute -right-1 bottom-20 z-10"
-        />
-        
-        <div className="flex flex-col justify-start items-center pb-10">
-            <img 
-              src="/images/book.svg" 
-              alt="Sign in" 
-              className="pb-4"
-            />
-          <div className="text-stone-950 text-4xl font-normal pb-2">Ready to start learning Korean?</div>
-          <div className="text-neutral-400 text-base font-normal font-['Lato']">Start your learning journey with KoreanMate.</div>
-        </div>
-        
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 w-full max-w-md">
-            {message && (
-              <div className={`p-3 rounded-md ${
-                message.type === "error" 
-                  ? "bg-red-50 border border-red-200 text-red-800" 
-                  : "bg-green-50 border border-green-200 text-green-800"
-              }`}>
-                {message.text}
-              </div>
+    <AuthLayout
+      title="Ready to start learning Korean?"
+      subtitle="Start your learning journey with KoreanMate."
+      iconSrc="/images/book.svg"
+      iconAlt="Sign up"
+    >
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 w-full">
+          {message && (
+            <div className={`p-3 rounded-md ${
+              message.type === "error" 
+                ? "bg-red-50 border border-red-200 text-red-800" 
+                : "bg-green-50 border border-green-200 text-green-800"
+            }`}>
+              {message.text}
+            </div>
+          )}
+
+          <FormField
+            control={form.control}
+            name="firstName"
+            rules={{ required: "First name is required" }}
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>
+                  First Name
+                  <span className="text-red-500 ml-1">*</span>
+                </FormLabel>
+                <FormControl>
+                  <Input placeholder="Enter your first name" required {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
             )}
+          />
 
-            <FormField
-              control={form.control}
-              name="firstName"
-              rules={{ required: "First name is required" }}
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>First Name</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Enter your first name" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+          <FormField
+            control={form.control}
+            name="lastName"
+            rules={{ required: "Last name is required" }}
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>
+                  Last Name
+                  <span className="text-red-500 ml-1">*</span>
+                </FormLabel>
+                <FormControl>
+                  <Input placeholder="Enter your last name" required {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-            <FormField
-              control={form.control}
-              name="lastName"
-              rules={{ required: "Last name is required" }}
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Last Name</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Enter your last name" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+          <FormField
+            control={form.control}
+            name="email"
+            rules={{ 
+              required: "Email is required",
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: "Invalid email address"
+              }
+            }}
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>
+                  Email address
+                  <span className="text-red-500 ml-1">*</span>
+                </FormLabel>
+                <FormControl>
+                  <Input type="email" placeholder="Enter your email" required {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-            <FormField
-              control={form.control}
-              name="email"
-              rules={{ 
-                required: "Email is required",
-                pattern: {
-                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: "Invalid email address"
-                }
-              }}
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email address</FormLabel>
-                  <FormControl>
-                    <Input type="email" placeholder="Enter your email" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+          <FormField
+            control={form.control}
+            name="password"
+            rules={{ 
+              required: "Password is required",
+              minLength: {
+                value: 8,
+                message: "Password must be at least 8 characters"
+              }
+            }}
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>
+                  Password
+                  <span className="text-red-500 ml-1">*</span>
+                </FormLabel>
+                <FormControl>
+                  <Input type="password" placeholder="Enter your password" required {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-            <FormField
-              control={form.control}
-              name="password"
-              rules={{ 
-                required: "Password is required",
-                minLength: {
-                  value: 8,
-                  message: "Password must be at least 8 characters"
-                }
-              }}
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Password</FormLabel>
-                  <FormControl>
-                    <Input type="password" placeholder="Enter your password" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="confirmPassword"
-              rules={{ 
-                required: "Please confirm your password",
-                validate: (value) => {
-                  const password = form.getValues("password");
-                  return value === password || "Passwords do not match";
-                }
-              }}
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Confirm Password</FormLabel>
-                  <FormControl>
-                    <Input type="password" placeholder="Confirm your password" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+          <FormField
+            control={form.control}
+            name="confirmPassword"
+            rules={{ 
+              required: "Please confirm your password",
+              validate: (value) => {
+                const password = form.getValues("password");
+                return value === password || "Passwords do not match";
+              }
+            }}
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>
+                  Confirm Password
+                  <span className="text-red-500 ml-1">*</span>
+                </FormLabel>
+                <FormControl>
+                  <Input type="password" placeholder="Confirm your password" required {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          
           <div className="flex flex-col justify-center items-center pt-14 gap-4">
             <Button
               type="submit"
@@ -213,6 +211,7 @@ export default function Register() {
               className="w-full"
               bgColor="#0057FF"
             >
+              <Icon name="envelope" size="sm" />
               {isLoading ? "Processing..." : "Sign Up with email"}
             </Button>
             <Button
@@ -221,21 +220,26 @@ export default function Register() {
               className="w-full"
               bgColor="#0F0F0F"
             >
+              <Icon name="apple" type="brands" size="sm" />
               {isLoading ? "Processing..." : "Sign Up with apple"}
             </Button>
             <Button
               type="submit"
               disabled={isLoading}
-              className="w-full"
+              className="w-full flex items-center justify-center gap-2"
               bgColor="#FFFFFF"
               textColor="#000000"
             >
+              <img 
+                src="/images/google.svg" 
+                alt="Google" 
+                className="w-4 h-4"
+              />
               {isLoading ? "Processing..." : "Sign Up with Google"}
             </Button>
           </div>
-          </form>
-        </Form>
-      </div>
-    </div>
+        </form>
+      </Form>
+    </AuthLayout>
   );
 }
