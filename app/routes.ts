@@ -11,6 +11,10 @@ export default [
         "features/auth/pages/forgot-password.tsx"
     ),
     route(
+        "/verification",
+        "features/auth/pages/verification.tsx"
+    ),
+    route(
         "/register",
         "features/auth/pages/register.tsx"
     ),

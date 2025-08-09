@@ -3,7 +3,7 @@ import React from "react";
 interface AuthLayoutProps {
   children: React.ReactNode;
   title: string;
-  subtitle: string;
+  subtitle: string | React.ReactNode;
   iconSrc?: string;
   iconAlt?: string;
 }
@@ -15,6 +15,20 @@ export default function AuthLayout({
   iconSrc = "/images/book.svg", 
   iconAlt = "Auth icon" 
 }: AuthLayoutProps) {
+  const renderSubtitle = () => {
+    if (typeof subtitle === 'string') {
+      // Split by \n and map to JSX with <br /> tags
+      const lines = subtitle.split('\n');
+      return lines.map((line, index) => (
+        <React.Fragment key={index}>
+          {line}
+          {index < lines.length - 1 && <br />}
+        </React.Fragment>
+      ));
+    }
+    return subtitle;
+  };
+
   return (
     <div className="h-full bg-[#FFFDD0] pt-[100px] pl-[116px] pr-[116px] pb-[100px]">
       <div className="w-full h-full bg-white rounded-lg border-l border-r border-t pt-8 pb-8 border-amber-200 flex flex-col justify-center items-center overflow-hidden relative">
@@ -40,7 +54,9 @@ export default function AuthLayout({
             className="pb-4"
           />
           <div className="text-stone-950 text-4xl font-normal pb-2">{title}</div>
-          <div className="text-neutral-400 text-base font-normal font-['Lato']">{subtitle}</div>
+          <div className="text-neutral-400 text-base font-normal font-['Lato'] text-center">
+            {renderSubtitle()}
+          </div>
         </div>
         
         {/* Form content - passed as children */}

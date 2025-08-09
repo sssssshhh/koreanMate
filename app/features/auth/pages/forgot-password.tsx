@@ -1,31 +1,103 @@
-import { Button } from "@/common/components/ui/button";
+import { PrimaryButton } from "@/common/components/ui/primary-button";
+import { Input } from "@/common/components/ui/input";
 import { useState } from "react";
-import { resetPassword, confirmResetPassword } from "aws-amplify/auth";
-import { useNavigate } from "react-router";
+import { resetPassword } from "aws-amplify/auth";
+import { useNavigate, Link } from "react-router";
+import AuthLayout from "@/features/auth/layouts/AuthLayout";
 
 export default function ForgotPassword() {
     const [email, setEmail] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
+    const [emailError, setEmailError] = useState("");
+    const [generalError, setGeneralError] = useState("");
     const navigate = useNavigate();
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const validateEmail = (email: string) => {
+        if (!email.trim()) {
+            return "Email address is required.";
+        }
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            return "Please enter a valid email address.";
+        }
+        return "";
+    };
+
+    const handleSendCode = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log('forgot password');
+        setEmailError("");
+        setGeneralError("");
+        
+        // Validate email
+        const emailValidation = validateEmail(email);
+        if (emailValidation) {
+            setEmailError(emailValidation);
+            return;
+        }
+
+        setIsLoading(true);
 
         try {
           const result = await resetPassword({ username: email });
-          console.log("✅ Auth result:", result);
-          navigate("/reset-password", { state: { email } });
-        } catch (error) {
-          console.error("❌ Auth Failed:", error);
+          console.log("✅ Reset password result:", result);
+          navigate("/verification", { state: { email } });
+        } catch (error: any) {
+          console.error("❌ Reset password failed:", error);
+          setGeneralError(error.message || "Failed to send reset email. Please try again.");
+        } finally {
+          setIsLoading(false);
         }
     }
-    
+
     return (
-      <div className="flex flex-col items-center justify-center h-screen">
-        <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-          <input type="email" placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-          <Button type="submit">forgot password</Button>
-        </form>
-      </div>
+      <AuthLayout
+        title="Forgot your password?"
+        subtitle="Enter your email address and we'll send you a reset link."
+        iconSrc="/images/lock.svg"
+        iconAlt="Forgot Password"
+      >
+        <div className="flex justify-center w-full">
+          <form onSubmit={handleSendCode} className="space-y-4 w-10/12 max-w-md pt-14" noValidate>
+            {generalError && (
+              <div className="text-red-600 text-sm font-medium mb-4">
+                {generalError}
+              </div>
+            )}
+
+            <div className="space-y-2">
+              <label htmlFor="email" className="text-neutral-400 text-base font-normal font-['Lato']">
+                Email address <span className="text-red-500 ml-1">*</span>
+              </label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  if (emailError) setEmailError("");
+                }}
+                required
+              />
+              {emailError && (
+                <div className="text-red-600 text-sm font-medium mt-1">
+                  {emailError}
+                </div>
+              )}
+            </div>
+
+            <div className="flex flex-col justify-center items-center pt-10 gap-4">
+              <PrimaryButton
+                type="submit"
+                disabled={isLoading}
+                className="w-full"
+                bgColor="#0057FF"
+              >
+                {isLoading ? "Sending..." : "Send Reset Link"}
+              </PrimaryButton>
+            </div>
+          </form>
+        </div>
+      </AuthLayout>
     );
-  }
+}

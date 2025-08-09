@@ -19,6 +19,9 @@ type Pages = {
   "/forgot-password": {
     params: {};
   };
+  "/verification": {
+    params: {};
+  };
   "/register": {
     params: {};
   };
@@ -68,7 +71,7 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/login" | "/forgot-password" | "/register" | "/registration-success" | "/reset-password" | "/stories/:storyId" | "/stories/:storyId/:chapterId" | "/stories/:storyId/:chapterId/quiz" | "/stories/:storyId/:chapterId/recording" | "/stories/:storyId/:chapterId/complete" | "/blog" | "/grammer";
+    page: "/" | "/login" | "/forgot-password" | "/verification" | "/register" | "/registration-success" | "/reset-password" | "/stories/:storyId" | "/stories/:storyId/:chapterId" | "/stories/:storyId/:chapterId/quiz" | "/stories/:storyId/:chapterId/recording" | "/stories/:storyId/:chapterId/complete" | "/blog" | "/grammer";
   };
   "features/main/pages/home-page.tsx": {
     id: "features/main/pages/home-page";
@@ -81,6 +84,10 @@ type RouteFiles = {
   "features/auth/pages/forgot-password.tsx": {
     id: "features/auth/pages/forgot-password";
     page: "/forgot-password";
+  };
+  "features/auth/pages/verification.tsx": {
+    id: "features/auth/pages/verification";
+    page: "/verification";
   };
   "features/auth/pages/register.tsx": {
     id: "features/auth/pages/register";

@@ -1,46 +1,165 @@
-import { Button } from "@/common/components/ui/button";
+import { PrimaryButton } from "@/common/components/ui/primary-button";
+import { Input } from "@/common/components/ui/input";
 import { confirmResetPassword } from "aws-amplify/auth";
 import { useState } from "react"; 
 import { useLocation, useNavigate } from "react-router";
-import { validateForm } from "../utils/validation";
+import AuthLayout from "@/features/auth/layouts/AuthLayout";
 
 export default function ResetPassword() {
-    const { email } = useLocation().state;
+    const location = useLocation();
     const navigate = useNavigate();
-    const [code, setCode] = useState("");
-    const [password, setPassword] = useState("");
+    const [newPassword, setNewPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const [error, setError] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
+    const [newPasswordError, setNewPasswordError] = useState("");
+    const [confirmPasswordError, setConfirmPasswordError] = useState("");
+    const [generalError, setGeneralError] = useState("");
+
+    // Get email and verification code from previous page
+    const { email, verificationCode } = location.state || {};
+    
+    // If no email or verification code in state, redirect to forgot-password
+    if (!email || !verificationCode) {
+        navigate("/forgot-password");
+        return null;
+    }
+
+    const validateNewPassword = (password: string) => {
+        if (!password.trim()) {
+            return "New password is required.";
+        }
+        if (password.length < 8) {
+            return "Password must be at least 8 characters long.";
+        }
+        return "";
+    };
+
+    const validateConfirmPassword = (password: string, confirmPwd: string) => {
+        if (!confirmPwd.trim()) {
+            return "Please confirm your password.";
+        }
+        if (password !== confirmPwd) {
+            return "Passwords do not match.";
+        }
+        return "";
+    };
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setError("");
+        setNewPasswordError("");
+        setConfirmPasswordError("");
+        setGeneralError("");
 
-        // Validate password using the validation utility
-        const validation = validateForm({ email, password }, confirmPassword);
-        if (!validation.isValid) {
-            setError(validation.message);
+        // Validate both fields
+        const newPwdValidation = validateNewPassword(newPassword);
+        const confirmPwdValidation = validateConfirmPassword(newPassword, confirmPassword);
+        
+        if (newPwdValidation) {
+            setNewPasswordError(newPwdValidation);
+        }
+        if (confirmPwdValidation) {
+            setConfirmPasswordError(confirmPwdValidation);
+        }
+        
+        if (newPwdValidation || confirmPwdValidation) {
             return;
         }
 
+        setIsLoading(true);
+
         try {
-            const result = await confirmResetPassword({ username: email, confirmationCode: code, newPassword: password });
-        } catch (error) {
-            console.error("❌ Auth Failed:", error);
-            setError("Failed to reset password. Please check your code and try again.");
-        } finally {
+            await confirmResetPassword({ 
+                username: email, 
+                confirmationCode: verificationCode, 
+                newPassword: newPassword 
+            });
+            console.log("✅ Password reset successful");
             navigate("/login");
+        } catch (error: any) {
+            console.error("❌ Password reset failed:", error);
+            setGeneralError(error.message || "Failed to reset password. Please try again.");
+        } finally {
+            setIsLoading(false);
         }
     } 
-  return (
-      <div className="container mx-auto px-4 py-8 text-black">
-        <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-          <input type="code" placeholder="code" value={code} onChange={(e) => setCode(e.target.value)} />
-          <input type="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)} required/>
-          <input type="password" placeholder="confirm password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required/>
-          {error && <p className="text-red-500 text-sm">{error}</p>}
-          <Button type="submit">reset password</Button>
-        </form>
-      </div>
+
+    return (
+      <AuthLayout
+        title="Reset your password"
+        subtitle="Please enter your new password below."
+        iconSrc="/images/lock.svg"
+        iconAlt="Reset Password"
+      >
+        <div className="flex justify-center w-full">
+          <form onSubmit={handleSubmit} className="space-y-4 w-10/12 max-w-md pt-14" noValidate>
+            {generalError && (
+              <div className="text-red-600 text-sm font-medium mb-4">
+                {generalError}
+              </div>
+            )}
+
+            <div className="space-y-2">
+              <label htmlFor="newPassword" className="text-neutral-400 text-sm font-medium font-['Lato']">
+                New Password 
+                <span className="text-red-500 ml-1">*</span>
+              </label>
+              <Input
+                id="newPassword"
+                type="password"
+                placeholder="Enter new password"
+                value={newPassword}
+                onChange={(e) => {
+                  setNewPassword(e.target.value);
+                  if (newPasswordError) setNewPasswordError("");
+                  if (confirmPasswordError && confirmPassword) {
+                    const confirmValidation = validateConfirmPassword(e.target.value, confirmPassword);
+                    if (!confirmValidation) setConfirmPasswordError("");
+                  }
+                }}
+                required
+                autoFocus
+              />
+              {newPasswordError && (
+                <div className="text-red-600 text-sm font-medium mt-1">
+                  {newPasswordError}
+                </div>
+              )}
+            </div>
+
+            <div className="space-y-2">
+              <label htmlFor="confirmPassword" className="text-neutral-400 text-sm font-medium font-['Lato']">
+                Confirm Password <span className="text-red-500 ml-1">*</span>
+              </label>
+              <Input
+                id="confirmPassword"
+                type="password"
+                placeholder="Confirm new password"
+                value={confirmPassword}
+                onChange={(e) => {
+                  setConfirmPassword(e.target.value);
+                  if (confirmPasswordError) setConfirmPasswordError("");
+                }}
+                required
+              />
+              {confirmPasswordError && (
+                <div className="text-red-600 text-sm font-medium mt-1">
+                  {confirmPasswordError}
+                </div>
+              )}
+            </div>
+
+            <div className="flex flex-col justify-center items-center pt-10 gap-4">
+              <PrimaryButton
+                type="submit"
+                disabled={isLoading}
+                className="w-full"
+                bgColor="#0057FF"
+              >
+                {isLoading ? "Resetting..." : "Reset Password"}
+              </PrimaryButton>
+            </div>
+          </form>
+        </div>
+      </AuthLayout>
     );
-  }
+}
