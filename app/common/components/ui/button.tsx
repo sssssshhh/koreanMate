@@ -61,7 +61,8 @@ function Button({
       data-slot="button"
       className={cn(
         buttonVariants({ variant, size, className }),
-        bgColor && "hover:opacity-90"
+        bgColor && "hover:opacity-90",
+        bgColor === "#FFFFFF" && "border border-gray-300"
       )}
       style={Object.keys(buttonStyle).length > 0 ? buttonStyle : undefined}
       {...props}

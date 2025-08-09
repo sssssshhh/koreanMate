@@ -76,11 +76,25 @@ export default function Register() {
   };
 
   return (
-    <div className="h-ull¥ bg-[#FFFDD0] pt-[100px] pl-[116px] pr-[116px] pb-[100px]">
-      <div className="w-full h-full bg-white border-l border-r border-t border-amber-200 flex flex-col justify-center items-center gap-7 overflow-hidden p-8">
+    <div className="h-full bg-[#FFFDD0] pt-[100px] pl-[116px] pr-[116px] pb-[100px]">
+      <div className="w-full h-full bg-white rounded-lg border-l border-r border-t pt-8 pb-8 border-amber-200 flex flex-col justify-center items-center overflow-hidden relative">
+        {/* Left side vector image - positioned near form bottom-left */}
+        <img
+          src="/images/signin_left.svg" 
+          alt="Sign in decoration" 
+          className="absolute -left-1 bottom-20 z-10"
+        />
+        
+        {/* Right side vector image - positioned near form bottom-right */}
+        <img
+          src="/images/signin_right.svg" 
+          alt="Sign in decoration" 
+          className="absolute -right-1 bottom-20 z-10"
+        />
+        
         <div className="flex flex-col justify-start items-center pb-10">
             <img 
-              src="/images/Signin.svg" 
+              src="/images/book.svg" 
               alt="Sign in" 
               className="pb-4"
             />

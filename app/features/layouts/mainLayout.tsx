@@ -169,59 +169,6 @@ export default function MainLayout() {
                 </div>
               </div>
             </div>
-            <div className="self-stretch h-80 px-28 bg-white inline-flex justify-start items-center gap-48">
-              <div className="flex-1 flex justify-start items-start gap-48">
-                <div className="size- pt-2.5 flex justify-center items-center gap-2.5">
-                  <div className="justify-start text-blue-600 text-2xl font-black font-['Merriweather']">Korean Mate</div>
-                </div>
-                <div className="flex-1 inline-flex flex-col justify-start items-start gap-6">
-                  <div className="self-stretch inline-flex justify-between items-center">
-                    <div className="size- flex justify-start items-center gap-12">
-                      <div className="size- p-2.5 flex justify-center items-center gap-2.5">
-                        <div className="justify-start text-black text-base font-bold tracking-tight">About us</div>
-                      </div>
-                      <div className="size- p-2.5 flex justify-center items-center gap-2.5">
-                        <div className="justify-start text-black text-base font-bold tracking-tight">Plans</div>
-                      </div>
-                      <div className="size- p-2.5 flex justify-center items-center gap-2.5">
-                        <div className="justify-start text-black text-base font-bold tracking-tight">Grammar</div>
-                      </div>
-                      <div className="size- p-2.5 flex justify-center items-center gap-2.5">
-                        <div className="justify-start text-black text-base font-bold tracking-tight">Video Lessons</div>
-                      </div>
-                    </div>
-                    <div className="size- flex justify-start items-center gap-7">
-                      <div className="size-6 relative">
-                        <div className="size-6 left-0 top-0 absolute bg-radial-[at_27%_108%] from-amber-300 via-amber-300 via 10% to-pink-500"></div>
-                        <div className="size-6 left-0 top-0 absolute bg-radial-[at_-17%_7%] from-blue-600 via-blue-600 via 13% to-violet-700/0"></div>
-                        <div className="size-5 left-[2.62px] top-[2.62px] absolute bg-white"></div>
-                      </div>
-                      <div className="size-6 relative">
-                        <div className="size-6 left-0 top-0 absolute bg-blue-600"></div>
-                        <div className="w-2.5 h-5 left-[7.08px] top-[4.69px] absolute bg-white"></div>
-                      </div>
-                      <img className="w-9 h-7" src="https://placehold.co/35x28" />
-                      <div data-importance="true" className="w-5 h-6 relative">
-                        <div className="w-4 h-6 left-[3.23px] top-[0.96px] absolute bg-rose-600"></div>
-                        <div className="w-5 h-6 left-[1.15px] top-[0.96px] absolute bg-black"></div>
-                        <div className="size-5 left-0 top-0 absolute bg-cyan-400"></div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="size- inline-flex justify-start items-center gap-14">
-                    <div className="size- p-2.5 flex justify-center items-center gap-2.5">
-                      <div className="justify-start text-neutral-400 text-sm font-semibold font-['Lato'] leading-tight tracking-tight">Terms of Use</div>
-                    </div>
-                    <div className="size- p-2.5 flex justify-center items-center gap-2.5">
-                      <div className="justify-start text-neutral-400 text-sm font-semibold font-['Lato'] leading-tight tracking-tight">Privacy Policy</div>
-                    </div>
-                    <div className="size- p-2.5 flex justify-center items-center gap-2.5">
-                      <div className="justify-start text-neutral-400 text-sm font-semibold font-['Lato'] leading-tight tracking-tight">Contact Us</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
