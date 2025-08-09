@@ -85,7 +85,7 @@ export default function Register() {
       iconAlt="Sign up"
     >
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 w-full">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 w-full" noValidate>
           {message && (
             <div className={`p-3 rounded-md ${
               message.type === "error" 
