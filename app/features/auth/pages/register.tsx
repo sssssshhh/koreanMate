@@ -9,7 +9,7 @@ import { FormLabel } from "@/common/components/ui/form";
 import { FormItem } from "@/common/components/ui/form";
 import { FormField } from "@/common/components/ui/form";
 import { Input } from "@/common/components/ui/input";
-import { Button } from "@/common/components/ui/button";
+import { PrimaryButton } from "@/common/components/ui/primary-button";
 import { Icon } from "@/common/components/ui/icon";
 import AuthLayout from "@/features/auth/layouts/AuthLayout";
 
@@ -68,7 +68,7 @@ export default function Register() {
           },
         },
       });
-      navigate('/login');
+      navigate('/registration-success');
     } catch (error: any) {
       console.error("Sign Up Error:", error);
       setMessage({ type: "error", text: error.message || "Registration failed" });
@@ -85,7 +85,7 @@ export default function Register() {
       iconAlt="Sign up"
     >
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 w-full" noValidate>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 w-full pt-14" noValidate>
           {message && (
             <div className={`p-3 rounded-md ${
               message.type === "error" 
@@ -205,25 +205,25 @@ export default function Register() {
           />
           
           <div className="flex flex-col justify-center items-center pt-14 gap-4">
-            <Button
+            <PrimaryButton
               type="submit"
               disabled={isLoading}
-              className="w-full"
+              className="w-full flex items-center justify-center gap-2"
               bgColor="#0057FF"
             >
               <Icon name="envelope" size="sm" />
-              {isLoading ? "Processing..." : "Sign Up with email"}
-            </Button>
-            <Button
+              Sign Up with email
+            </PrimaryButton>
+            <PrimaryButton
               type="submit"
               disabled={isLoading}
-              className="w-full"
+              className="w-full flex items-center justify-center gap-2"
               bgColor="#0F0F0F"
             >
               <Icon name="apple" type="brands" size="sm" />
-              {isLoading ? "Processing..." : "Sign Up with apple"}
-            </Button>
-            <Button
+              Sign Up with apple
+            </PrimaryButton>
+            <PrimaryButton
               type="submit"
               disabled={isLoading}
               className="w-full flex items-center justify-center gap-2"
@@ -235,8 +235,8 @@ export default function Register() {
                 alt="Google" 
                 className="w-4 h-4"
               />
-              {isLoading ? "Processing..." : "Sign Up with Google"}
-            </Button>
+              Sign Up with Google
+            </PrimaryButton>
           </div>
         </form>
       </Form>

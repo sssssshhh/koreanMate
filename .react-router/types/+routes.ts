@@ -22,6 +22,9 @@ type Pages = {
   "/register": {
     params: {};
   };
+  "/registration-success": {
+    params: {};
+  };
   "/reset-password": {
     params: {};
   };
@@ -65,7 +68,7 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/login" | "/forgot-password" | "/register" | "/reset-password" | "/stories/:storyId" | "/stories/:storyId/:chapterId" | "/stories/:storyId/:chapterId/quiz" | "/stories/:storyId/:chapterId/recording" | "/stories/:storyId/:chapterId/complete" | "/blog" | "/grammer";
+    page: "/" | "/login" | "/forgot-password" | "/register" | "/registration-success" | "/reset-password" | "/stories/:storyId" | "/stories/:storyId/:chapterId" | "/stories/:storyId/:chapterId/quiz" | "/stories/:storyId/:chapterId/recording" | "/stories/:storyId/:chapterId/complete" | "/blog" | "/grammer";
   };
   "features/main/pages/home-page.tsx": {
     id: "features/main/pages/home-page";
@@ -82,6 +85,10 @@ type RouteFiles = {
   "features/auth/pages/register.tsx": {
     id: "features/auth/pages/register";
     page: "/register";
+  };
+  "features/auth/pages/registration-success.tsx": {
+    id: "features/auth/pages/registration-success";
+    page: "/registration-success";
   };
   "features/auth/pages/reset-password.tsx": {
     id: "features/auth/pages/reset-password";

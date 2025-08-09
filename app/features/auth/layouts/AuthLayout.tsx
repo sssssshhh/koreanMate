@@ -33,7 +33,7 @@ export default function AuthLayout({
         />
         
         {/* Header section with icon, title, and subtitle */}
-        <div className="flex flex-col justify-start items-center pb-10">
+        <div className="flex flex-col justify-start items-center">
           <img 
             src={iconSrc} 
             alt={iconAlt} 

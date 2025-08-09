@@ -15,6 +15,10 @@ export default [
         "features/auth/pages/register.tsx"
     ),
     route(
+        "/registration-success",
+        "features/auth/pages/registration-success.tsx"
+    ),
+    route(
         "/reset-password",
         "features/auth/pages/reset-password.tsx"
     ),
