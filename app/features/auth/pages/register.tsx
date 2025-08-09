@@ -95,7 +95,10 @@ export default function Register() {
               {message.text}
             </div>
           )}
-
+          <div className="relative inline-block w-4 h-4">
+              <i className="fas fa-user text-gray-00" style={{ fontSize: '16px' }} aria-hidden="true"></i>
+              <i className="fas fa-plus absolute -top-1 -right-1 text-gray-600 bg-white rounded-full" style={{ fontSize: '8px', padding: '1px' }} aria-hidden="true"></i>
+          </div>
           <FormField
             control={form.control}
             name="firstName"
