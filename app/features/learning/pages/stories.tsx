@@ -2,8 +2,9 @@ import { CompactButton } from "@/common/ui/compact-button";
 import { Icon } from "@/common/ui/icon";
 import { SearchInput } from "@/common/ui/search-input";
 import { StoryCard } from "@/features/learning/components/story-card";
-import { useState } from "react";
 import { NavigationButtons } from "@/features/learning/components/navigation-buttons";
+import { useState } from "react";
+import storiesData from "@/features/learning/data/stories.json";
 
 export default function Stories() {
     const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -28,109 +29,12 @@ export default function Stories() {
 
     const isButtonSelected = (buttonText: string) => selectedButtons.has(buttonText);
 
-    // Stories
-    const stories = [
-        {
-            imageUrl: "https://koreanmate.s3.us-east-1.amazonaws.com/image/A1/01.jpg",
-            title: "How to greet each other in Korean",
-            level: "A1",
-            category: "All stories"
-        },
-        {
-            imageUrl: "https://koreanmate.s3.us-east-1.amazonaws.com/image/A1/01.jpg",
-            title: "Basic Korean numbers and counting",
-            level: "A2",
-            category: "All stories"
-        },
-        {
-            imageUrl: "https://koreanmate.s3.us-east-1.amazonaws.com/image/A1/01.jpg",
-            title: "The Korean guy manners",
-            level: "B1",
-            category: "All stories"
-        },
-        {
-            imageUrl: "https://koreanmate.s3.us-east-1.amazonaws.com/image/A1/01.jpg",
-            title: "Sing along like a Korean Kpop star",
-            level: "A2",
-            category: "All stories"
-        },
-        {
-            imageUrl: "https://koreanmate.s3.us-east-1.amazonaws.com/image/A1/01.jpg",
-            title: "How to greet each other in Korean",
-            level: "A1",
-            category: "Dear diary"
-        },
-        {
-            imageUrl: "https://koreanmate.s3.us-east-1.amazonaws.com/image/A1/01.jpg",
-            title: "Basic Korean numbers and counting",
-            level: "A2",
-            category: "Dear diary"
-        },
-        {
-            imageUrl: "https://koreanmate.s3.us-east-1.amazonaws.com/image/A1/01.jpg",
-            title: "The Korean guy manners",
-            level: "B1",
-            category: "k-days"
-        },
-        {
-            imageUrl: "https://koreanmate.s3.us-east-1.amazonaws.com/image/A1/01.jpg",
-            title: "Sing along like a Korean Kpop star",
-            level: "A2",
-            category: "All stories"
-        },
-        {
-            imageUrl: "https://koreanmate.s3.us-east-1.amazonaws.com/image/A1/01.jpg",
-            title: "How to greet each other in Korean",
-            level: "A1",
-            category: "All stories"
-        },
-        {
-            imageUrl: "https://koreanmate.s3.us-east-1.amazonaws.com/image/A1/01.jpg",
-            title: "Basic Korean numbers and counting",
-            level: "A2",
-            category: "k-days"
-        },
-        {
-            imageUrl: "https://koreanmate.s3.us-east-1.amazonaws.com/image/A1/01.jpg",
-            title: "The Korean guy manners",
-            level: "B1",
-            category: "k-days"
-        },
-        {
-            imageUrl: "https://koreanmate.s3.us-east-1.amazonaws.com/image/A1/01.jpg",
-            title: "Sing along like a Korean Kpop star",
-            level: "A2",
-            category: "Seasonal stories"
-        },
-        {
-            imageUrl: "https://koreanmate.s3.us-east-1.amazonaws.com/image/A1/01.jpg",
-            title: "How to greet each other in Korean",
-            level: "A1",
-            category: "Seasonal stories"
-        },
-        {
-            imageUrl: "https://koreanmate.s3.us-east-1.amazonaws.com/image/A1/01.jpg",
-            title: "Basic Korean numbers and counting",
-            level: "A2",
-            category: "Seasonal stories"
-        },
-        {
-            imageUrl: "https://koreanmate.s3.us-east-1.amazonaws.com/image/A1/01.jpg",
-            title: "The Korean guy manners",
-            level: "B1",
-            category: "Seasonal stories"
-        },
-        {
-            imageUrl: "https://koreanmate.s3.us-east-1.amazonaws.com/image/A1/01.jpg",
-            title: "Sing along like a Korean Kpop star",
-            level: "A2",
-            category: "Seasonal stories"
-        }
-    ];
+    // stories data from JSON
+    const stories = storiesData;
 
     // filtered stories
     const getFilteredStories = (category: string) => {
-        // 각 섹션별로 해당하는 스토리만 필터링
+        // filter stories by category
         const categoryStories = stories.filter(story => story.category === category);
         
         // when no filters are applied, only show stories in the selected category
@@ -347,6 +251,7 @@ export default function Stories() {
                                         {currentPageStories.map((story, index) => (
                                             <StoryCard
                                                 key={`${sectionIndex}-${index}-${currentPages[section.category] || 0}`}
+                                                id={story.id}
                                                 imageUrl={story.imageUrl}
                                                 title={story.title}
                                                 level={story.level}

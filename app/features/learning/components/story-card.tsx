@@ -1,13 +1,19 @@
+import { Link } from "react-router";
+
 interface StoryCardProps {
+    id: string;
     imageUrl: string;
     title: string;
     level: string;
     category: string;
 }
 
-export function StoryCard({ imageUrl, title, level, category }: StoryCardProps) {
+export function StoryCard({ id, imageUrl, title, level, category }: StoryCardProps) {
     return (
-        <div className="flex flex-col gap-4">
+        <Link 
+            to={`/stories/${id}/chapters`}
+            className="flex flex-col gap-4 hover:opacity-80 transition-opacity cursor-pointer"
+        >
             <div className="w-full h-48 rounded-lg overflow-hidden">
                 <img 
                     src={imageUrl}
@@ -27,6 +33,6 @@ export function StoryCard({ imageUrl, title, level, category }: StoryCardProps) 
                     {category}
                 </span>
             </div>
-        </div>
+        </Link>
     );
 } 

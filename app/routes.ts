@@ -34,8 +34,8 @@ export default [
     ),
 
     route(
-        "/stories/:storyId",
-        "features/learning/chapters/pages/chapters.tsx"
+        "/stories/:storyId/chapters",
+        "features/learning/pages/chapters.tsx"
     ),
     route(
         "/stories/:storyId/:chapterId",

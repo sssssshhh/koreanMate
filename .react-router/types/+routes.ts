@@ -34,7 +34,7 @@ type Pages = {
   "/stories": {
     params: {};
   };
-  "/stories/:storyId": {
+  "/stories/:storyId/chapters": {
     params: {
       "storyId": string;
     };
@@ -74,7 +74,7 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/login" | "/forgot-password" | "/verification" | "/register" | "/registration-success" | "/reset-password" | "/stories" | "/stories/:storyId" | "/stories/:storyId/:chapterId" | "/stories/:storyId/:chapterId/quiz" | "/stories/:storyId/:chapterId/recording" | "/stories/:storyId/:chapterId/complete" | "/blog" | "/grammer";
+    page: "/" | "/login" | "/forgot-password" | "/verification" | "/register" | "/registration-success" | "/reset-password" | "/stories" | "/stories/:storyId/chapters" | "/stories/:storyId/:chapterId" | "/stories/:storyId/:chapterId/quiz" | "/stories/:storyId/:chapterId/recording" | "/stories/:storyId/:chapterId/complete" | "/blog" | "/grammer";
   };
   "features/main/pages/home-page.tsx": {
     id: "features/main/pages/home-page";
@@ -108,9 +108,9 @@ type RouteFiles = {
     id: "features/learning/pages/stories";
     page: "/stories";
   };
-  "features/learning/chapters/pages/chapters.tsx": {
-    id: "features/learning/chapters/pages/chapters";
-    page: "/stories/:storyId";
+  "features/learning/pages/chapters.tsx": {
+    id: "features/learning/pages/chapters";
+    page: "/stories/:storyId/chapters";
   };
   "features/learning/contents/pages/content.tsx": {
     id: "features/learning/contents/pages/content";
