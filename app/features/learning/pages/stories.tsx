@@ -31,7 +31,7 @@ export default function Stories() {
                 <div className="text-center justify-start text-stone-950 text-6xl font-bold font-['Merriweather'] tracking-wide">
                     Korean mate stories
                 </div>
-                <div className="w-full h-28 pt-5 flex justify-center items-center gap-3">
+                <div className="h-28 pt-5 flex justify-center items-center gap-3">
                     <SearchInput
                         placeholder="Search here"
                         icon="search"
@@ -54,28 +54,32 @@ export default function Stories() {
                                     onClick={() => toggleButtonSelection("All stories")}
                                     className={isButtonSelected("All stories") ? "!bg-yellow-600 !text-white" : ""}
                                 >
-                                    All stories
+                                    <span>All stories</span>
+                                    <Icon name="check" className="ml-2" />
                                 </CompactButton>
                                 <CompactButton 
                                     variant="filter" 
                                     onClick={() => toggleButtonSelection("Dear diary")}
                                     className={isButtonSelected("Dear diary") ? "!bg-yellow-600 !text-white" : ""}
                                 >
-                                    Dear diary
+                                    <span>Dear diary</span>
+                                    <Icon name="check" className="ml-2" />
                                 </CompactButton>
                                 <CompactButton 
                                     variant="filter" 
                                     onClick={() => toggleButtonSelection("k-days")}
                                     className={isButtonSelected("k-days") ? "!bg-yellow-600 !text-white" : ""}
                                 >
-                                    k-days
+                                    <span>k-days</span>
+                                    <Icon name="check" className="ml-2" />
                                 </CompactButton>
                                 <CompactButton 
                                     variant="filter" 
                                     onClick={() => toggleButtonSelection("Seasonal stories")}
                                     className={isButtonSelected("Seasonal stories") ? "!bg-yellow-600 !text-white" : ""}
                                 >
-                                    Seasonal stories
+                                    <span>Seasonal stories</span>
+                                    <Icon name="check" className="ml-2" />
                                 </CompactButton>
                             </div>
                         </div>
@@ -87,35 +91,40 @@ export default function Stories() {
                                     onClick={() => toggleButtonSelection("Reading for Fun")}
                                     className={isButtonSelected("Reading for Fun") ? "!bg-yellow-600 !text-white" : ""}
                                 >
-                                    Reading for Fun
+                                    <span>Reading for Fun</span>
+                                    <Icon name="check" className="ml-2" />
                                 </CompactButton>
                                 <CompactButton 
                                     variant="filter" 
                                     onClick={() => toggleButtonSelection("Living in Korea")}
                                     className={isButtonSelected("Living in Korea") ? "!bg-yellow-600 !text-white" : ""}
                                 >
-                                    Living in Korea
+                                    <span>Living in Korea</span>
+                                    <Icon name="check" className="ml-2" />
                                 </CompactButton>
                                 <CompactButton 
                                     variant="filter" 
                                     onClick={() => toggleButtonSelection("Studying in Korea")}
                                     className={isButtonSelected("Studying in Korea") ? "!bg-yellow-600 !text-white" : ""}
                                 >
-                                    Studying in Korea
+                                    <span>Studying in Korea</span>
+                                    <Icon name="check" className="ml-2" />
                                 </CompactButton>
                                 <CompactButton 
                                     variant="filter" 
                                     onClick={() => toggleButtonSelection("First time in Korea")}
                                     className={isButtonSelected("First time in Korea") ? "!bg-yellow-600 !text-white" : ""}
                                 >
-                                    First time in Korea
+                                    <span>First time in Korea</span>
+                                    <Icon name="check" className="ml-2" />
                                 </CompactButton>
                                 <CompactButton 
                                     variant="filter" 
                                     onClick={() => toggleButtonSelection("I Love Korean Culture")}
                                     className={isButtonSelected("I Love Korean Culture") ? "!bg-yellow-600 !text-white" : ""}
                                 >
-                                    I Love Korean Culture
+                                    <span>I Love Korean Culture</span>
+                                    <Icon name="check" className="ml-2" />
                                 </CompactButton>
                             </div>                        
                         </div>
@@ -127,28 +136,52 @@ export default function Stories() {
                                     onClick={() => toggleButtonSelection("A1")}
                                     className={isButtonSelected("A1") ? "!bg-yellow-600 !text-white" : ""}
                                 >
-                                    A1
+                                    <span>A1</span>
+                                    <Icon name="check" className="ml-2" />
                                 </CompactButton>
                                 <CompactButton 
                                     variant="filter" 
                                     onClick={() => toggleButtonSelection("A2")}
                                     className={isButtonSelected("A2") ? "!bg-yellow-600 !text-white" : ""}
                                 >
-                                    A2
+                                    <span>A2</span>
+                                    <Icon name="check" className="ml-2" />
                                 </CompactButton>
                                 <CompactButton 
                                     variant="filter" 
                                     onClick={() => toggleButtonSelection("B1")}
                                     className={isButtonSelected("B1") ? "!bg-yellow-600 !text-white" : ""}
                                 >
-                                    B1
+                                    <span>B1</span>
+                                    <Icon name="check" className="ml-2" />
                                 </CompactButton>
                             </div>
                         </div>
                     </div>
                 )}
-                <div>
-                    {/* thumnbnai bar */}
+                {/* thumbnail area */}
+                <div className="py-20 flex flex-row gap-4">
+                    {/* all stories */}
+                    <div className="w-full flex flex-col">
+                        <div className="flex flex-row w-full justify-between">
+                            <div className="text-stone-950 text-3xl font-bold font-['Merriweather'] tracking-tight">
+                                All stories
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <button className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:text-gray-800 hover:border-gray-400 transition-colors cursor-pointer">
+                                    &lt;
+                                </button>
+                                <button className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:text-gray-800 hover:border-gray-400 transition-colors cursor-pointer">
+                                    &gt;
+                                </button>
+                            </div>
+                        </div>
+                        <div>
+                            <div>image</div>
+                            <div>description</div>
+                            <div>tag</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
