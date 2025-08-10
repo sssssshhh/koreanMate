@@ -2,9 +2,9 @@
     "chpaters": {
         "id": "story1",
         "level": "A2",
-        "thumbnail": "https://picsum.photos/200/300",
+        "thumbnail": "https://koreanmate.s3.us-east-1.amazonaws.com/image/A1/01.jpg",
         "title": "My First Day at the Dormitory ",
-        "description" : "Mina stood at the threshold of her dorm room, a single suitcase in one hand and a tote bag slung over her shoulder. The hallway buzzed with excitement—doors slamming, laughter echoing, parents giving last-minute advice. Her roommate hadn’t arrived yet, so the room felt eerily quiet, just two beds, two desks, and a view of the campus courtyard below./nShe unpacked slowly, pinning up a few photos and unfolding her blanket, trying to make the space feel like her own. That night, after awkward introductions with her floor mates and a group dinner in the dining hall.",
+        "description" : "Mina stood at the threshold of her dorm room, a single suitcase in one hand and a tote bag slung over her shoulder. The hallway buzzed with excitement—doors slamming, laughter echoing, parents giving last-minute advice. Her roommate hadn’t arrived yet, so the room felt eerily quiet, just two beds, two desks, and a view of the campus courtyard below.\n\nShe unpacked slowly, pinning up a few photos and unfolding her blanket, trying to make the space feel like her own. That night, after awkward introductions with her floor mates and a group dinner in the dining hall.",
         "chapters": [
       {
         "id": "chapter01",

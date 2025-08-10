@@ -1,35 +1,43 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/common/ui/accordion"
 import { useParams, Link } from "react-router"
+import chaptersData from "@/features/learning/contents/chapters.json"
+import { Button } from "@/common/ui/button"
+import { Icon } from "@/common/ui/icon"
+import { LargeButton } from "@/common/ui/large-button"
 
 export default function Chapters(){
     const { storyId } = useParams()
+    
+    // bring chaper data from chapters.json
+    const storyTitle = chaptersData.chpaters.title
+    const thumbnail = chaptersData.chpaters.thumbnail
+    const level = chaptersData.chpaters.level
+    const description = chaptersData.chpaters.description
 
     return (
-        <div>
-            <Accordion       
-            type="single"
-            collapsible
-            className="w-full"
-            defaultValue="item-1">
-                <AccordionItem value="item-1">
-                    <AccordionTrigger>조용한 도서관에서의 아침 공부</AccordionTrigger>
-                    <AccordionContent className="flex flex-col gap-4 text-balance">
-                        <Link
-                        to={`/stories/${storyId}/chapter1`}
-                        >
-                            go to next page
-                        </Link>
-                    </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="item-2">
-                    <AccordionTrigger>민지와 함께하는 공부 </AccordionTrigger>
-                    <Link
-                        to={`/stories/${storyId}/chapter1`}
-                        >
-                            go to next page
-                        </Link>
-                </AccordionItem>
-            </Accordion>
+        <div className="w-full flex flex-col items-center justify-center px-28 py-20">
+            <div className="w-full flex text-base font-bold font-['Pretendard'] tracking-tight">
+                <Link to={'/stories'} className="text-blue-600">Learn/Story :&nbsp;</Link>
+                <div>{storyTitle}</div>
+            </div>
+            <div className="pt-16 w-full flex flex-row gap-12">
+                <img src={thumbnail} alt={storyTitle} className="w-lg h-96 rounded-lg" />
+                <div className="w-full">
+                    <div className="justify-start text-orange-600 text-lg font-medium font-['Pretendard'] leading-relaxed tracking-tight">
+                        {level} Level
+                    </div>
+                    <div className="pt-6 text-stone-950 text-4xl font-bold font-['Merriweather'] leading-[56px] tracking-tight">
+                        {storyTitle}
+                    </div>
+                    <div className="py-7 text-neutral-400 text-lg font-medium font-['Pretendard'] leading-relaxed tracking-tight max-w-2xl whitespace-pre-line">
+                        {description}
+                    </div>
+                    <LargeButton variant="primary">
+                        <span className="text-white text-base font-bold font-['Merriweather'] tracking-tight">Save lessons</span>
+                        <img src="/images/star.svg" alt="star" className="w-6 h-6" />
+                    </LargeButton>
+                </div>
+            </div>
         </div>
     )
 }
