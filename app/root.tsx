@@ -47,9 +47,9 @@ function LayoutContent({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="min-h-screen flex flex-col">
         <Navigation isLoggedIn={isLoggedIn} isLoading={isLoading} />
-        <main>
+        <main className="flex-1">
           {children}
         </main>
         <Footer />

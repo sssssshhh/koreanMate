@@ -36,7 +36,8 @@ export function Icon({
         typeClasses[type],
         `fa-${name}`,
         sizeClasses[size],
-        className
+        className,
+        "cursor-pointer"
       )}
     />
   );

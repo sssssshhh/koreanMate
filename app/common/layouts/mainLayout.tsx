@@ -45,12 +45,12 @@ export default function MainLayout() {
                       </div>
                       <div className="w-60 flex flex-col justify-start items-start gap-8">
                         <div className="w-48 flex flex-col justify-start items-start gap-[5px]">
-                          <div className="w-48 h-1.5 outline outline-2 outline-offset-[-1px] outline-orange-600"></div>
+                          <div className="w-48 h-1.5 outline-offset-[-1px] outline-orange-600"></div>
                           <div className="justify-start text-stone-950 text-2xl font-normal font-['Handlee']">Read more naturally</div>
                           <div className="self-stretch justify-start text-yellow-600 text-lg font-normal font-['Handlee']">With guided pronunciation</div>
                         </div>
                         <div className="self-stretch flex flex-col justify-start items-start gap-3">
-                          <div className="w-44 h-1.5 outline outline-2 outline-offset-[-1px] outline-orange-600"></div>
+                          <div className="w-44 h-1.5 outline-offset-[-1px] outline-orange-600"></div>
                           <div className="justify-start text-stone-950 text-2xl font-normal font-['Handlee']">Understand deeply</div>
                           <div className="self-stretch justify-start text-yellow-600 text-lg font-normal font-['Handlee']">With word-by-word breakdowns</div>
                         </div>
