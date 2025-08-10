@@ -9,7 +9,7 @@
 
 html,
 body {
-  @apply bg-white;
+  @apply bg-amber-50;
   font-family: "Merriweather", serif;
   height: 100%;
 }
@@ -54,7 +54,7 @@ body {
 
 :root {
   --radius: 0.65rem;
-  --background: rgba(255, 255, 255, 1);
+  --background: rgb(255 251 235);
   --foreground: rgba(37, 36, 41, 1);
   --card: rgba(255, 255, 255, 1);
   --card-foreground: rgba(37, 36, 41, 1);

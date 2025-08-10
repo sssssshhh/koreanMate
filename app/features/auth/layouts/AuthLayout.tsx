@@ -30,7 +30,7 @@ export default function AuthLayout({
   };
 
   return (
-    <div className="h-full bg-[#FFFDD0] pt-[100px] pl-[116px] pr-[116px] pb-[100px]">
+    <div className="h-full pt-[100px] pl-[116px] pr-[116px] pb-[100px]">
       <div className="w-full h-full bg-white rounded-lg border-l border-r border-t pt-8 pb-8 border-amber-200 flex flex-col justify-center items-center overflow-hidden relative">
         {/* Left side vector image - positioned near form bottom-left */}
         <img

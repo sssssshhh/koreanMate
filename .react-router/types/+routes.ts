@@ -31,6 +31,9 @@ type Pages = {
   "/reset-password": {
     params: {};
   };
+  "/stories": {
+    params: {};
+  };
   "/stories/:storyId": {
     params: {
       "storyId": string;
@@ -71,7 +74,7 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/login" | "/forgot-password" | "/verification" | "/register" | "/registration-success" | "/reset-password" | "/stories/:storyId" | "/stories/:storyId/:chapterId" | "/stories/:storyId/:chapterId/quiz" | "/stories/:storyId/:chapterId/recording" | "/stories/:storyId/:chapterId/complete" | "/blog" | "/grammer";
+    page: "/" | "/login" | "/forgot-password" | "/verification" | "/register" | "/registration-success" | "/reset-password" | "/stories" | "/stories/:storyId" | "/stories/:storyId/:chapterId" | "/stories/:storyId/:chapterId/quiz" | "/stories/:storyId/:chapterId/recording" | "/stories/:storyId/:chapterId/complete" | "/blog" | "/grammer";
   };
   "features/main/pages/home-page.tsx": {
     id: "features/main/pages/home-page";
@@ -100,6 +103,10 @@ type RouteFiles = {
   "features/auth/pages/reset-password.tsx": {
     id: "features/auth/pages/reset-password";
     page: "/reset-password";
+  };
+  "features/learning/pages/stories.tsx": {
+    id: "features/learning/pages/stories";
+    page: "/stories";
   };
   "features/learning/chapters/pages/chapters.tsx": {
     id: "features/learning/chapters/pages/chapters";

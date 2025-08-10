@@ -1,9 +1,9 @@
-import { Link } from "react-router"
+import { Link, useNavigate } from "react-router"
 import { useAuth } from "@/features/auth/contexts/AuthContext";
 
 export default function Navigation({isLoggedIn, isLoading}: {isLoggedIn: boolean; isLoading: boolean}){
     const { logout } = useAuth();
-
+    
     const handleLogout = async () => {
         try {
             await logout();
@@ -27,7 +27,7 @@ export default function Navigation({isLoggedIn, isLoading}: {isLoggedIn: boolean
                                 </div>
                             </div>
                             <div className="pt-3.5 flex justify-start items-end gap-28 text-black text-base font-bold tracking-tight">
-                                <Link to="/">Learn</Link>
+                                <Link to="/stories">Learn</Link>
                                 <Link to="/">Give</Link>
                                 <Link to="/">My page</Link>
                             </div>

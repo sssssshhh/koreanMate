@@ -2,6 +2,7 @@ import { type RouteConfig, index, route } from "@react-router/dev/routes";
 
 export default [
     index("features/main/pages/home-page.tsx"),
+    // auth routes
     route(
         "/login",
         "features/auth/pages/login.tsx"
@@ -26,6 +27,12 @@ export default [
         "/reset-password",
         "features/auth/pages/reset-password.tsx"
     ),
+    // learning routes
+    route(
+        "/stories",
+        "features/learning/pages/stories.tsx"
+    ),
+
     route(
         "/stories/:storyId",
         "features/learning/chapters/pages/chapters.tsx"
