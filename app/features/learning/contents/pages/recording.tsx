@@ -1,7 +1,7 @@
-import { Button } from "@/common/components/ui/button";
+import { Button } from "@/common/ui/button";
 import { Link, useParams } from "react-router";
 import { useState, useRef } from "react";
-import sampleData from "@/features/contents/sample.json";
+import sampleData from "@/features/learning/contents/sample.json"
 
 export default function Recording() {
     const { storyId, chapterId } = useParams();

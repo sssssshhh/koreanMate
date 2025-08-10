@@ -3,14 +3,10 @@ import { Link, useNavigate } from "react-router";
 import { signUp } from 'aws-amplify/auth';
 import { validateForm, type SignUpData } from "@/features/auth/utils/validation";
 import { useForm } from "react-hook-form";
-import { Form, FormDescription, FormMessage } from "@/common/components/ui/form";
-import { FormControl } from "@/common/components/ui/form";
-import { FormLabel } from "@/common/components/ui/form";
-import { FormItem } from "@/common/components/ui/form";
-import { FormField } from "@/common/components/ui/form";
-import { Input } from "@/common/components/ui/input";
-import { PrimaryButton } from "@/common/components/ui/primary-button";
-import { Icon } from "@/common/components/ui/icon";
+import { Form, FormControl, FormMessage, FormLabel, FormItem, FormField } from "@/common/ui/form";
+import { Input } from "@/common/ui/input";
+import { PrimaryButton } from "@/common/ui/primary-button";
+import { Icon } from "@/common/ui/icon";
 import AuthLayout from "@/features/auth/layouts/AuthLayout";
 
 interface RegisterFormData {

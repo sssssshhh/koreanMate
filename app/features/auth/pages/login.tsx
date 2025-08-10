@@ -1,8 +1,8 @@
 import { fetchAuthSession, signIn } from "aws-amplify/auth";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
-import { PrimaryButton } from "@/common/components/ui/primary-button";
-import { Input } from "@/common/components/ui/input";
+import { PrimaryButton } from "@/common/ui/primary-button";
+import { Input } from "@/common/ui/input";
 import { useAuth } from "@/features/auth/contexts/AuthContext";
 import AuthLayout from "@/features/auth/layouts/AuthLayout";
 

@@ -1,4 +1,4 @@
-import { Button } from "@/common/components/ui/button";
+import { Button } from "@/common/ui/button";
 import { Link, useParams } from "react-router";
 
 export default function Complete() {

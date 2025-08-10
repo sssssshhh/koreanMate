@@ -1,8 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
-import MainLayout from "@/features/layouts/mainLayout";
-import { deductPoint, fetchTotalPoints, grantPoint, grantPointTemp } from "@/features/point/APIs/pointAPI";
-import { PointType, type Point } from "@/features/point/type";
+import MainLayout from "@/common/layouts/mainLayout";
 import { useAuth } from "@/features/auth/contexts/AuthContext";
 
 export default function HomePage() {

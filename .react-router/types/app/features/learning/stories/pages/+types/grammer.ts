@@ -5,15 +5,15 @@ import type { GetInfo, GetAnnotations } from "react-router/internal";
 type Module = typeof import("../grammer.js")
 
 type Info = GetInfo<{
-  file: "features/stories/pages/grammer.tsx",
+  file: "features/learning/stories/pages/grammer.tsx",
   module: Module
 }>
 
 type Matches = [{
   id: "root";
-  module: typeof import("../../../../root.js");
+  module: typeof import("../../../../../root.js");
 }, {
-  id: "features/stories/pages/grammer";
+  id: "features/learning/stories/pages/grammer";
   module: typeof import("../grammer.js");
 }];
 

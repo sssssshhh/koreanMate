@@ -1,8 +1,8 @@
-import type { Quiz } from "@/features/contents/types";
-import sampleData from "@/features/contents/sample.json"
+import type { Quiz } from "@/features/learning/contents/types";
+import sampleData from "@/features/learning/contents/sample.json"
 import { useState } from "react";
 import { Link, useParams } from "react-router";
-import { Button } from "@/common/components/ui/button";
+import { Button } from "@/common/ui/button";
 
 export default function Quiz() {
 const { storyId, chapterId } = useParams()

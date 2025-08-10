@@ -1,5 +1,5 @@
 import AuthLayout from "@/features/auth/layouts/AuthLayout";
-import { CompactButton } from "@/common/components/ui/compact-button";
+import { CompactButton } from "@/common/ui/compact-button";
 import { useNavigate } from "react-router";
 
 export default function RegistrationSuccess() {

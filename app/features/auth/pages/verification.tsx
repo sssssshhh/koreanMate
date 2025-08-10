@@ -1,5 +1,5 @@
-import { PrimaryButton } from "@/common/components/ui/primary-button";
-import { Input } from "@/common/components/ui/input";
+import { PrimaryButton } from "@/common/ui/primary-button";
+import { Input } from "@/common/ui/input";
 import { useState } from "react";
 import { useNavigate, useLocation, Link } from "react-router";
 import AuthLayout from "@/features/auth/layouts/AuthLayout";

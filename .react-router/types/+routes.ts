@@ -101,32 +101,32 @@ type RouteFiles = {
     id: "features/auth/pages/reset-password";
     page: "/reset-password";
   };
-  "features/chapters/pages/chapters.tsx": {
-    id: "features/chapters/pages/chapters";
+  "features/learning/chapters/pages/chapters.tsx": {
+    id: "features/learning/chapters/pages/chapters";
     page: "/stories/:storyId";
   };
-  "features/contents/pages/content.tsx": {
-    id: "features/contents/pages/content";
+  "features/learning/contents/pages/content.tsx": {
+    id: "features/learning/contents/pages/content";
     page: "/stories/:storyId/:chapterId";
   };
-  "features/contents/pages/quiz.tsx": {
-    id: "features/contents/pages/quiz";
+  "features/learning/contents/pages/quiz.tsx": {
+    id: "features/learning/contents/pages/quiz";
     page: "/stories/:storyId/:chapterId/quiz";
   };
-  "features/contents/pages/recording.tsx": {
-    id: "features/contents/pages/recording";
+  "features/learning/contents/pages/recording.tsx": {
+    id: "features/learning/contents/pages/recording";
     page: "/stories/:storyId/:chapterId/recording";
   };
-  "features/contents/pages/complete.tsx": {
-    id: "features/contents/pages/complete";
+  "features/learning/contents/pages/complete.tsx": {
+    id: "features/learning/contents/pages/complete";
     page: "/stories/:storyId/:chapterId/complete";
   };
-  "features/stories/pages/blog.tsx": {
-    id: "features/stories/pages/blog";
+  "features/learning/stories/pages/blog.tsx": {
+    id: "features/learning/stories/pages/blog";
     page: "/blog";
   };
-  "features/stories/pages/grammer.tsx": {
-    id: "features/stories/pages/grammer";
+  "features/learning/stories/pages/grammer.tsx": {
+    id: "features/learning/stories/pages/grammer";
     page: "/grammer";
   };
 };

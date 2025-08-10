@@ -28,30 +28,30 @@ export default [
     ),
     route(
         "/stories/:storyId",
-        "features/chapters/pages/chapters.tsx"
+        "features/learning/chapters/pages/chapters.tsx"
     ),
     route(
         "/stories/:storyId/:chapterId",
-        "features/contents/pages/content.tsx"
+        "features/learning/contents/pages/content.tsx"
     ),
     route(
         "/stories/:storyId/:chapterId/quiz",
-        "features/contents/pages/quiz.tsx"
+        "features/learning/contents/pages/quiz.tsx"
     ),
     route(
         "/stories/:storyId/:chapterId/recording",
-        "features/contents/pages/recording.tsx"
+        "features/learning/contents/pages/recording.tsx"
     ),
     route(
         "/stories/:storyId/:chapterId/complete",
-        "features/contents/pages/complete.tsx"
+        "features/learning/contents/pages/complete.tsx"
     ),
     route(
         "/blog",
-        "features/stories/pages/blog.tsx"
+        "features/learning/stories/pages/blog.tsx"
     ),
     route(
         "/grammer",
-        "features/stories/pages/grammer.tsx"
+        "features/learning/stories/pages/grammer.tsx"
     )
 ] satisfies RouteConfig;

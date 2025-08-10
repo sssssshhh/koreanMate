@@ -1,8 +1,8 @@
-import { useParams, Link } from "react-router"
-import { Button } from "@/common/components/ui/button"
-import sampleData from "@/features/contents/sample.json"
-import SentenceLayout from "@/features/layouts/sentenceLayout"
-import AudioLayout from "@/features/layouts/audioLayout"
+import { useParams, Link } from "react-router";
+import { PrimaryButton } from "@/common/ui/primary-button";
+import sampleData from "@/features/learning/contents/sample.json";
+import SentenceLayout from "@/features/learning/layouts/sentenceLayout";
+import AudioLayout from "@/features/learning/layouts/audioLayout";
 
 // http://localhost:5174/stories/story1/chapter1
 
@@ -41,11 +41,11 @@ export default function Content() {
                         {audios && <AudioLayout audios={audios} />}
                         {quizes && (
                             <div className="mt-6">
-                                <Button asChild>
+                                <PrimaryButton asChild>
                                     <Link to={`/stories/${storyId}/${chapterId}/quiz`}>
                                         Go to Quiz
                                     </Link>
-                                </Button>
+                                </PrimaryButton>
                             </div>
                         )}
                     </div>

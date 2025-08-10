@@ -1,5 +1,5 @@
-import { PrimaryButton } from "@/common/components/ui/primary-button";
-import { Input } from "@/common/components/ui/input";
+import { PrimaryButton } from "@/common/ui/primary-button";
+import { Input } from "@/common/ui/input";
 import { useState } from "react";
 import { resetPassword } from "aws-amplify/auth";
 import { useNavigate, Link } from "react-router";

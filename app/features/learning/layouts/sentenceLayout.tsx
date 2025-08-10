@@ -1,4 +1,4 @@
-import type { Sentence, SentenceLayoutProps, WordDefinition } from "@/features/chapters/types";
+import type { Sentence, SentenceLayoutProps, WordDefinition } from "@/features/learning/chapters/types";
 import { useState } from "react";
 
 export default function SentenceLayout({ sentences }: SentenceLayoutProps) {
