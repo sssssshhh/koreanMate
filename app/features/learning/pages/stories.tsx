@@ -1,11 +1,14 @@
 import { CompactButton } from "@/common/ui/compact-button";
 import { Icon } from "@/common/ui/icon";
 import { SearchInput } from "@/common/ui/search-input";
+import { StoryCard } from "@/features/learning/components/story-card";
 import { useState } from "react";
+import { NavigationButtons } from "@/features/learning/components/navigation-buttons";
 
 export default function Stories() {
     const [isFilterOpen, setIsFilterOpen] = useState(false);
     const [selectedButtons, setSelectedButtons] = useState<Set<string>>(new Set());
+    const [currentPages, setCurrentPages] = useState<{ [key: string]: number }>({});
 
     const toggleFilter = () => {
         setIsFilterOpen(!isFilterOpen);
@@ -25,6 +28,165 @@ export default function Stories() {
 
     const isButtonSelected = (buttonText: string) => selectedButtons.has(buttonText);
 
+    // Stories
+    const stories = [
+        {
+            imageUrl: "https://koreanmate.s3.us-east-1.amazonaws.com/image/A1/01.jpg",
+            title: "How to greet each other in Korean",
+            level: "A1",
+            category: "All stories"
+        },
+        {
+            imageUrl: "https://koreanmate.s3.us-east-1.amazonaws.com/image/A1/01.jpg",
+            title: "Basic Korean numbers and counting",
+            level: "A2",
+            category: "All stories"
+        },
+        {
+            imageUrl: "https://koreanmate.s3.us-east-1.amazonaws.com/image/A1/01.jpg",
+            title: "The Korean guy manners",
+            level: "B1",
+            category: "All stories"
+        },
+        {
+            imageUrl: "https://koreanmate.s3.us-east-1.amazonaws.com/image/A1/01.jpg",
+            title: "Sing along like a Korean Kpop star",
+            level: "A2",
+            category: "All stories"
+        },
+        {
+            imageUrl: "https://koreanmate.s3.us-east-1.amazonaws.com/image/A1/01.jpg",
+            title: "How to greet each other in Korean",
+            level: "A1",
+            category: "Dear diary"
+        },
+        {
+            imageUrl: "https://koreanmate.s3.us-east-1.amazonaws.com/image/A1/01.jpg",
+            title: "Basic Korean numbers and counting",
+            level: "A2",
+            category: "Dear diary"
+        },
+        {
+            imageUrl: "https://koreanmate.s3.us-east-1.amazonaws.com/image/A1/01.jpg",
+            title: "The Korean guy manners",
+            level: "B1",
+            category: "k-days"
+        },
+        {
+            imageUrl: "https://koreanmate.s3.us-east-1.amazonaws.com/image/A1/01.jpg",
+            title: "Sing along like a Korean Kpop star",
+            level: "A2",
+            category: "All stories"
+        },
+        {
+            imageUrl: "https://koreanmate.s3.us-east-1.amazonaws.com/image/A1/01.jpg",
+            title: "How to greet each other in Korean",
+            level: "A1",
+            category: "All stories"
+        },
+        {
+            imageUrl: "https://koreanmate.s3.us-east-1.amazonaws.com/image/A1/01.jpg",
+            title: "Basic Korean numbers and counting",
+            level: "A2",
+            category: "k-days"
+        },
+        {
+            imageUrl: "https://koreanmate.s3.us-east-1.amazonaws.com/image/A1/01.jpg",
+            title: "The Korean guy manners",
+            level: "B1",
+            category: "k-days"
+        },
+        {
+            imageUrl: "https://koreanmate.s3.us-east-1.amazonaws.com/image/A1/01.jpg",
+            title: "Sing along like a Korean Kpop star",
+            level: "A2",
+            category: "Seasonal stories"
+        },
+        {
+            imageUrl: "https://koreanmate.s3.us-east-1.amazonaws.com/image/A1/01.jpg",
+            title: "How to greet each other in Korean",
+            level: "A1",
+            category: "Seasonal stories"
+        },
+        {
+            imageUrl: "https://koreanmate.s3.us-east-1.amazonaws.com/image/A1/01.jpg",
+            title: "Basic Korean numbers and counting",
+            level: "A2",
+            category: "Seasonal stories"
+        },
+        {
+            imageUrl: "https://koreanmate.s3.us-east-1.amazonaws.com/image/A1/01.jpg",
+            title: "The Korean guy manners",
+            level: "B1",
+            category: "Seasonal stories"
+        },
+        {
+            imageUrl: "https://koreanmate.s3.us-east-1.amazonaws.com/image/A1/01.jpg",
+            title: "Sing along like a Korean Kpop star",
+            level: "A2",
+            category: "Seasonal stories"
+        }
+    ];
+
+    // filtered stories
+    const getFilteredStories = (category: string) => {
+        // 각 섹션별로 해당하는 스토리만 필터링
+        const categoryStories = stories.filter(story => story.category === category);
+        
+        // when no filters are applied, only show stories in the selected category
+        if (selectedButtons.size === 0) {
+            return categoryStories;
+        }
+        
+        // when filters are applied, only show stories that match the selected filters
+        return categoryStories.filter(story => {
+            return Array.from(selectedButtons).some(filter => {
+                return story.level === filter || story.category === filter;
+            });
+        });
+    };
+
+    // bring only the stories in the current page (4 per page)
+    const getCurrentPageStories = (category: string, allStories: any[]) => {
+        const currentPage = currentPages[category] || 0;
+        const startIndex = currentPage * 4;
+        return allStories.slice(startIndex, startIndex + 4);
+    };
+
+    // change page function
+    const changePage = (category: string, direction: 'next' | 'prev') => {
+        const currentPage = currentPages[category] || 0;
+        const allStories = getFilteredStories(category);
+        const totalPages = Math.ceil(allStories.length / 4);
+        
+        if (direction === 'next' && currentPage < totalPages - 1) {
+            setCurrentPages(prev => ({ ...prev, [category]: currentPage + 1 }));
+        } else if (direction === 'prev' && currentPage > 0) {
+            setCurrentPages(prev => ({ ...prev, [category]: currentPage - 1 }));
+        }
+    };
+
+    // check if the navigation button is disabled
+    const isNavigationDisabled = (category: string, direction: 'next' | 'prev') => {
+        const allStories = getFilteredStories(category);
+        const currentPage = currentPages[category] || 0;
+        const totalPages = Math.ceil(allStories.length / 4);
+        
+        if (direction === 'next') {
+            return currentPage >= totalPages - 1;
+        } else {
+            return currentPage <= 0;
+        }
+    };
+
+    // section data
+    const sections = [
+        { title: "All stories", category: "All stories" },
+        { title: "Dear diary", category: "Dear diary" },
+        { title: "k-days", category: "k-days" },
+        { title: "Seasonal stories", category: "Seasonal stories" }
+    ];
+
     return (
         <div className="flex justify-center w-full">
             <div className="pt-20 flex flex-col">
@@ -41,7 +203,7 @@ export default function Stories() {
                         onClick={toggleFilter}
                         className="bg-white rounded-full p-2 shadow-sm w-12 h-10 flex items-center justify-center outline outline-amber-200 hover:outline-amber-300 transition-colors"
                     >
-                        <Icon name="filter" />
+                    <Icon name="filter" />
                     </button>
                 </div>
                 {isFilterOpen && (
@@ -160,30 +322,48 @@ export default function Stories() {
                     </div>
                 )}
                 {/* thumbnail area */}
-                <div className="py-20 flex flex-row gap-4">
-                    {/* all stories */}
-                    <div className="w-full flex flex-col">
-                        <div className="flex flex-row w-full justify-between">
-                            <div className="text-stone-950 text-3xl font-bold font-['Merriweather'] tracking-tight">
-                                All stories
+                <div className="py-20 flex flex-col gap-20">
+                    {sections.map((section, sectionIndex) => {
+                        const filteredStories = getFilteredStories(section.category);
+                        const currentPageStories = getCurrentPageStories(section.category, filteredStories);
+                        const totalPages = Math.ceil(filteredStories.length / 4);
+                        
+                        return (
+                            <div key={sectionIndex} className="w-full flex flex-col">
+                                <div className="flex flex-row w-full justify-between">
+                                    <div className="text-stone-950 text-3xl font-bold font-['Merriweather'] tracking-tight">
+                                        {section.title}
+                                    </div>
+                                    <NavigationButtons
+                                        category={section.category}
+                                        onPageChange={changePage}
+                                        isNavigationDisabled={isNavigationDisabled}
+                                    />
+                                </div>
+                                
+                                {/* Stories Grid with Slide Animation */}
+                                {currentPageStories.length > 0 ? (
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-8 transition-all duration-500 ease-in-out">
+                                        {currentPageStories.map((story, index) => (
+                                            <StoryCard
+                                                key={`${sectionIndex}-${index}-${currentPages[section.category] || 0}`}
+                                                imageUrl={story.imageUrl}
+                                                title={story.title}
+                                                level={story.level}
+                                                category={story.category}
+                                            />
+                                        ))}
+                                    </div>
+                                ) : (
+                                    <div className="mt-8 text-center text-gray-500 font-medium">
+                                        No stories match the selected filters
+                                    </div>
+                                )}
                             </div>
-                            <div className="flex items-center gap-2">
-                                <button className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:text-gray-800 hover:border-gray-400 transition-colors cursor-pointer">
-                                    &lt;
-                                </button>
-                                <button className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:text-gray-800 hover:border-gray-400 transition-colors cursor-pointer">
-                                    &gt;
-                                </button>
-                            </div>
-                        </div>
-                        <div>
-                            <div>image</div>
-                            <div>description</div>
-                            <div>tag</div>
-                        </div>
-                    </div>
+                        );
+                    })}
                 </div>
             </div>
         </div>
-    )
+    );
 }
