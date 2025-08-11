@@ -4,6 +4,7 @@ import chaptersData from "@/features/learning/contents/chapters.json"
 import sentenceMeaningData from "@/features/learning/contents/sample.json"
 import { CustomProgress } from "@/common/ui/custom-progress"
 import { CompactButton } from "@/common/ui/compact-button"
+import { CompletionPopup } from "@/features/learning/components/CompletionPopup"
 
 export default function SentenceArrangement(){
     const { storyId, chapterId } = useParams()
@@ -20,6 +21,7 @@ export default function SentenceArrangement(){
     const [selectedWords, setSelectedWords] = useState<string[]>([])
     const [showResult, setShowResult] = useState<boolean>(false)
     const [isCorrect, setIsCorrect] = useState<boolean>(false)
+    const [showCompletionPopup, setShowCompletionPopup] = useState<boolean>(false)
 
     // Split Korean text into words/phrases
     const splitIntoWords = (text: string): string[] => {
@@ -123,8 +125,10 @@ export default function SentenceArrangement(){
             setIsCorrect(false)
         } else {
             // All sentences completed
-            // You can add completion logic here
-            console.log("All sentences completed!")
+            setShowResult(false)
+            setIsCorrect(false)
+            // Show completion popup
+            setShowCompletionPopup(true)
         }
     }
 
@@ -137,7 +141,10 @@ export default function SentenceArrangement(){
             setIsCorrect(false)
         } else {
             // All sentences completed
-            console.log("All sentences completed!")
+            setShowResult(false)
+            setIsCorrect(false)
+            // Show completion popup
+            setShowCompletionPopup(true)
         }
     }
 
@@ -250,24 +257,13 @@ export default function SentenceArrangement(){
                     </div>
                 </div>
 
-                {/* Result Modal - 제거됨 */}
-                {/* {showResult && (
-                    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                        <div className="bg-white rounded-2xl p-8 text-center">
-                            <div className={`text-4xl font-bold mb-4 ${
-                                isCorrect ? 'text-green-600' : 'text-red-600'
-                            }`}>
-                                {isCorrect ? 'Perfect!' : 'Failed'}
-                            </div>
-                            <button
-                                onClick={() => setShowResult(false)}
-                                className="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
-                            >
-                                Continue
-                            </button>
-                        </div>
-                    </div>
-                )} */}
+                {/* Completion Popup */}
+                <CompletionPopup 
+                    isVisible={showCompletionPopup}
+                    onClose={() => setShowCompletionPopup(false)}
+                    storyId={storyId}
+                    chapterId={chapterId}
+                />
             </div>
         </div>
     )
