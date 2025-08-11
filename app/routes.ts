@@ -35,7 +35,9 @@ export default [
     route("/stories/:storyId/chapters", "features/learning/pages/chapters.tsx"),
     route("/stories/:storyId/chapters/:chapterId", "features/learning/pages/chapter-detail.tsx"),
     route("/stories/:storyId/chapters/:chapterId/sentence-arrangement", "features/learning/pages/sentence-arrangement.tsx"),
-    
+    route("/stories/:storyId/chapters/:chapterId/speaking-practice", "features/learning/pages/speaking-practice.tsx"),
+
+
     // blog and grammar routes
     route("/blog", "features/learning/stories/pages/blog.tsx"),
     route("/grammer", "features/learning/stories/pages/grammer.tsx")

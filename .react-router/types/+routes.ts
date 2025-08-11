@@ -51,6 +51,12 @@ type Pages = {
       "chapterId": string;
     };
   };
+  "/stories/:storyId/chapters/:chapterId/speaking-practice": {
+    params: {
+      "storyId": string;
+      "chapterId": string;
+    };
+  };
   "/blog": {
     params: {};
   };
@@ -62,7 +68,7 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/login" | "/forgot-password" | "/verification" | "/register" | "/registration-success" | "/reset-password" | "/stories" | "/stories/:storyId/chapters" | "/stories/:storyId/chapters/:chapterId" | "/stories/:storyId/chapters/:chapterId/sentence-arrangement" | "/blog" | "/grammer";
+    page: "/" | "/login" | "/forgot-password" | "/verification" | "/register" | "/registration-success" | "/reset-password" | "/stories" | "/stories/:storyId/chapters" | "/stories/:storyId/chapters/:chapterId" | "/stories/:storyId/chapters/:chapterId/sentence-arrangement" | "/stories/:storyId/chapters/:chapterId/speaking-practice" | "/blog" | "/grammer";
   };
   "features/main/pages/home-page.tsx": {
     id: "features/main/pages/home-page";
@@ -107,6 +113,10 @@ type RouteFiles = {
   "features/learning/pages/sentence-arrangement.tsx": {
     id: "features/learning/pages/sentence-arrangement";
     page: "/stories/:storyId/chapters/:chapterId/sentence-arrangement";
+  };
+  "features/learning/pages/speaking-practice.tsx": {
+    id: "features/learning/pages/speaking-practice";
+    page: "/stories/:storyId/chapters/:chapterId/speaking-practice";
   };
   "features/learning/stories/pages/blog.tsx": {
     id: "features/learning/stories/pages/blog";

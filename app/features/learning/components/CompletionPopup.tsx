@@ -20,6 +20,13 @@ export function CompletionPopup({ isVisible, onClose, storyId, chapterId }: Comp
         onClose()
     }
 
+    const handleSpeakingPractice = () => {
+        if (storyId && chapterId) {
+            navigate(`/stories/${storyId}/chapters/${chapterId}/speaking-practice`)
+        }
+        onClose()
+    }
+
     return (
         <div className="absolute inset-0 flex items-start justify-center z-50 pt-32">
             <div className="absolute inset-0 bg-gray-800 opacity-75"></div>
@@ -48,10 +55,7 @@ export function CompletionPopup({ isVisible, onClose, storyId, chapterId }: Comp
                     <CompactButton 
                         size="lg" 
                         variant="skip" 
-                        onClick={() => {
-                            // TODO: Navigate to speaking practice
-                            onClose()
-                        }}
+                        onClick={handleSpeakingPractice}
                         className="w-full bg-white text-blue-600 border-blue-600 hover:bg-gray-50"
                     >
                         Speaking Practice
