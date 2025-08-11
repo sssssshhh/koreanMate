@@ -1,31 +1,30 @@
 {
-    "chpaters": {
-        "id": "story1",
-        "level": "A2",
-        "thumbnail": "https://koreanmate.s3.us-east-1.amazonaws.com/image/A1/01.jpg",
-        "title": "My First Day at the Dormitory ",
-        "description" : "Mina stood at the threshold of her dorm room, a single suitcase in one hand and a tote bag slung over her shoulder. The hallway buzzed with excitement—doors slamming, laughter echoing, parents giving last-minute advice. Her roommate hadn’t arrived yet, so the room felt eerily quiet, just two beds, two desks, and a view of the campus courtyard below.\n\nShe unpacked slowly, pinning up a few photos and unfolding her blanket, trying to make the space feel like her own. That night, after awkward introductions with her floor mates and a group dinner in the dining hall.",
-        "chapters": [
-      {
-        "id": "chapter01",
-        "chpater-number": "Chapter 1",
-        "chapter-name": "My First Day at the Dormitory"
-      },
-      {
-        "id": "chapter02",
-        "chpater-number": "Chapter 2",
-        "chapter-name": "Making alot of friends who love Korea"
-      },
-      {
-        "id": "chapter03",
-        "chpater-number": "Chapter 3",
-        "chapter-name": "Learning Korean Through K-Pop"
-      },
-      {
-        "id": "chapter04",
-        "chpater-number": "Chapter 4",
-        "chapter-name": "Trying our first authentic korean meal in Korea"
-      }
-    ]
-  }
+  "id": "story1",
+  "level": "A2",
+  "thumbnail": "https://koreanmate.s3.us-east-1.amazonaws.com/image/A1/01.jpg",
+  "title": "My First Day at the Dormitory ",
+  "description": "Mina stood at the threshold of her dorm room, a single suitcase in one hand and a tote bag slung over her shoulder. The hallway buzzed with excitement—doors slamming, laughter echoing, parents giving last-minute advice. Her roommate hadn’t arrived yet, so the room felt eerily quiet, just two beds, two desks, and a view of the campus courtyard below.\n\nShe unpacked slowly, pinning up a few photos and unfolding her blanket, trying to make the space feel like her own. That night, after awkward introductions with her floor mates and a group dinner in the dining hall.",
+  "chapterCount": 4,
+  "chapters": [
+    {
+      "id": "chapterA1-01",
+      "chpater-number": "Chapter 1",
+      "chapter-name": "Moving In"
+    },
+    {
+      "id": "chapterA1-02",
+      "chpater-number": "Chapter 2",
+      "chapter-name": "Coming of Age"
+    },
+    {
+      "id": "chapterA1-03",
+      "chpater-number": "Chapter 3",
+      "chapter-name": "Cramped Quarters"
+    },
+    {
+      "id": "chapterA1-04",
+      "chpater-number": "Chapter 4",
+      "chapter-name": "Meet Mina"
+    }
+  ]
 }

@@ -39,25 +39,7 @@ type Pages = {
       "storyId": string;
     };
   };
-  "/stories/:storyId/:chapterId": {
-    params: {
-      "storyId": string;
-      "chapterId": string;
-    };
-  };
-  "/stories/:storyId/:chapterId/quiz": {
-    params: {
-      "storyId": string;
-      "chapterId": string;
-    };
-  };
-  "/stories/:storyId/:chapterId/recording": {
-    params: {
-      "storyId": string;
-      "chapterId": string;
-    };
-  };
-  "/stories/:storyId/:chapterId/complete": {
+  "/stories/:storyId/chapters/:chapterId": {
     params: {
       "storyId": string;
       "chapterId": string;
@@ -74,7 +56,7 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/login" | "/forgot-password" | "/verification" | "/register" | "/registration-success" | "/reset-password" | "/stories" | "/stories/:storyId/chapters" | "/stories/:storyId/:chapterId" | "/stories/:storyId/:chapterId/quiz" | "/stories/:storyId/:chapterId/recording" | "/stories/:storyId/:chapterId/complete" | "/blog" | "/grammer";
+    page: "/" | "/login" | "/forgot-password" | "/verification" | "/register" | "/registration-success" | "/reset-password" | "/stories" | "/stories/:storyId/chapters" | "/stories/:storyId/chapters/:chapterId" | "/blog" | "/grammer";
   };
   "features/main/pages/home-page.tsx": {
     id: "features/main/pages/home-page";
@@ -112,21 +94,9 @@ type RouteFiles = {
     id: "features/learning/pages/chapters";
     page: "/stories/:storyId/chapters";
   };
-  "features/learning/contents/pages/content.tsx": {
-    id: "features/learning/contents/pages/content";
-    page: "/stories/:storyId/:chapterId";
-  };
-  "features/learning/contents/pages/quiz.tsx": {
-    id: "features/learning/contents/pages/quiz";
-    page: "/stories/:storyId/:chapterId/quiz";
-  };
-  "features/learning/contents/pages/recording.tsx": {
-    id: "features/learning/contents/pages/recording";
-    page: "/stories/:storyId/:chapterId/recording";
-  };
-  "features/learning/contents/pages/complete.tsx": {
-    id: "features/learning/contents/pages/complete";
-    page: "/stories/:storyId/:chapterId/complete";
+  "features/learning/pages/chapter-detail.tsx": {
+    id: "features/learning/pages/chapter-detail";
+    page: "/stories/:storyId/chapters/:chapterId";
   };
   "features/learning/stories/pages/blog.tsx": {
     id: "features/learning/stories/pages/blog";

@@ -29,36 +29,13 @@ export default [
     ),
     // learning routes
     route(
-        "/stories",
+        "/stories", 
         "features/learning/pages/stories.tsx"
     ),
-
-    route(
-        "/stories/:storyId/chapters",
-        "features/learning/pages/chapters.tsx"
-    ),
-    route(
-        "/stories/:storyId/:chapterId",
-        "features/learning/contents/pages/content.tsx"
-    ),
-    route(
-        "/stories/:storyId/:chapterId/quiz",
-        "features/learning/contents/pages/quiz.tsx"
-    ),
-    route(
-        "/stories/:storyId/:chapterId/recording",
-        "features/learning/contents/pages/recording.tsx"
-    ),
-    route(
-        "/stories/:storyId/:chapterId/complete",
-        "features/learning/contents/pages/complete.tsx"
-    ),
-    route(
-        "/blog",
-        "features/learning/stories/pages/blog.tsx"
-    ),
-    route(
-        "/grammer",
-        "features/learning/stories/pages/grammer.tsx"
-    )
+    route("/stories/:storyId/chapters", "features/learning/pages/chapters.tsx"),
+    route("/stories/:storyId/chapters/:chapterId", "features/learning/pages/chapter-detail.tsx"),
+    
+    // blog and grammar routes
+    route("/blog", "features/learning/stories/pages/blog.tsx"),
+    route("/grammer", "features/learning/stories/pages/grammer.tsx")
 ] satisfies RouteConfig;

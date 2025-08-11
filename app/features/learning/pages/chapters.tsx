@@ -8,11 +8,11 @@ export default function Chapters(){
     const { storyId } = useParams()
     
     // bring chaper data from chapters.json
-    const storyTitle = chaptersData.chpaters.title
-    const thumbnail = chaptersData.chpaters.thumbnail
-    const level = chaptersData.chpaters.level
-    const description = chaptersData.chpaters.description
-    const chapters = chaptersData.chpaters.chapters
+    const storyTitle = chaptersData.title
+    const thumbnail = chaptersData.thumbnail
+    const level = chaptersData.level
+    const description = chaptersData.description
+    const chapters = chaptersData.chapters
 
     return (
         <div className="w-full flex flex-col items-center justify-center px-28 py-20">
@@ -38,19 +38,24 @@ export default function Chapters(){
                     </LargeButton>
                 </div>
             </div>
+            {/* chapters list */}
             <div className="pt-11 w-full flex flex-col items-center justify-center gap-3">
-                    {chapters.map((chapter, index) => (
-                    <div key={index} className="w-full h-16 bg-white rounded-[10px] outline outline-offset-[-1px] outline-amber-200">
+                {chapters.map((chapter, index) => (
+                    <Link 
+                        key={index} 
+                        to={`/stories/${storyId}/chapters/${chapter.id}`}
+                        className="w-full h-16 bg-white rounded-[10px] outline outline-offset-[-1px] outline-amber-200 hover:outline-amber-300 transition-colors cursor-pointer"
+                    >
                         <div className="flex flex-row px-8 py-5">
                             <div className="w-16 text-orange-600 text-base font-normal font-['Lato'] leading-normal tracking-tight">
                                 {chapter["chpater-number"]}
                             </div>
-                            <div className="w-full pl-12 text-stone-950 text-base font-normal font-['Lato'] leading-normal tracking-tight">
+                            <div className="w-full pl-12 text-stone-950 text-base font-normal font-['Pretendard'] leading-normal tracking-tight">
                                 {chapter["chapter-name"]}
                             </div>
                             <img src="/images/done.svg" alt="done" className="w-6 h-6" />
                         </div>
-                    </div>
+                    </Link>
                 ))}
             </div>
         </div>

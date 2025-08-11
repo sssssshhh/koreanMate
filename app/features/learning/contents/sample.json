@@ -1,98 +1,135 @@
 {
-    "story": {
-        "id": "story1",
-        "category": "Dear Diary",
-        "thumbnail": "https://picsum.photos/200/300",
-        "description": "기숙사에 왔어요.",
-        "level": "A2",
-        "chapters": [
-      {
-        "id": "chapter1",
-        "level": "A2",
-        "title": "기숙사",
-        "thumbnail": "https://picsum.photos/200/300",
-        "sentences": [
-          {
-            "id": "sen1",
-            "original": "오늘 기숙사에 왔어요.",
-            "pronunciation": "오늘 기숙싸에 와써요",
-            "meaningUnit": "오늘 / 기숙사에 왔어요.",
-            "translations": {
-              "en": "I came to the dormitory today."
-            },
-            "wordDefinitions": [
-              {
-                "word": "오늘",
-                "definition": "오늘 (n. – today)"
-              },
-              {
-                "word": "기숙사에",
-                "definition": "기숙사 (n. – dormitory) / 에 (particle – location marker: at, in, to)"
-              },
-              {
-                "word": "왔어요",
-                "definition": "오다 (v. – to come) / -았어요 (past tense polite ending)"
-              }
-            ]
-          },
-          {
-            "id": "sen2",
-            "original": "방에 친구가 있어요.",
-            "pronunciation": "방에 친구가 이써요",
-            "meaningUnit": "방에 / 친구가 있어요.",
-            "translations": {
-              "en": "There is a friend in the room."
-            },
-            "wordDefinitions": [
-              {
-                "word": "방에",
-                "definition": " 방 (n. – room) / 에 (particle – location marker)"
-              },
-              {
-                "word": "친구가",
-                "definition": "친구 (n. – friend) / 가 (particle – subject marker)"
-              },
-              {
-                "word": "있어요",
-                "definition": "있다 (v. – to exist, to be (there)) / -어요 (present polite ending)"
-              }
-            ]
-          }
-        ],
-        "recordingSentences": [
-          {
-            "id": "sen1",
-            "recordingSentence": "택시를 타고 공항에 갔어요."
-          }
-        ],
-        "quizes": [
-          {
-            "id": "quiz1",
-            "level": "A2",
-            "words": ["저는", "학교에", "가요."],
-            "answer": ["저는", "학교에", "가요."],
-            "explanation": "✔ The verb 가요 (go) shows movement toward a place, so ‘-에’ is correct."
-          }
-        ],
-        "audios": [
-          {
-            "id":1, 
-            "audio": "/audio/sen1.mp3"
-          },
-          {
-            "id":2, 
-            "audio": "/audio/sen2.mp3"
-          }
-        ],
-        "grammer": {
-          "title": "명사 뒤에 붙는 것",
-          "description": ""
+  "id": "chapterA1-01-01",
+  "chapterId": "chapterA1-01",
+  "sentences": [
+    {
+      "id": "sen1",
+      "original": "오늘 기숙사에 왔어요.",
+      "pronunciation": "오늘 기숙싸에 와써요",
+      "meaningUnit": "오늘 / 기숙사에 왔어요.",
+      "translations": {
+        "en": "I came to the dormitory today."
       },
-      "cultureNote": {
-        "title": "한국의 새 학기",
-        "description": "🏫 Culture Note: New School Year in Korea. In Korea, the new school year begins in March. Most schools start on March 1st, which is the official start of both the spring semester and new student admissions. This is different from many Western countries where school starts in August or September.For Korean students, March means new classmates, new teachers, and often a new school—just like in this story, where the narrator moves into a dormitory and meets a new roommate."
+      "wordDefinitions": [
+        {
+          "word": "오늘",
+          "definition": "오늘 (n. – today)"
+        },
+        {
+          "word": "기숙사에",
+          "definition": "기숙사 (n. – dormitory) / 에 (particle – location marker: at, in, to)"
+        },
+        {
+          "word": "왔어요",
+          "definition": "오다 (v. – to come) / -았어요 (past tense polite ending)"
         }
-      }
-    ]
+      ]
+    },
+    {
+      "id": "sen2",
+      "original": "방에 친구가 있어요.",
+      "pronunciation": "방에 친구가 이써요",
+      "meaningUnit": "방에 / 친구가 있어요.",
+      "translations": {
+        "en": "There is a friend in the room."
+      },
+      "wordDefinitions": [
+        {
+          "word": "방에",
+          "definition": " 방 (n. – room) / 에 (particle – location marker)"
+        },
+        {
+          "word": "친구가",
+          "definition": "친구 (n. – friend) / 가 (particle – subject marker)"
+        },
+        {
+          "word": "있어요",
+          "definition": "있다 (v. – to exist, to be (there)) / -어요 (present polite ending)"
+        }
+      ]
+    },
+    {
+      "id": "sen3",
+      "original": "이름은 미나예요.",
+      "pronunciation": "이르믄 미나예요",
+      "meaningUnit": "이름은 / 미나예요.",
+      "translations": {
+        "en": "Her name is Mina."
+      },
+      "wordDefinitions": [
+        {
+          "word": "이름은",
+          "definition": "이름 (n. – name) + 은 (particle – topic marker)"
+        },
+        {
+          "word": "미나예요",
+          "definition": "미나 (proper noun – Mina) + -예요 (copula – to be, polite form)"
+        }
+      ]
+    },
+    { 
+      "id": "sen4",
+      "original": "미나는 '안녕!' 말해요.",
+      "pronunciation": "미나는 '안녕!' 말해요",
+      "meaningUnit": "미나는 / '안녕!' 말해요.",
+      "translations": {
+        "en": "Mina says, 'Hi!'"
+      },
+      "wordDefinitions": [
+        {
+          "word": "미나는",
+          "definition": "미나 (proper noun – Mina)"
+        },
+          {
+            "word": "안녕!",
+          "definition": "안녕 (interjection – Hi!, Hello!)"
+        },
+        {
+          "word": "말해요",
+          "definition": "말하다 (v. – to speak, to say) + -해요 (present polite ending)"
+        }
+      ]
+    }
+  ],
+  "recordingSentences": [
+    {
+      "id": "sen1",
+      "recordingSentence": "택시를 타고 공항에 갔어요."
+    }
+  ],
+  "quizes": [
+    {
+      "id": "quiz1",
+      "level": "A2",
+      "words": [
+        "저는",
+        "학교에",
+        "가요."
+      ],
+      "answer": [
+        "저는",
+        "학교에",
+        "가요."
+      ],
+      "explanation": "✔ The verb 가요 (go) shows movement toward a place, so ‘-에’ is correct."
+    }
+  ],
+  "audios": [
+    {
+      "id": 1,
+      "audio": "/audio/sen1.mp3"
+    },
+    {
+      "id": 2,
+      "audio": "/audio/sen2.mp3"
+    }
+  ],
+  "grammer": {
+    "title": "명사 뒤에 붙는 것",
+    "description": ""
+  },
+  "cultureNote": {
+    "title": "한국의 새 학기",
+    "description": "🏫 Culture Note: New School Year in Korea. In Korea, the new school year begins in March. Most schools start on March 1st, which is the official start of both the spring semester and new student admissions. This is different from many Western countries where school starts in August or September.For Korean students, March means new classmates, new teachers, and often a new school—just like in this story, where the narrator moves into a dormitory and meets a new roommate."
   }
 }
