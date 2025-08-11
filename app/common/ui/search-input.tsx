@@ -35,7 +35,7 @@ const SearchInput = React.forwardRef<HTMLInputElement, SearchInputProps>(
         />
         {icon && iconPosition === "right" && (
           <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
-            <Icon name={icon} className={cn("text-gray-400", iconClassName)} />
+            <Icon name={icon} className={cn("text-black", iconClassName)} />
           </div>
         )}
       </div>
