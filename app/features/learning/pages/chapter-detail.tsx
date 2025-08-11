@@ -1,4 +1,5 @@
 import { useParams } from "react-router"
+import { useState } from "react"
 import chaptersData from "@/features/learning/contents/chapters.json"
 import { Icon } from "@/common/ui/icon"
 import { LargeButton } from "@/common/ui/large-button"
@@ -8,6 +9,8 @@ import { SearchInput } from "@/common/ui/search-input"
 
 export default function ChapterDetail(){
     const { storyId, chapterId } = useParams()
+    const [hoveredWord, setHoveredWord] = useState<string>("")
+    const [hoveredSentenceIndex, setHoveredSentenceIndex] = useState<number>(-1)
     
     // bring chapter data from chapters.json
     const storyTitle = chaptersData.title
@@ -19,6 +22,41 @@ export default function ChapterDetail(){
     // bring sentence data from sentence-meaning.json
     const sentences = sentenceMeaningData.sentences
 
+    // find word definition
+    const findWordDefinition = (word: string) => {
+        // search through all sentences' wordDefinitions
+        for (const sentence of sentences) {
+            const wordData = sentence.wordDefinitions?.find(w => 
+                w.word.toLowerCase() === word.toLowerCase()
+            )
+            if (wordData) {
+                return wordData.definition
+            }
+        }
+        return "Definition not found"
+    }
+
+    // split sentence into words and make them hoverable
+    const renderHoverableSentence = (sentence: string, sentenceIndex: number) => {
+        return sentence.split(' ').map((word, wordIndex) => (
+            <span key={wordIndex}>
+                <span
+                    className="hover:bg-pink-100 hover:cursor-pointer transition-colors px-1 rounded"
+                    onMouseEnter={() => {
+                        setHoveredWord(word)
+                        setHoveredSentenceIndex(sentenceIndex)
+                    }}
+                    onMouseLeave={() => {
+                        setHoveredWord("")
+                        setHoveredSentenceIndex(-1)
+                    }}
+                >
+                    {word}
+                </span>
+                {wordIndex < sentence.split(' ').length - 1 && <span> </span>}
+            </span>
+        ))
+    }
     
     if (!chapter) {
         return <div>Chapter not found</div>
@@ -42,11 +80,15 @@ export default function ChapterDetail(){
                 <div className="flex flex-col w-full">
                     <div className="h-14 px-6 py-5 bg-white rounded-tl-[10px] rounded-tr-[10px] border-l border-r border-t border-amber-200 inline-flex justify-start items-center">
                         <div className="w-32 text-neutral-400 text-sm font-semibold font-['Lato'] leading-tight tracking-tight">Sentence meaning</div>
-                        <div className="text-stone-950 text-xl font-normal font-['Pretendard'] leading-loose tracking-wide">1</div>
+                        <div className="text-stone-950 text-xl font-normal leading-loose tracking-wide">
+                            {hoveredSentenceIndex >= 0 ? sentences[hoveredSentenceIndex].translations.en : ""}
+                        </div>
                     </div>
                     <div className="h-14 px-6 py-5 bg-white rounded-bl-[10px] rounded-br-[10px] border-l border-r border-b border-t border-amber-200 inline-flex justify-start items-center">
                         <div className="w-32 text-neutral-400 text-sm font-semibold font-['Lato'] leading-tight tracking-tight">Word meaning</div>
-                        <div className="text-stone-950 text-xl font-normal font-['Pretendard'] leading-loose tracking-wide">2</div>
+                        <div className="text-stone-950 text-xl font-normal leading-loose tracking-wide">
+                            {hoveredWord ? findWordDefinition(hoveredWord) : ""}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -65,7 +107,7 @@ export default function ChapterDetail(){
                     {sentences.map((sentence, index) => (
                         <div key={index} className="flex flex-col gap-2">
                             <div className="text-stone-950 text-xl font-normal leading-relaxed tracking-wide">
-                                {sentence.original}
+                                {renderHoverableSentence(sentence.original, index)}
                             </div>
                         </div>
                     ))}
