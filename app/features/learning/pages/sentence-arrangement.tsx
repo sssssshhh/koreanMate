@@ -18,6 +18,8 @@ export default function SentenceArrangement(){
     const [progress, setProgress] = useState(0)
     const [scrambledWords, setScrambledWords] = useState<string[]>([])
     const [selectedWords, setSelectedWords] = useState<string[]>([])
+    const [showResult, setShowResult] = useState<boolean>(false)
+    const [isCorrect, setIsCorrect] = useState<boolean>(false)
 
     // Split Korean text into words/phrases
     const splitIntoWords = (text: string): string[] => {
@@ -100,6 +102,45 @@ export default function SentenceArrangement(){
         setScrambledWords(prev => [...prev, removedWord])
     }
 
+    // Handle submit button click
+    const handleSubmit = () => {
+        const currentSentence = currentSentences[currentSentenceIndex]
+        if (currentSentence) {
+            const originalWords = splitIntoWords(currentSentence.original)
+            const isAnswerCorrect = selectedWords.every((word, index) => word === originalWords[index])
+            
+            setIsCorrect(isAnswerCorrect)
+            setShowResult(true)
+        }
+    }
+
+    // Handle next button click
+    const handleNext = () => {
+        if (currentSentenceIndex < currentSentences.length - 1) {
+            // Move to next sentence
+            setCurrentSentenceIndex(prev => prev + 1)
+            setShowResult(false)
+            setIsCorrect(false)
+        } else {
+            // All sentences completed
+            // You can add completion logic here
+            console.log("All sentences completed!")
+        }
+    }
+
+    // Handle skip button click
+    const handleSkip = () => {
+        if (currentSentenceIndex < currentSentences.length - 1) {
+            // Move to next sentence
+            setCurrentSentenceIndex(prev => prev + 1)
+            setShowResult(false)
+            setIsCorrect(false)
+        } else {
+            // All sentences completed
+            console.log("All sentences completed!")
+        }
+    }
+
     if (!chapter) {
         return <div>Chapter not found</div>
     }
@@ -143,14 +184,32 @@ export default function SentenceArrangement(){
                             {scrambledWords.map((word, index) => (
                                 <div 
                                     key={`available-${index}`}
-                                    className="w-32 h-16 bg-white text-black rounded-lg flex items-center justify-center cursor-pointer hover:bg-gray-50 transition-colors"
-                                    onClick={() => handleWordClick(word, index)}
+                                    className={`w-32 h-16 bg-white text-black rounded-lg flex items-center justify-center transition-colors ${
+                                        !showResult ? 'hover:bg-gray-50' : 'opacity-50'
+                                    }`}
+                                    onClick={!showResult ? () => handleWordClick(word, index) : undefined}
                                 >
                                     {word}
                                 </div>
                             ))}
                         </div>
                     </div>
+                    
+                    {/* Result Display */}
+                    {showResult && (
+                        <div className="w-full text-center">
+                            <div className={`text-3xl font-bold ${
+                                isCorrect ? 'text-blue-600' : 'text-red-600'
+                            }`}>
+                                {isCorrect ? 'Perfect!' : 'Failed'}
+                            </div>
+                            {isCorrect && (
+                                <div className="mt-2">
+                                    <img src="/images/OK.svg" alt="OK" className="w-8 h-8 mx-auto" />
+                                </div>
+                            )}
+                        </div>
+                    )}
                     
                     {/* Answer Slots - Bottom Row */}
                     <div className="w-full">
@@ -162,8 +221,8 @@ export default function SentenceArrangement(){
                                 >
                                     {selectedWords[index] && (
                                         <button
-                                            onClick={() => handleSelectedWordClick(index)}
-                                            className="cursor-pointer"
+                                            onClick={!showResult ? () => handleSelectedWordClick(index) : undefined}
+                                            className={!showResult ? '' : 'opacity-50'}
                                         >
                                             {selectedWords[index]}
                                         </button>
@@ -174,14 +233,41 @@ export default function SentenceArrangement(){
                     </div>
 
                     <div className="w-full flex flex-row justify-center items-center gap-4">
-                        <CompactButton size="sm" variant="skip">
-                            Skip
-                        </CompactButton>
-                        <CompactButton size="sm" variant="submit">
-                            Submit
-                        </CompactButton>
+                        {!showResult ? (
+                            <>
+                                <CompactButton size="sm" variant="skip" onClick={handleSkip}>
+                                    Skip
+                                </CompactButton>
+                                <CompactButton size="sm" variant="primary" onClick={handleSubmit}>
+                                    Submit
+                                </CompactButton>
+                            </>
+                        ) : (
+                            <CompactButton size="sm" variant="primary" onClick={handleNext}>
+                                Next
+                            </CompactButton>
+                        )}
                     </div>
                 </div>
+
+                {/* Result Modal - 제거됨 */}
+                {/* {showResult && (
+                    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                        <div className="bg-white rounded-2xl p-8 text-center">
+                            <div className={`text-4xl font-bold mb-4 ${
+                                isCorrect ? 'text-green-600' : 'text-red-600'
+                            }`}>
+                                {isCorrect ? 'Perfect!' : 'Failed'}
+                            </div>
+                            <button
+                                onClick={() => setShowResult(false)}
+                                className="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+                            >
+                                Continue
+                            </button>
+                        </div>
+                    </div>
+                )} */}
             </div>
         </div>
     )

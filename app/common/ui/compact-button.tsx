@@ -8,7 +8,7 @@ interface CompactButtonProps {
   disabled?: boolean;
   type?: "button" | "submit" | "reset";
   size?: "sm" | "md" | "lg";
-  variant?: "default" | "filter" | "skip" | "submit";
+  variant?: "default" | "filter" | "primary" | "skip";
   customColor?: {
     bgColor?: string;
     textColor?: string;
@@ -25,8 +25,8 @@ const sizeClasses = {
 const variantClasses = {
   default: "border-blue-600 text-blue-600 hover:bg-blue-50",
   filter: "border-yellow-600 text-yellow-600 hover:text-white hover:bg-yellow-600",
-  skip: "border-neutral-600 text-neutral-600 hover:bg-neutral-50",
-  submit: "border-orange-600 text-orange-600 hover:bg-orange-50",
+  primary: "border-orange-600 text-orange-600 hover:bg-orange-50",
+  skip: "border-gray-600 text-gray-600 hover:bg-gray-50",
 };
 
 export function CompactButton({ 
