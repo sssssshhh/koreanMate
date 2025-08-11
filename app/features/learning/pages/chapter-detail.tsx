@@ -1,8 +1,6 @@
 import { useParams, Link } from "react-router"
 import { useState } from "react"
 import chaptersData from "@/features/learning/contents/chapters.json"
-import { Icon } from "@/common/ui/icon"
-import { LargeButton } from "@/common/ui/large-button"
 import { StoryLayout } from "@/features/learning/layouts/StoryLayout"
 import sentenceMeaningData from "@/features/learning/contents/sample.json"
 import { SearchInput } from "@/common/ui/search-input"
