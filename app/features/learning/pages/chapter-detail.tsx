@@ -1,4 +1,4 @@
-import { useParams } from "react-router"
+import { useParams, Link } from "react-router"
 import { useState } from "react"
 import chaptersData from "@/features/learning/contents/chapters.json"
 import { Icon } from "@/common/ui/icon"
@@ -205,6 +205,16 @@ export default function ChapterDetail(){
                     <div className="text-neutral-400">&lt; Previous Chapter</div>
                     <div className="text-stone-950">Story Overview</div>
                     <div className="text-neutral-400">Next Chapter &gt;</div>
+                </div>
+                
+                {/* Practice Navigation */}
+                <div className="mt-4 flex justify-center">
+                    <Link 
+                        to={`/stories/${storyId}/chapters/${chapterId}/sentence-arrangement`}
+                        className="px-6 py-3 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors font-medium"
+                    >
+                        Practice Sentence Arrangement
+                    </Link>
                 </div>
             </div>
         </StoryLayout>
