@@ -57,6 +57,12 @@ type Pages = {
       "chapterId": string;
     };
   };
+  "/stories/:storyId/chapters/:chapterId/completion": {
+    params: {
+      "storyId": string;
+      "chapterId": string;
+    };
+  };
   "/blog": {
     params: {};
   };
@@ -68,7 +74,7 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/login" | "/forgot-password" | "/verification" | "/register" | "/registration-success" | "/reset-password" | "/stories" | "/stories/:storyId/chapters" | "/stories/:storyId/chapters/:chapterId" | "/stories/:storyId/chapters/:chapterId/sentence-arrangement" | "/stories/:storyId/chapters/:chapterId/speaking-practice" | "/blog" | "/grammer";
+    page: "/" | "/login" | "/forgot-password" | "/verification" | "/register" | "/registration-success" | "/reset-password" | "/stories" | "/stories/:storyId/chapters" | "/stories/:storyId/chapters/:chapterId" | "/stories/:storyId/chapters/:chapterId/sentence-arrangement" | "/stories/:storyId/chapters/:chapterId/speaking-practice" | "/stories/:storyId/chapters/:chapterId/completion" | "/blog" | "/grammer";
   };
   "features/main/pages/home-page.tsx": {
     id: "features/main/pages/home-page";
@@ -117,6 +123,10 @@ type RouteFiles = {
   "features/learning/pages/speaking-practice.tsx": {
     id: "features/learning/pages/speaking-practice";
     page: "/stories/:storyId/chapters/:chapterId/speaking-practice";
+  };
+  "features/learning/pages/course-completion.tsx": {
+    id: "features/learning/pages/course-completion";
+    page: "/stories/:storyId/chapters/:chapterId/completion";
   };
   "features/learning/stories/pages/blog.tsx": {
     id: "features/learning/stories/pages/blog";

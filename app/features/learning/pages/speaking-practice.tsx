@@ -1,4 +1,4 @@
-import { useParams } from "react-router"
+import { useParams, useNavigate } from "react-router"
 import { useState, useEffect } from "react"
 import chaptersData from "@/features/learning/contents/chapters.json"
 import sentenceMeaningData from "@/features/learning/contents/sample.json"
@@ -7,6 +7,7 @@ import { CompactButton } from "@/common/ui/compact-button"
 
 export default function SpeakingPractice() {
     const { storyId, chapterId } = useParams()
+    const navigate = useNavigate()
     
     // bring chapter data from chapters.json
     const chapter = chaptersData.chapters.find(ch => ch.id === chapterId)
@@ -59,8 +60,10 @@ export default function SpeakingPractice() {
             setShowResult(false)
             setIsCorrect(false)
         } else {
-            // All sentences completed
-            console.log("All sentences completed!")
+            // All sentences completed - Navigate to completion page
+            if (storyId && chapterId) {
+                navigate(`/stories/${storyId}/chapters/${chapterId}/completion`)
+            }
         }
     }
 
@@ -192,7 +195,11 @@ export default function SpeakingPractice() {
                                 <CompactButton 
                                     size="sm" 
                                     variant="default"
-                                    onClick={handleNext}
+                                    onClick={() => {
+                                        // TODO: Record again
+                                        setShowResult(false)
+                                        setIsCorrect(false)
+                                    }}
                                 >
                                     Record Again
                                 </CompactButton>
@@ -222,6 +229,20 @@ export default function SpeakingPractice() {
                         </div>
                     )}
                 </div>
+                
+                {/* Next Button - Positioned below the gray container in white background */}
+                {showResult && (
+                    <div className="w-full flex justify-end mt-6">
+                        <CompactButton 
+                            size="lg" 
+                            variant="skip"
+                            onClick={handleNext}
+                            className="bg-blue-600 text-white border-white hover:bg-blue-700"
+                        >
+                            Next
+                        </CompactButton>
+                    </div>
+                )}
             </div>
         </div>
     )
