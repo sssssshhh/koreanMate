@@ -2,7 +2,7 @@ import { useParams, Link } from "react-router"
 import chaptersData from "@/features/learning/contents/chapters.json"
 import { Icon } from "@/common/ui/icon"
 import { LargeButton } from "@/common/ui/large-button"
-import { StoryLayout } from "@/features/learning/layouts/StoryLayout"
+import { StoryLayout } from "@/features/learning/layouts/storyLayout"
 
 export default function Chapters(){
     const { storyId } = useParams()
