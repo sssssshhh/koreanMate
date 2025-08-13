@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
-  isRouteErrorResponse,
   Links,
   Meta,
   Outlet,
@@ -15,7 +14,8 @@ import Navigation from "./common/pages/navigation";
 import { configureAmplify } from "./lib/amplify-config";
 import { AuthProvider, useAuth } from "./features/auth/contexts/AuthContext";
 import Footer from "./common/pages/footer";
-
+import { PrimaryButton } from "./common/ui/primary-button";
+import { Link } from "react-router"
 // init Amplify 
 configureAmplify();
 
@@ -77,26 +77,22 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   let details = "An unexpected error occurred.";
   let stack: string | undefined;
 
-  if (isRouteErrorResponse(error)) {
-    message = error.status === 404 ? "404" : "Error";
-    details =
-      error.status === 404
-        ? "The requested page could not be found."
-        : error.statusText || details;
-  } else if (import.meta.env.DEV && error && error instanceof Error) {
-    details = error.message;
-    stack = error.stack;
-  }
+  console.log("🔴 Error:", error);
 
   return (
-    <main className="pt-16 p-4 container mx-auto">
-      <h1>{message}</h1>
-      <p>{details}</p>
-      {stack && (
-        <pre className="w-full p-4 overflow-x-auto">
-          <code>{stack}</code>
-        </pre>
-      )}
-    </main>
+    <div className="min-h-screen bg-gray-900/80 flex items-center justify-center p-4">
+      <div className="w-[418px] h-[394px] bg-white rounded-lg p-9 flex flex-col items-center justify-center text-center">
+        <img src="/images/404.gif" alt="Error" className="w-20 h-20 mb-6" />
+        <div className="justify-start text-stone-950 text-3xl font-normal font-['Merriweather'] tracking-tight">"Oops! Something went wrong."</div>
+        <div className="pt-5 pb-10 w-80 justify-start text-neutral-400 text-base font-medium font-['Lato'] tracking-tight">We're having trouble loading your content.
+        Please try again later, or return to the home page.
+        </div>
+        <PrimaryButton>
+          <Link to="/">
+            <span className="text-white">Go to Home</span>
+          </Link>
+        </PrimaryButton>
+      </div>
+    </div>
   );
 }
