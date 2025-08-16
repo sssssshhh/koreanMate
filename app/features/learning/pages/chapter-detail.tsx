@@ -135,14 +135,14 @@ export default function ChapterDetail(){
                                 <span className="text-sm font-medium text-gray-700">Text size</span>
                                 <div className="flex items-center gap-2">
                                     <button 
-                                        onClick={() => setTextSize(Math.max(80, textSize - 10))}
+                                        onClick={() => setTextSize(Math.max(0, textSize - 10))}
                                         className="w-6 h-6 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center text-sm font-bold"
                                     >
                                         -
                                     </button>
                                     <span className="w-12 text-center text-sm">{textSize}%</span>
                                     <button 
-                                        onClick={() => setTextSize(Math.min(150, textSize + 10))}
+                                        onClick={() => setTextSize(Math.min(200, textSize + 10))}
                                         className="w-6 h-6 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center text-sm font-bold"
                                     >
                                         +
@@ -188,12 +188,15 @@ export default function ChapterDetail(){
                     </div>
                 )}
             </div>
-            
+            {/* sentence arrangement */}
             <div className="w-full flex flex-col bg-white">
                 <div className="px-6 py-5 relative bg-white rounded-tl-[10px] rounded-tr-[10px] border-l border-r border-t border-amber-200 flex flex-col gap-3">
                     {filteredSentences.map((sentence, index) => (
                         <div key={index} className="flex flex-col gap-2">
-                            <div className="text-stone-950 text-xl font-normal leading-relaxed tracking-wide">
+                            <div 
+                                className="text-stone-950 font-normal leading-relaxed tracking-wide"
+                                style={{ fontSize: `${textSize}%` }}
+                            >
                                 {renderHoverableSentence(sentence.original, index)}
                             </div>
                         </div>
