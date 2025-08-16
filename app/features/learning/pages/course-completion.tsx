@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router"
-import { CompactButton } from "@/common/ui/compact-button"
+import { SmallButton } from "@/common/ui/small-button"
 
 export default function CourseCompletion() {
     const { storyId, chapterId } = useParams()
@@ -45,26 +45,26 @@ export default function CourseCompletion() {
                 
                 {/* Action Buttons */}
                 <div className="flex flex-row gap-6">
-                    <CompactButton 
+                    <SmallButton 
                         size="sm" 
                         variant="skip"
                         onClick={handleContinueLearning}
                     >
                         Continue Learning
-                    </CompactButton>
-                    <CompactButton 
+                    </SmallButton>
+                    <SmallButton 
                         size="sm" 
                         variant="primary"
                         onClick={handleBackToStories}
                     >
                         Story List
-                    </CompactButton>
-                    <CompactButton 
+                    </SmallButton>
+                    <SmallButton 
                         size="sm" 
                         variant="default"
                     >
                         My Stars
-                    </CompactButton>
+                    </SmallButton>
                 </div>
             </div>
         </div>

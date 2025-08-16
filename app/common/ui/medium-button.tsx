@@ -4,7 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 
-const primaryButtonVariants = cva(
+const mediumButtonVariants = cva(
   "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive font-merriweather cursor-pointer",
   {
     variants: {
@@ -35,7 +35,7 @@ const primaryButtonVariants = cva(
   }
 )
 
-function PrimaryButton({
+function MediumButton({
   className,
   variant,
   size,
@@ -44,7 +44,7 @@ function PrimaryButton({
   textColor,
   ...props
 }: React.ComponentProps<"button"> &
-  VariantProps<typeof primaryButtonVariants> & {
+  VariantProps<typeof mediumButtonVariants> & {
     asChild?: boolean
     bgColor?: string
     textColor?: string
@@ -58,9 +58,9 @@ function PrimaryButton({
 
   return (
     <Comp
-      data-slot="primary-button"
+      data-slot="medium-button"
       className={cn(
-        primaryButtonVariants({ variant, size, className }),
+        mediumButtonVariants({ variant, size, className }),
         bgColor && "hover:opacity-90",
         bgColor === "#FFFFFF" && "border border-gray-300"
       )}
@@ -70,4 +70,4 @@ function PrimaryButton({
   )
 }
 
-export { PrimaryButton, primaryButtonVariants }
+export { MediumButton, mediumButtonVariants }

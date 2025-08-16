@@ -1,7 +1,7 @@
 import { fetchAuthSession, signIn } from "aws-amplify/auth";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
-import { PrimaryButton } from "@/common/ui/primary-button";
+import { MediumButton } from "@/common/ui/medium-button";
 import { Input } from "@/common/ui/input";
 import { useAuth } from "@/features/auth/contexts/AuthContext";
 import AuthLayout from "@/features/auth/layouts/AuthLayout";
@@ -92,16 +92,16 @@ export default function Login() {
           </div>
 
           <div className="flex flex-col justify-center items-center pt-10 gap-4">
-            <PrimaryButton
+            <MediumButton
               type="submit"
               disabled={isLoading}
               className="w-full"
               bgColor="#0057FF"
             >
               {isLoading ? "Signing in..." : "Sign In"}
-            </PrimaryButton>
+            </MediumButton>
 
-            <PrimaryButton
+            <MediumButton
               type="button"
               disabled={isLoading}
               className="w-full"
@@ -127,7 +127,7 @@ export default function Login() {
                 className="w-4 h-4"
               />
               Sign in with Google
-            </PrimaryButton>
+            </MediumButton>
           </div>
 
           <div className="text-center pt-10 space-y-2">

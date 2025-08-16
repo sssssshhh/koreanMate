@@ -5,7 +5,7 @@ import { validateForm, type SignUpData } from "@/features/auth/utils/validation"
 import { useForm } from "react-hook-form";
 import { Form, FormControl, FormMessage, FormLabel, FormItem, FormField } from "@/common/ui/form";
 import { Input } from "@/common/ui/input";
-import { PrimaryButton } from "@/common/ui/primary-button";
+import { MediumButton } from "@/common/ui/medium-button";
 import { Icon } from "@/common/ui/icon";
 import AuthLayout from "@/features/auth/layouts/AuthLayout";
 
@@ -204,38 +204,29 @@ export default function Register() {
           />
           
           <div className="flex flex-col justify-center items-center pt-14 gap-4">
-            <PrimaryButton
+            <MediumButton
               type="submit"
               disabled={isLoading}
-              className="w-full flex items-center justify-center gap-2"
-              bgColor="#0057FF"
+              className="w-full"
             >
-              <Icon name="envelope" size="sm" />
-              Sign Up with email
-            </PrimaryButton>
-            <PrimaryButton
-              type="submit"
-              disabled={isLoading}
-              className="w-full flex items-center justify-center gap-2"
-              bgColor="#0F0F0F"
+              Sign Up
+            </MediumButton>
+            <MediumButton
+              type="button"
+              variant="outline"
+              className="w-full"
             >
-              <Icon name="apple" type="brands" size="sm" />
-              Sign Up with apple
-            </PrimaryButton>
-            <PrimaryButton
-              type="submit"
-              disabled={isLoading}
-              className="w-full flex items-center justify-center gap-2"
-              bgColor="#FFFFFF"
-              textColor="#000000"
+              <Icon name="apple" size="sm" />
+              Continue with Apple
+            </MediumButton>
+            <MediumButton
+              type="button"
+              variant="outline"
+              className="w-full"
             >
-              <img 
-                src="/images/google.svg" 
-                alt="Google" 
-                className="w-4 h-4"
-              />
-              Sign Up with Google
-            </PrimaryButton>
+              <img src="/images/google.svg" alt="Google" className="w-4 h-4" />
+              Continue with Google
+            </MediumButton>
           </div>
         </form>
       </Form>

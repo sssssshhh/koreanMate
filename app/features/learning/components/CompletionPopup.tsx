@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router"
-import { CompactButton } from "@/common/ui/compact-button"
+import { SmallButton } from "@/common/ui/small-button"
 
 interface CompletionPopupProps {
     isVisible: boolean
@@ -52,22 +52,22 @@ export function CompletionPopup({ isVisible, onClose, storyId, chapterId }: Comp
                     </div>
                 </div>
                 <div className="flex flex-row gap-3 w-full">
-                    <CompactButton 
+                    <SmallButton 
                         size="lg" 
                         variant="skip" 
                         onClick={handleSpeakingPractice}
                         className="w-full bg-white text-blue-600 border-blue-600 hover:bg-gray-50"
                     >
                         Speaking Practice
-                    </CompactButton>
-                    <CompactButton 
+                    </SmallButton>
+                    <SmallButton 
                         size="lg" 
                         variant="primary" 
                         onClick={handleReadAgain}
                         className="w-full bg-blue-600 text-white border-blue-600 hover:bg-blue-700"
                     >
                         Read Again
-                    </CompactButton>
+                    </SmallButton>
                 </div>
             </div>
         </div>

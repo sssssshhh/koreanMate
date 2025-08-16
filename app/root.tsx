@@ -14,7 +14,7 @@ import Navigation from "./common/pages/navigation";
 import { configureAmplify } from "./lib/amplify-config";
 import { AuthProvider, useAuth } from "./features/auth/contexts/AuthContext";
 import Footer from "./common/pages/footer";
-import { PrimaryButton } from "./common/ui/primary-button";
+import { MediumButton } from "./common/ui/medium-button";
 import { Link } from "react-router"
 // init Amplify 
 configureAmplify();
@@ -87,11 +87,11 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
         <div className="pt-5 pb-10 w-80 justify-start text-neutral-400 text-base font-medium font-['Lato'] tracking-tight">We're having trouble loading your content.
         Please try again later, or return to the home page.
         </div>
-        <PrimaryButton>
+        <MediumButton>
           <Link to="/">
             <span className="text-white">Go to Home</span>
           </Link>
-        </PrimaryButton>
+        </MediumButton>
       </div>
     </div>
   );

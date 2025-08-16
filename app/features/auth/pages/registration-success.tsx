@@ -1,5 +1,5 @@
 import AuthLayout from "@/features/auth/layouts/AuthLayout";
-import { CompactButton } from "@/common/ui/compact-button";
+import { SmallButton } from "@/common/ui/small-button";
 import { useNavigate } from "react-router";
 
 export default function RegistrationSuccess() {
@@ -20,9 +20,9 @@ export default function RegistrationSuccess() {
                 <div className="text-stone-950 text-2xl font-pretendardormal font-['Lato'] leading-7">
                     Discover Korean through stories, <br/>at your own pace with KoreanMate
                 </div>
-                <CompactButton size="md" onClick={handleStartLearning}>
+                <SmallButton size="md" onClick={handleStartLearning}>
                     Start learning
-                </CompactButton>
+                </SmallButton>
             </div>
         </AuthLayout>
     )

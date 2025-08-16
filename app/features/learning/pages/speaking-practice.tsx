@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import chaptersData from "@/features/learning/contents/chapters.json"
 import sentenceMeaningData from "@/features/learning/contents/sample.json"
 import { CustomProgress } from "@/common/ui/custom-progress"
-import { CompactButton } from "@/common/ui/compact-button"
+import { SmallButton } from "@/common/ui/small-button"
 
 export default function SpeakingPractice() {
     const { storyId, chapterId } = useParams()
@@ -172,7 +172,7 @@ export default function SpeakingPractice() {
                             
                             {/* Three Buttons in a Row */}
                             <div className="flex flex-row justify-center items-center gap-4">
-                                <CompactButton 
+                                <SmallButton 
                                     size="sm" 
                                     variant="skip"
                                     onClick={() => {
@@ -181,8 +181,8 @@ export default function SpeakingPractice() {
                                     }}
                                 >
                                     Play my voice
-                                </CompactButton>
-                                <CompactButton 
+                                </SmallButton>
+                                <SmallButton 
                                     size="sm" 
                                     variant="primary"
                                     onClick={() => {
@@ -191,8 +191,8 @@ export default function SpeakingPractice() {
                                     }}
                                 >
                                     Listen Again
-                                </CompactButton>
-                                <CompactButton 
+                                </SmallButton>
+                                <SmallButton 
                                     size="sm" 
                                     variant="default"
                                     onClick={() => {
@@ -202,7 +202,7 @@ export default function SpeakingPractice() {
                                     }}
                                 >
                                     Record Again
-                                </CompactButton>
+                                </SmallButton>
                             </div>
                         </div>
                     )}
@@ -211,13 +211,13 @@ export default function SpeakingPractice() {
                     {!showResult && !isRecording && (
                         <div className="w-full flex flex-row justify-center items-center gap-4">
                             <div className="relative group">
-                                <CompactButton 
+                                <SmallButton 
                                     size="sm" 
                                     variant="primary" 
                                     onClick={handleStartRecording}
                                 >
                                     Speak Now!
-                                </CompactButton>
+                                </SmallButton>
                                 
                                 {/* Tooltip */}
                                 <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 px-3 py-2 bg-white text-black text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-20 border border-gray-200 shadow-lg">
@@ -233,14 +233,14 @@ export default function SpeakingPractice() {
                 {/* Next Button - Positioned below the gray container in white background */}
                 {showResult && (
                     <div className="w-full flex justify-end mt-6">
-                        <CompactButton 
+                        <SmallButton 
                             size="lg" 
                             variant="skip"
                             onClick={handleNext}
                             className="bg-blue-600 text-white border-white hover:bg-blue-700"
                         >
                             Next
-                        </CompactButton>
+                        </SmallButton>
                     </div>
                 )}
             </div>

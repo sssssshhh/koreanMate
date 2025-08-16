@@ -1,4 +1,4 @@
-import { PrimaryButton } from "@/common/ui/primary-button";
+import { MediumButton } from "@/common/ui/medium-button";
 import { Link } from "react-router";
 
 export default function MainLayout() {
@@ -18,12 +18,12 @@ export default function MainLayout() {
         
         <div className="py-8">
           <Link to="/stories">
-            <PrimaryButton 
+            <MediumButton 
               className="w-[253px] h-[40px] px-5 bg-orange-600 hover:bg-orange-500"
               textColor="#ffffff"
             >
               Start Your First Story Free 
-            </PrimaryButton>
+            </MediumButton>
           </Link>
         </div>
         
@@ -164,12 +164,12 @@ export default function MainLayout() {
             </div>
             <div className="py-8">
               <Link to="/stories">
-                <PrimaryButton 
+                <MediumButton 
                   className="w-[253px] h-[40px] px-5 bg-orange-600 hover:bg-orange-500"
                   textColor="#ffffff"
                 >
                   Start Your First Story Free 
-                </PrimaryButton>
+                </MediumButton>
               </Link>
             </div>
       </div>

@@ -1,4 +1,4 @@
-import { CompactButton } from "@/common/ui/compact-button";
+import { SmallButton } from "@/common/ui/small-button";
 import { Icon } from "@/common/ui/icon";
 import { SearchInput } from "@/common/ui/search-input";
 import { StoryCard } from "@/features/learning/components/story-card";
@@ -115,112 +115,112 @@ export default function Stories() {
                         <div className="flex flex-row">
                             <div className="w-28 pr-8 pt-2 justify-start text-stone-950 text-lg font-medium font-['Pretendard'] leading-relaxed tracking-tight">Topics</div>
                             <div className="flex flex-row gap-4">
-                                <CompactButton 
+                                <SmallButton 
                                     variant="filter" 
                                     onClick={() => toggleButtonSelection("All stories")}
                                     className={isButtonSelected("All stories") ? "!bg-yellow-600 !text-white" : ""}
                                 >
                                     <span>All stories</span>
                                     <Icon name="check" className="ml-2" />
-                                </CompactButton>
-                                <CompactButton 
+                                </SmallButton>
+                                <SmallButton 
                                     variant="filter" 
                                     onClick={() => toggleButtonSelection("Dear diary")}
                                     className={isButtonSelected("Dear diary") ? "!bg-yellow-600 !text-white" : ""}
                                 >
                                     <span>Dear diary</span>
                                     <Icon name="check" className="ml-2" />
-                                </CompactButton>
-                                <CompactButton 
+                                </SmallButton>
+                                <SmallButton 
                                     variant="filter" 
                                     onClick={() => toggleButtonSelection("k-days")}
                                     className={isButtonSelected("k-days") ? "!bg-yellow-600 !text-white" : ""}
                                 >
                                     <span>k-days</span>
                                     <Icon name="check" className="ml-2" />
-                                </CompactButton>
-                                <CompactButton 
+                                </SmallButton>
+                                <SmallButton 
                                     variant="filter" 
                                     onClick={() => toggleButtonSelection("Seasonal stories")}
                                     className={isButtonSelected("Seasonal stories") ? "!bg-yellow-600 !text-white" : ""}
                                 >
                                     <span>Seasonal stories</span>
                                     <Icon name="check" className="ml-2" />
-                                </CompactButton>
+                                </SmallButton>
                             </div>
                         </div>
                         <div className="flex flex-row">
                             <div className="w-28 pr-8 justify-start text-stone-950 text-lg font-medium font-['Pretendard'] leading-relaxed tracking-tight">Categories</div>
                             <div className="flex flex-row gap-5">
-                                <CompactButton 
+                                <SmallButton 
                                     variant="filter" 
                                     onClick={() => toggleButtonSelection("Reading for Fun")}
                                     className={isButtonSelected("Reading for Fun") ? "!bg-yellow-600 !text-white" : ""}
                                 >
                                     <span>Reading for Fun</span>
                                     <Icon name="check" className="ml-2" />
-                                </CompactButton>
-                                <CompactButton 
+                                </SmallButton>
+                                <SmallButton 
                                     variant="filter" 
                                     onClick={() => toggleButtonSelection("Living in Korea")}
                                     className={isButtonSelected("Living in Korea") ? "!bg-yellow-600 !text-white" : ""}
                                 >
                                     <span>Living in Korea</span>
                                     <Icon name="check" className="ml-2" />
-                                </CompactButton>
-                                <CompactButton 
+                                </SmallButton>
+                                <SmallButton 
                                     variant="filter" 
                                     onClick={() => toggleButtonSelection("Studying in Korea")}
                                     className={isButtonSelected("Studying in Korea") ? "!bg-yellow-600 !text-white" : ""}
                                 >
                                     <span>Studying in Korea</span>
                                     <Icon name="check" className="ml-2" />
-                                </CompactButton>
-                                <CompactButton 
+                                </SmallButton>
+                                <SmallButton 
                                     variant="filter" 
                                     onClick={() => toggleButtonSelection("First time in Korea")}
                                     className={isButtonSelected("First time in Korea") ? "!bg-yellow-600 !text-white" : ""}
                                 >
                                     <span>First time in Korea</span>
                                     <Icon name="check" className="ml-2" />
-                                </CompactButton>
-                                <CompactButton 
+                                </SmallButton>
+                                <SmallButton 
                                     variant="filter" 
                                     onClick={() => toggleButtonSelection("I Love Korean Culture")}
                                     className={isButtonSelected("I Love Korean Culture") ? "!bg-yellow-600 !text-white" : ""}
                                 >
                                     <span>I Love Korean Culture</span>
                                     <Icon name="check" className="ml-2" />
-                                </CompactButton>
+                                </SmallButton>
                             </div>                        
                         </div>
                         <div className="flex flex-row">
                             <div className="w-28 pr-8 justify-start text-stone-950 text-lg font-medium font-['Pretendard'] leading-relaxed tracking-tight">All levels</div>
                             <div className="flex flex-row gap-3">
-                                <CompactButton 
+                                <SmallButton 
                                     variant="filter" 
                                     onClick={() => toggleButtonSelection("A1")}
                                     className={isButtonSelected("A1") ? "!bg-yellow-600 !text-white" : ""}
                                 >
                                     <span>A1</span>
                                     <Icon name="check" className="ml-2" />
-                                </CompactButton>
-                                <CompactButton 
+                                </SmallButton>
+                                <SmallButton 
                                     variant="filter" 
                                     onClick={() => toggleButtonSelection("A2")}
                                     className={isButtonSelected("A2") ? "!bg-yellow-600 !text-white" : ""}
                                 >
                                     <span>A2</span>
                                     <Icon name="check" className="ml-2" />
-                                </CompactButton>
-                                <CompactButton 
+                                </SmallButton>
+                                <SmallButton 
                                     variant="filter" 
                                     onClick={() => toggleButtonSelection("B1")}
                                     className={isButtonSelected("B1") ? "!bg-yellow-600 !text-white" : ""}
                                 >
                                     <span>B1</span>
                                     <Icon name="check" className="ml-2" />
-                                </CompactButton>
+                                </SmallButton>
                             </div>
                         </div>
                     </div>

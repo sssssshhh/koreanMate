@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router"
 import { useAuth } from "@/features/auth/contexts/AuthContext";
+import { BaseButton } from "@/common/ui/base-button";
 
 export default function Navigation({isLoggedIn, isLoading}: {isLoggedIn: boolean; isLoading: boolean}){
     const { logout } = useAuth();

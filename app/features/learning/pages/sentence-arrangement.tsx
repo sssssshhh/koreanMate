@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import chaptersData from "@/features/learning/contents/chapters.json"
 import sentenceMeaningData from "@/features/learning/contents/sample.json"
 import { CustomProgress } from "@/common/ui/custom-progress"
-import { CompactButton } from "@/common/ui/compact-button"
+import { SmallButton } from "@/common/ui/small-button"
 import { CompletionPopup } from "@/features/learning/components/CompletionPopup"
 
 export default function SentenceArrangement(){
@@ -242,17 +242,17 @@ export default function SentenceArrangement(){
                     <div className="w-full flex flex-row justify-center items-center gap-4">
                         {!showResult ? (
                             <>
-                                <CompactButton size="sm" variant="skip" onClick={handleSkip}>
+                                <SmallButton size="sm" variant="skip" onClick={handleSkip}>
                                     Skip
-                                </CompactButton>
-                                <CompactButton size="sm" variant="primary" onClick={handleSubmit}>
+                                </SmallButton>
+                                <SmallButton size="sm" variant="primary" onClick={handleSubmit}>
                                     Submit
-                                </CompactButton>
+                                </SmallButton>
                             </>
                         ) : (
-                            <CompactButton size="sm" variant="primary" onClick={handleNext}>
+                            <SmallButton size="sm" variant="primary" onClick={handleNext}>
                                 Next
-                            </CompactButton>
+                            </SmallButton>
                         )}
                     </div>
                 </div>

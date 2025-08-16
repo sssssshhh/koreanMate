@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import chaptersData from "@/features/learning/contents/chapters.json"
 import sentenceMeaningData from "@/features/learning/contents/sample.json"
 import { CustomProgress } from "@/common/ui/custom-progress"
-import { CompactButton } from "@/common/ui/compact-button"
+import { SmallButton } from "@/common/ui/small-button"
 
 export default function SpeakingPractice() {
     const { storyId, chapterId } = useParams()
@@ -140,22 +140,22 @@ export default function SpeakingPractice() {
                     <div className="w-full flex flex-row justify-center items-center gap-4">
                         {!showResult ? (
                             <>
-                                <CompactButton size="sm" variant="skip">
+                                <SmallButton size="sm" variant="skip">
                                     Skip
-                                </CompactButton>
-                                <CompactButton 
+                                </SmallButton>
+                                <SmallButton 
                                     size="sm" 
                                     variant="primary" 
                                     onClick={handleStartRecording}
                                     disabled={isRecording}
                                 >
                                     {isRecording ? 'Recording...' : 'Start Recording'}
-                                </CompactButton>
+                                </SmallButton>
                             </>
                         ) : (
-                            <CompactButton size="sm" variant="primary" onClick={handleNext}>
+                            <SmallButton size="sm" variant="primary" onClick={handleNext}>
                                 Next
-                            </CompactButton>
+                            </SmallButton>
                         )}
                     </div>
                 </div>

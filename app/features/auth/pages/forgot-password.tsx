@@ -1,4 +1,4 @@
-import { PrimaryButton } from "@/common/ui/primary-button";
+import { MediumButton } from "@/common/ui/medium-button";
 import { Input } from "@/common/ui/input";
 import { useState } from "react";
 import { resetPassword } from "aws-amplify/auth";
@@ -87,14 +87,14 @@ export default function ForgotPassword() {
             </div>
 
             <div className="flex flex-col justify-center items-center pt-10 gap-4">
-              <PrimaryButton
+              <MediumButton
                 type="submit"
                 disabled={isLoading}
                 className="w-full"
                 bgColor="#0057FF"
               >
                 {isLoading ? "Sending..." : "Send Reset Link"}
-              </PrimaryButton>
+              </MediumButton>
             </div>
           </form>
         </div>

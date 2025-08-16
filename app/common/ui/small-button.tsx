@@ -1,7 +1,7 @@
 import React from "react";
 import { cn } from "@/lib/utils";
 
-interface CompactButtonProps {
+interface SmallButtonProps {
   children: React.ReactNode;
   className?: string;
   onClick?: () => void;
@@ -29,7 +29,7 @@ const variantClasses = {
   skip: "border-gray-600 text-gray-600 hover:bg-gray-50",
 };
 
-export function CompactButton({ 
+export function SmallButton({ 
   children, 
   className, 
   onClick, 
@@ -38,7 +38,7 @@ export function CompactButton({
   size = "md",
   variant = "default",
   customColor
-}: CompactButtonProps) {
+}: SmallButtonProps) {
   const buttonStyle = customColor ? {
     backgroundColor: customColor.bgColor,
     color: customColor.textColor,
@@ -52,7 +52,7 @@ export function CompactButton({
       disabled={disabled}
       className={cn(
         "rounded-full border flex justify-center items-center",
-        "font-merriweather tracking-tight",
+        "font-['Merriweather'] tracking-tight",
         "transition-colors duration-200",
         "disabled:opacity-50 disabled:cursor-not-allowed",
         "min-w-fit whitespace-nowrap",
