@@ -28,7 +28,7 @@ export function StoryLayout({
         <div className="w-full flex flex-col items-center justify-center px-4 lg:px-28 py-20">
             {/* Breadcrumb Navigation */}
             {breadcrumbItems.length > 0 && (
-                <div className="w-full flex text-base font-bold font-pretendard px-4 lg:px-0 justify-center lg:justify-start">
+                <div className="w-full flex flex-wrap text-base font-bold font-pretendard px-4 lg:px-0 justify-start">
                     {breadcrumbItems.map((item, index) => (
                         <div key={index} className="flex items-center">
                             {item.link ? (

@@ -37,7 +37,7 @@ export default function ChapterDetail(){
                 return wordData.definition
             }
         }
-        return "Definition not found"
+        return ""
     }
 
     // split sentence into words and make them hoverable
@@ -95,17 +95,17 @@ export default function ChapterDetail(){
             ]}
         >
             {/* Chapter Detail Content */}
-            <div className="pt-16 w-full flex flex-col items-center justify-center">
+            <div className="pt-16 w-full flex flex-col items-center justify-center px-4 lg:px-0">
                 <div className="flex flex-col w-full">
-                    <div className="h-14 px-6 py-5 bg-white rounded-tl-[10px] rounded-tr-[10px] border-l border-r border-t border-amber-200 inline-flex justify-start items-center">
-                        <div className="w-32 text-neutral-400 text-sm font-semibold font-['Lato'] leading-tight tracking-tight">Sentence meaning</div>
-                        <div className="text-stone-950 text-xl font-normal leading-loose tracking-wide">
+                    <div className="h-20 lg:h-14 px-4 lg:px-6 py-4 lg:py-5 bg-white rounded-tl-[10px] rounded-tr-[10px] border-l border-r border-t border-amber-200 flex flex-col lg:flex-row justify-start items-start lg:items-center gap-2 lg:gap-0 overflow-hidden">
+                        <div className="w-full lg:w-32 text-neutral-400 text-sm font-semibold font-lato leading-tight tracking-tight flex-shrink-0 whitespace-nowrap">Sentence meaning</div>
+                        <div className="text-stone-950 text-lg lg:text-xl font-normal leading-relaxed lg:leading-loose tracking-wide break-words font-lato">
                             {hoveredSentenceIndex >= 0 ? sentences[hoveredSentenceIndex].translations.en : ""}
                         </div>
                     </div>
-                    <div className="h-14 px-6 py-5 bg-white rounded-bl-[10px] rounded-br-[10px] border-l border-r border-b border-t border-amber-200 inline-flex justify-start items-center">
-                        <div className="w-32 text-neutral-400 text-sm font-semibold font-['Lato'] leading-tight tracking-tight">Word meaning</div>
-                        <div className="text-stone-950 text-xl font-normal leading-loose tracking-wide">
+                    <div className="h-20 lg:h-14 px-4 lg:px-6 py-4 lg:py-5 bg-white rounded-bl-[10px] rounded-br-[10px] border-l border-r border-b border-t border-amber-200 flex flex-col lg:flex-row justify-start items-start lg:items-center gap-2 lg:gap-0 overflow-hidden">
+                        <div className="w-full lg:w-32 text-neutral-400 text-sm font-semibold font-lato leading-tight tracking-tight flex-shrink-0 whitespace-nowrap">Word meaning</div>
+                        <div className="text-stone-950 text-lg lg:text-xl font-normal leading-relaxed lg:leading-loose tracking-wide break-words font-lato">
                             {hoveredWord ? findWordDefinition(hoveredWord) : ""}
                         </div>
                     </div>
@@ -126,7 +126,7 @@ export default function ChapterDetail(){
                     <img src="/images/cirlce3.svg" alt="circle3" className="w-4 h-4" />
                 </button>
                 
-                {/* Filter Area - shown when button is clicked */}
+                {/* Text size control - show when button is clicked */}
                 {showFilterArea && (
                     <div className="absolute top-full right-0 mt-2 w-80 bg-white rounded-[10px] outline outline-1 outline-amber-200 p-4 shadow-lg z-10">
                         <div className="flex flex-col gap-4">
