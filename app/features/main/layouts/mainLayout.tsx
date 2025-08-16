@@ -1,4 +1,5 @@
 import { PrimaryButton } from "@/common/ui/primary-button";
+import { Link } from "react-router";
 
 export default function MainLayout() {
   return (
@@ -16,12 +17,14 @@ export default function MainLayout() {
         </div>
         
         <div className="py-8">
-          <PrimaryButton 
-            className="w-[253px] h-[40px] px-5 bg-orange-600 hover:bg-orange-500"
-            textColor="#ffffff"
-          >
-            Start Your First Story Free 
-          </PrimaryButton>
+          <Link to="/stories">
+            <PrimaryButton 
+              className="w-[253px] h-[40px] px-5 bg-orange-600 hover:bg-orange-500"
+              textColor="#ffffff"
+            >
+              Start Your First Story Free 
+            </PrimaryButton>
+          </Link>
         </div>
         
         <div className="pb-4 text-center justify-start text-white/70 text-lg font-normal font-lato">
@@ -38,7 +41,9 @@ export default function MainLayout() {
         />
       </div> */}
       </div>
+
       <div className="w-full h-3/6 px-10 flex flex-col justify-center items-center">
+          {/* title */}
           <div className="w-full h-1/6 flex flex-row items-center justify-center">
               <img src="/images/color_heart_left.png" alt="color_heart_left" className="w-1/3 h-full" />
               <div className="w-full flex flex-col text-center justify-center items-center">
@@ -55,6 +60,7 @@ export default function MainLayout() {
               </div>
             <img src="/images/color_heart_right.png" alt="color_heart_right" className="w-1/3 h-full" />
           </div>
+          { /* introduction */}
           <div className="w-full h-2/3 flex flex-col px-7">
             {/* 1/3 main */}
             <div className="h-1/3 flex flex-row items-center justify-center">
@@ -144,12 +150,34 @@ export default function MainLayout() {
               </div>
             </div>
           </div>
-
+          { /* what learners say */}
+          {/* <div></div> */}
+          {/* lets start */}
+          <div className="w-full h-1/6 flex flex-col items-center justify-center">
+            <div className="h-16 text-center text-stone-950 text-5xl font-bold font-merriweather">
+              Ready to begin your story?
+            </div>
+            <div className="text-center text-yellow-600 text-2xl font-normal font-pretendard">
+              Start reading right away. Earn stars as you go.
+              <br/>
+              No signup needed — just explore and learn.
+            </div>
+            <div className="py-8">
+              <Link to="/stories">
+                <PrimaryButton 
+                  className="w-[253px] h-[40px] px-5 bg-orange-600 hover:bg-orange-500"
+                  textColor="#ffffff"
+                >
+                  Start Your First Story Free 
+                </PrimaryButton>
+              </Link>
+            </div>
+      </div>
 
       </div>
       <div>
 
-    </div>
+      </div>
       
 
     </div>
