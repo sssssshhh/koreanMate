@@ -101,8 +101,8 @@ export default function SpeakingPractice() {
     }
 
     return (
-        <div className="w-full min-h-screen bg-[#FFFDD0] flex items-center justify-center p-6">
-            <div className="w-[1284px] px-6 py-14 bg-white rounded-[32px] border-l border-r border-t border-amber-200 inline-flex flex-col justify-start items-center gap-8">
+        <div className="w-full min-h-screen bg-[#FFFDD0] flex items-center justify-center">
+            <div className="w-full lg:w-[1284px] px-6 py-14 bg-white rounded-[32px] border-l border-r border-t border-amber-200 inline-flex flex-col justify-start items-center gap-8">
                 {/* Progress Bar */}
                 <CustomProgress 
                     progress={progress}
@@ -110,7 +110,7 @@ export default function SpeakingPractice() {
                     total={currentSentences.length}
                 />
                 
-                <h2 className="text-center text-stone-950 text-2xl font-normal font-merriweather tracking-tight">
+                <div className="text-center text-stone-950 text-2xl font-normal font-merriweather tracking-tight">
                     {!showResult && (
                         <>
                             Practice speaking the sentences out loud
@@ -118,10 +118,10 @@ export default function SpeakingPractice() {
                             Listen carefully and repeat what you hear.
                         </>
                     )}
-                </h2>
+                </div>
                 
                 {/* Current Sentence Display */}
-                <div className="w-[742px] px-8 py-10 bg-neutral-100 rounded-3xl flex flex-col justify-between items-center gap-8">                    
+                <div className="w-full lg:w-[742px] px-8 py-10 bg-neutral-100 rounded-3xl flex flex-col justify-between items-center gap-8">                    
                     {/* Speaker Icon - Only show when not showing result */}
                     {!showResult && (
                         <div className="relative group">
@@ -232,7 +232,7 @@ export default function SpeakingPractice() {
                 
                 {/* Next Button - Positioned below the gray container in white background */}
                 {showResult && (
-                    <div className="w-full flex justify-end mt-6">
+                    <div className="w-full flex justify-center lg:justify-end mt-6">
                         <SmallButton 
                             size="lg" 
                             variant="skip"

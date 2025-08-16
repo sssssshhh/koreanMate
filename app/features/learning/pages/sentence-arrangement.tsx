@@ -4,7 +4,7 @@ import chaptersData from "@/features/learning/contents/chapters.json"
 import sentenceMeaningData from "@/features/learning/contents/sample.json"
 import { CustomProgress } from "@/common/ui/custom-progress"
 import { SmallButton } from "@/common/ui/small-button"
-import { CompletionPopup } from "@/features/learning/components/CompletionPopup"
+import { CompletionPopup } from "@/features/learning/components/completionPopup"
 
 export default function SentenceArrangement(){
     const { storyId, chapterId } = useParams()
@@ -177,11 +177,11 @@ export default function SentenceArrangement(){
                     total={currentSentences.length}
                 />
                 
-                <h2 className="text-center text-stone-950 text-2xl font-normal font-merriweather tracking-tight">
+                <div className="text-center text-stone-950 text-lg lg:text-2xl font-normal font-merriweather tracking-tight px-4 lg:px-0">
                     This sentence is from the story you just read. 
                     <br />
                     Put the words in the correct order to complete it.
-                </h2>
+                </div>
                 
                 {/* Current Sentence Display */}
                 <div className="w-[742px] px-8 py-10 bg-neutral-100 rounded-3xl flex flex-col justify-between items-center gap-8">                    
