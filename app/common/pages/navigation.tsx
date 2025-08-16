@@ -1,6 +1,6 @@
-import { Link, useNavigate } from "react-router"
+import { Link } from "react-router"
 import { useAuth } from "@/features/auth/contexts/AuthContext";
-import { BaseButton } from "@/common/ui/base-button";
+import { SmallButton } from "@/common/ui/small-button";
 
 export default function Navigation({isLoggedIn, isLoading}: {isLoggedIn: boolean; isLoading: boolean}){
     const { logout } = useAuth();
@@ -15,44 +15,21 @@ export default function Navigation({isLoggedIn, isLoading}: {isLoggedIn: boolean
 
     return (
         <nav>
-            {/* TODO check:self-stretch data-property data-show-icon*/}
-            <div className="self-stretch flex flex-col justify-start items-start">
-                <div className="self-stretch flex flex-col justify-start items-start">
-                    <div className="self-stretch px-28 py-2.5 bg-white inline-flex justify-start items-center gap-10">
-                        <div className="flex-1 flex justify-between items-center">
-                            <div className="pt-2.5 flex justify-center items-center gap-2.5">
-                                <div className="justify-start text-blue-600 text-2xl font-black">
-                                    <Link to="/">
-                                        Korean Mate
-                                    </Link>
-                                </div>
-                            </div>
-                            <div className="pt-3.5 flex justify-start items-end gap-28 text-black text-base font-bold tracking-tight">
-                                <Link to="/stories">Learn</Link>
-                                <Link to="/">Give</Link>
-                                <Link to="/">My page</Link>
-                            </div>
-                            {isLoggedIn ? 
-                                <div className="pt-3.5 flex justify-start items-center gap-2.5">
-                                    <div data-property-1="blue" data-property-2="default" data-show-icon="false" className="px-5 py-2.5 bg-blue-600 rounded-full flex justify-center items-center gap-2.5">
-                                        <div className="justify-start text-white text-base font-bold tracking-tight">Log our</div>
-                                    </div>
-                                </div>
-                                    :
-                                <div className="pt-3.5 flex justify-start items-center gap-2.5">
-                                    <div data-property-1="blue" data-property-2="default" data-show-icon="false" className="px-5 py-2.5 bg-blue-600 rounded-full flex justify-center items-center gap-2.5">
-                                        <Link to="/login" className="justify-start text-white text-base font-bold tracking-tight">Log in</Link>
-                                    </div>
-                                    <div data-property-1="orange" data-property-2="default" data-show-icon="false" className="px-5 py-2.5 bg-orange-600 rounded-full flex justify-center items-center gap-2.5">
-                                        <Link to="/register" className="text-white text-base font-bold tracking-tight">Join us!</Link>
-                                    </div>
-                                </div>
-                            }
-                        </div>
+            <div className="w-full h-20 flex flex-row justify-between items-center bg-white px-32">
+                    <img src="/images/logo.svg" alt="logo" className="w-36 h-8" />
+                    <div className="flex flex-row items-center gap-28">
+                        <Link to="/stories" className="text-black text-base font-merriweather hover:text-blue-600">Learn</Link>
+                        <Link to="/" className="text-black text-base font-merriweather hover:text-blue-600">Give</Link>
+                        <Link to="/" className="text-black text-base font-merriweather hover:text-blue-600">My page</Link>
                     </div>
-                    {/* TODO:이게 왜 필요하지? */}
-                    <div className="self-stretch h-7 bg-white"></div>
-                </div>
+                    <div className="flex flex-row items-center gap-10">
+                        <Link to="/login">
+                            <SmallButton className="bg-blue-600 hover:bg-blue-500 text-white font-merriweather">Log in</SmallButton>
+                        </Link>
+                        <Link to="/register">
+                            <SmallButton className="bg-orange-600 hover:bg-orange-500 text-white border border-orange-600 font-merriweather">Join us!</SmallButton>
+                        </Link>
+                    </div>
             </div>
 
 
