@@ -33,10 +33,10 @@ export function CompletionPopup({ isVisible, onClose, storyId, chapterId }: Comp
             <div className="w-[406px] h-[421px] bg-white px-8 py-5 rounded-2xl flex flex-col items-center justify-center gap-6 shadow-2xl border border-gray-200 relative z-10">
             <img src="/images/welldone.svg" alt="welldone" className="w-12 h-12" />
                 <div className="text-center">
-                    <div className="text-stone-950 text-3xl font-normal font-['Merriweather'] tracking-tight">
+                    <div className="text-stone-950 text-3xl font-pretendardormal font-merriweather tracking-tight">
                         Well done!
                     </div>
-                    <div className="pb-5 w-80 text-neutral-400 text-base font-normal font-['Lato'] leading-normal tracking-tight">
+                    <div className="pb-5 w-80 text-neutral-400 text-base font-pretendardormal font-['Lato'] leading-normal tracking-tight">
                     You arranged all the sentences — 
                     <br />
                     that's amazing!

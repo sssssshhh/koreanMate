@@ -99,13 +99,13 @@ export default function ChapterDetail(){
                 <div className="flex flex-col w-full">
                     <div className="h-14 px-6 py-5 bg-white rounded-tl-[10px] rounded-tr-[10px] border-l border-r border-t border-amber-200 inline-flex justify-start items-center">
                         <div className="w-32 text-neutral-400 text-sm font-semibold font-['Lato'] leading-tight tracking-tight">Sentence meaning</div>
-                        <div className="text-stone-950 text-xl font-normal leading-loose tracking-wide">
+                        <div className="text-stone-950 text-xl font-pretendardormal leading-loose tracking-wide">
                             {hoveredSentenceIndex >= 0 ? sentences[hoveredSentenceIndex].translations.en : ""}
                         </div>
                     </div>
                     <div className="h-14 px-6 py-5 bg-white rounded-bl-[10px] rounded-br-[10px] border-l border-r border-b border-t border-amber-200 inline-flex justify-start items-center">
                         <div className="w-32 text-neutral-400 text-sm font-semibold font-['Lato'] leading-tight tracking-tight">Word meaning</div>
-                        <div className="text-stone-950 text-xl font-normal leading-loose tracking-wide">
+                        <div className="text-stone-950 text-xl font-pretendardormal leading-loose tracking-wide">
                             {hoveredWord ? findWordDefinition(hoveredWord) : ""}
                         </div>
                     </div>
@@ -193,7 +193,7 @@ export default function ChapterDetail(){
                 <div className="px-6 py-5 relative bg-white rounded-tl-[10px] rounded-tr-[10px] border-l border-r border-t border-amber-200 flex flex-col gap-3">
                     {filteredSentences.map((sentence, index) => (
                         <div key={index} className="flex flex-col gap-2">
-                            <div className="text-stone-950 text-xl font-normal leading-relaxed tracking-wide">
+                            <div className="text-stone-950 text-xl font-pretendardormal leading-relaxed tracking-wide">
                                 {renderHoverableSentence(sentence.original, index)}
                             </div>
                         </div>

@@ -1,17 +1,15 @@
-import { CompactButton } from "@/common/ui/compact-button";
-import { LargeButton } from "@/common/ui/large-button";
 import { PrimaryButton } from "@/common/ui/primary-button";
 
 export default function MainLayout() {
   return (
     <div className="w-full relative inline-flex flex-col justify-start items-center overflow-hidden">
       <div className="pt-10 px-80 w-full h-1/6 bg-blue-600 flex flex-col justify-center items-center text-center">
-        <div className="text-white text-6xl font-bold font-['Merriweather']">
+        <div className="text-white text-6xl font-bold font-merriweather">
           Learn Korean with Stories
           <br /> 
           You'll Actually Love
         </div>
-        <div className="pt-8 text-white/70 text-2xl font-['Pretendard']">
+        <div className="pt-8 text-white/70 text-1xl font-pretendard">
         Interactive Reading. Meaningful Progress.
         <br />
         No more boring grammar drills. Just read, speak, and grow—naturally.  
@@ -26,7 +24,7 @@ export default function MainLayout() {
           </PrimaryButton>
         </div>
         
-        <div className="pb-4 text-center justify-start text-white/70 text-lg font-normal font-['Lato']">
+        <div className="pb-4 text-center justify-start text-white/70 text-lg font-normal font-lato">
           No signup needed. Read the story, arrange sentences, speak aloud.
         </div>
         {/* TODO:Wave divider using CSS clip-path
@@ -41,36 +39,69 @@ export default function MainLayout() {
       </div> */}
       </div>
       <div className="w-full h-3/6 px-10 flex flex-col justify-center items-center">
-          <div className="w-full h-1/3 flex flex-row items-center justify-center">
-            <img src="/images/color_heart_left.png" alt="color_heart_left" className="w-1/3 h-full" />
-            {/* <div className="flex flex-col text-center justify-start">
-              <div className="text-orange-600 text-5xl text-bold font-['Merriweather']">
-                Three Simple Ways
-              </div>
-              <div className="text-stoen-950 text-4xl font-bold font-['Merriweather']">
-                to Master Korean
-              </div>
-            </div> */}
-            <div className="self-stretch text-center justify-center items-center">
-              <span className="text-orange-600 text-5xl font-bold font-['Merriweather'] leading-[67.20px] tracking-wide">
+          <div className="w-full h-1/6 flex flex-row items-center justify-center">
+              <img src="/images/color_heart_left.png" alt="color_heart_left" className="w-1/3 h-full" />
+              <div className="w-full flex flex-col text-center justify-center items-center">
+                <span className="text-orange-600 text-5xl font-bold font-merriweather leading-[67.20px] tracking-wide">
                 Three Simple Ways
                 <br/>
                 </span>
-                <span className="text-orange-600 text-4xl font-bold font-['Merriweather'] leading-[56px] tracking-tight">
-                </span>
-                <span className="text-stone-950 text-4xl font-bold font-['Merriweather'] leading-[56px] tracking-tight">
+                <span className="text-stone-950 text-4xl font-bold font-merriweather leading-[56px] tracking-tight">
                   to Master Korean
                 </span>
-                {/* Handwriting image centered */}
                 <div className="flex justify-center items-center mt-8">
                   <img src="/images/handwriting.png" alt="handwriting" className="w-3xs h-16" />
                 </div>
               </div>
-              
-
             <img src="/images/color_heart_right.png" alt="color_heart_right" className="w-1/3 h-full" />
-
           </div>
+          <div className="w-full h-1/3 px-20 flex flex-row items-center justify-center">
+            {/* 1/3 main */}
+            <div className="w-1/3 h-1/3 flex flex-col items-start justify-start">
+              <span className="text-blue-600 text-4xl font-bold font-merriweather leading-[49px] tracking-tight">
+                01
+              </span>
+              <span className="text-stone-950 text-4xl font-bold font-merriweather leading-[49px] tracking-tight">
+                Interactive Stories
+              </span>
+              <div className="pt-5 text-neutral-400 text-xl font-normal font-lato tracking-tight">
+                Level-based stories you actually enjoy. 
+                <br/>
+                Tap for meanings, pronunciations, and grammar notes.
+              </div>
+              <div className="flex flex-col pt-5 text-stone-950 text-2xl font-normal font-handlee">
+                <div className="w-2/3">Read more naturally</div>
+                <div className="w-fit">
+                  <img src="/images/underline.svg" alt="underline" className="w-full" />
+                </div>
+              </div>
+              <div className="pt-2 text-yellow-600 text-lg font-normal font-handlee">
+                With guided pronunciation
+              </div>
+              <div className="pt-8 text-stone-950 text-2xl font-normal font-handlee">
+                <div className="w-2/3">Understand deeply</div>
+                <div className="w-fit">
+                  <img src="/images/underline.svg" alt="underline" className="w-full" />
+                </div>
+              </div>
+              <div className="pt-2 text-yellow-600 text-lg font-normal font-handlee">
+                With word-by-word breakdowns
+              </div>
+            </div>
+            <div className="w-2/3 flex justify-center items-center">
+              <img src="/images/main1.png" alt="main1" />
+            </div>
+            
+          </div>
+          
+          <div className="w-full h-1/3 flex flex-row items-center justify-center">
+          
+          </div>
+
+          <div className="w-full h-1/3 flex flex-row items-center justify-center">
+          
+          </div>
+
       </div>
       <div>
 

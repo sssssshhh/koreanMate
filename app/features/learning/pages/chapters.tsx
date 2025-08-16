@@ -35,10 +35,10 @@ export default function Chapters(){
                         className="w-full h-16 bg-white rounded-[10px] outline outline-offset-[-1px] outline-amber-200 hover:outline-amber-300 transition-colors cursor-pointer"
                     >
                         <div className="flex flex-row px-8 py-5">
-                            <div className="w-16 text-orange-600 text-base font-normal font-['Lato'] leading-normal tracking-tight">
+                            <div className="w-16 text-orange-600 text-base font-pretendardormal font-['Lato'] leading-normal tracking-tight">
                                 {chapter["chpater-number"]}
                             </div>
-                            <div className="w-full pl-12 text-stone-950 text-base font-normal font-['Pretendard'] leading-normal tracking-tight">
+                            <div className="w-full pl-12 text-stone-950 text-base font-pretendardormal font-['Pretendard'] leading-normal tracking-tight">
                                 {chapter["chapter-name"]}
                             </div>
                             <img src="/images/done.svg" alt="done" className="w-6 h-6" />

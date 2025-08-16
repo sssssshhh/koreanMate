@@ -75,7 +75,7 @@ export default function SpeakingPractice() {
         return (
             <div className="w-full min-h-screen bg-[#FFFDD0] flex items-center justify-center p-6">
                 <div className="w-[1284px] px-6 py-14 bg-white rounded-[32px] border-l border-r border-t border-amber-200 inline-flex flex-col justify-start items-center gap-8">
-                    <div className="py-8 text-center text-stone-950 text-2xl font-normal font-['Merriweather'] tracking-tight">
+                    <div className="py-8 text-center text-stone-950 text-2xl font-pretendardormal font-merriweather tracking-tight">
                     This sentence is from the story you just read. 
                     <br />
                     Try reading it out loud in Korean.
@@ -92,7 +92,7 @@ export default function SpeakingPractice() {
         return (
             <div className="w-full min-h-screen bg-[#FFFDD0] flex items-center justify-center p-6">
                 <div className="w-[1284px] px-6 py-14 bg-white rounded-[32px] border-l border-r border-t border-amber-200 inline-flex flex-col justify-start items-center gap-8">
-                    <div className="py-8 text-center text-stone-950 text-2xl font-normal font-['Merriweather'] tracking-tight">
+                    <div className="py-8 text-center text-stone-950 text-2xl font-pretendardormal font-merriweather tracking-tight">
                         Loading sentence...
                     </div>
                 </div>
@@ -110,7 +110,7 @@ export default function SpeakingPractice() {
                     total={currentSentences.length}
                 />
                 
-                <h2 className="text-center text-stone-950 text-2xl font-normal font-['Merriweather'] tracking-tight">
+                <h2 className="text-center text-stone-950 text-2xl font-pretendardormal font-merriweather tracking-tight">
                     {!showResult && (
                         <>
                             Practice speaking the sentences out loud
@@ -141,7 +141,7 @@ export default function SpeakingPractice() {
                     {/* Sentence Display - Only show when not showing result */}
                     {!showResult && (
                         <div className="w-full text-center">
-                            <div className="text-blue-600 text-lg font-bold font-['Merriweather'] leading-relaxed tracking-tight">
+                            <div className="text-blue-600 text-lg font-bold font-merriweather leading-relaxed tracking-tight">
                                 Now say it yourself.
                             </div>
                             <div className="text-lg text-neutral-600">

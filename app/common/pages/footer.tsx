@@ -4,7 +4,7 @@ export default function footer() {
             <div className="w-full flex justify-between">
                 {/* Logo */}
                 <div className="flex justify-center pr-12">
-                    <div className="justify-start text-blue-600 text-2xl font-black font-['Merriweather']">Korean Mate</div>
+                    <div className="justify-start text-blue-600 text-2xl font-black font-merriweather">Korean Mate</div>
                 </div>
                 
                 {/* About us, Plans, Grammar, Video Lessons */}

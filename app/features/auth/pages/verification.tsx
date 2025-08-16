@@ -69,7 +69,7 @@ export default function Verification() {
         <div className="flex justify-center w-full">
           <form onSubmit={handleVerify} className="space-y-4 w-10/12 max-w-md pt-14" noValidate>
             <div className="space-y-2">
-              <label htmlFor="verificationCode" className="text-neutral-400 text-base font-normal font-['Lato']">
+              <label htmlFor="verificationCode" className="text-neutral-400 text-base font-pretendardormal font-['Lato']">
                 Verification Code <span className="text-red-500 ml-1">*</span>
               </label>
               <Input

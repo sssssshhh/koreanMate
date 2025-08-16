@@ -55,7 +55,7 @@ export function StoryLayout({
                     <div className="justify-start text-orange-600 text-lg font-medium font-['Pretendard'] leading-relaxed tracking-tight">
                         {level} Level
                     </div>
-                    <div className="pt-6 text-stone-950 text-4xl font-bold font-['Merriweather'] leading-[56px] tracking-tight">
+                    <div className="pt-6 text-stone-950 text-4xl font-bold font-merriweather leading-[56px] tracking-tight">
                         {storyTitle}
                     </div>
                     <div className="py-7 text-neutral-400 text-lg font-medium font-['Pretendard'] leading-relaxed tracking-tight max-w-2xl whitespace-pre-line">
@@ -63,7 +63,7 @@ export function StoryLayout({
                     </div>
                     {showSaveButton && (
                         <LargeButton variant="primary">
-                            <span className="text-white text-base font-bold font-['Merriweather'] tracking-tight">Save lessons</span>
+                            <span className="text-white text-base font-bold font-merriweather tracking-tight">Save lessons</span>
                             <img src="/images/star.svg" alt="star" className="w-6 h-6" />
                         </LargeButton>
                     )}

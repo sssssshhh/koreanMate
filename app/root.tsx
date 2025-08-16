@@ -32,7 +32,7 @@ export const links: Route.LinksFunction = () => [
   },
   {
     rel: "stylesheet",
-    href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css",
+    href: "https://cdnjs.cloudflare.com/ajax/libs/font-pretendardwesome/6.5.1/css/all.min.css",
   },
 ];
 
@@ -83,7 +83,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
     <div className="min-h-screen bg-gray-900/80 flex items-center justify-center p-4">
       <div className="w-[418px] h-[394px] bg-white rounded-lg p-9 flex flex-col items-center justify-center text-center">
         <img src="/images/404.gif" alt="Error" className="w-20 h-20 mb-6" />
-        <div className="justify-start text-stone-950 text-3xl font-normal font-['Merriweather'] tracking-tight">"Oops! Something went wrong."</div>
+        <div className="justify-start text-stone-950 text-3xl font-pretendardormal font-merriweather tracking-tight">"Oops! Something went wrong."</div>
         <div className="pt-5 pb-10 w-80 justify-start text-neutral-400 text-base font-medium font-['Lato'] tracking-tight">We're having trouble loading your content.
         Please try again later, or return to the home page.
         </div>

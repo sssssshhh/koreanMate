@@ -52,7 +52,7 @@ export function CompactButton({
       disabled={disabled}
       className={cn(
         "rounded-full border flex justify-center items-center",
-        "font-['Merriweather'] tracking-tight",
+        "font-merriweather tracking-tight",
         "transition-colors duration-200",
         "disabled:opacity-50 disabled:cursor-not-allowed",
         "min-w-fit whitespace-nowrap",

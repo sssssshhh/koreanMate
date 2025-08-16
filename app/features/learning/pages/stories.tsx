@@ -94,7 +94,7 @@ export default function Stories() {
     return (
         <div className="flex justify-center w-full">
             <div className="pt-20 flex flex-col">
-                <div className="text-center justify-start text-stone-950 text-6xl font-bold font-['Merriweather'] tracking-wide">
+                <div className="text-center justify-start text-stone-950 text-6xl font-bold font-merriweather tracking-wide">
                     Korean mate stories
                 </div>
                 <div className="h-28 pt-5 flex justify-center items-center gap-3">
@@ -235,7 +235,7 @@ export default function Stories() {
                         return (
                             <div key={sectionIndex} className="w-full flex flex-col">
                                 <div className="flex flex-row w-full justify-between">
-                                    <div className="text-stone-950 text-3xl font-bold font-['Merriweather'] tracking-tight">
+                                    <div className="text-stone-950 text-3xl font-bold font-merriweather tracking-tight">
                                         {section.title}
                                     </div>
                                     <NavigationButtons

@@ -53,8 +53,8 @@ export default function AuthLayout({
             alt={iconAlt} 
             className="pb-4"
           />
-          <div className="text-stone-950 text-4xl font-normal pb-2 text-center">{title}</div>
-          <div className="text-neutral-400 text-base font-normal font-['Lato'] text-center">
+          <div className="text-stone-950 text-4xl font-pretendardormal pb-2 text-center">{title}</div>
+          <div className="text-neutral-400 text-base font-pretendardormal font-['Lato'] text-center">
             {renderSubtitle()}
           </div>
         </div>
