@@ -62,7 +62,7 @@ export function StoryLayout({
                         {description}
                     </div>
                     {showSaveButton && (
-                        <LargeButton variant="primary">
+                        <LargeButton variant="blue">
                             <span className="text-white text-base font-bold font-merriweather tracking-tight">Save lessons</span>
                             <img src="/images/star.svg" alt="star" className="w-6 h-6" />
                         </LargeButton>
