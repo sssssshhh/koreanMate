@@ -30,20 +30,20 @@ export default function AuthLayout({
   };
 
   return (
-    <div className="h-full pt-[100px] pl-[116px] pr-[116px] pb-[100px]">
-      <div className="w-full h-full bg-white rounded-lg border-l border-r border-t pt-8 pb-8 border-amber-200 flex flex-col justify-center items-center overflow-hidden relative">
+    <div className="h-full bg-amber-50 flex items-center justify-center px-4 lg:pt-[100px] lg:pl-[116px] lg:pr-[116px] lg:pb-[100px]">
+      <div className="relative bg-white rounded-[10px] lg:rounded-lg shadow-lg lg:shadow-none w-full max-w-md lg:max-w-none lg:w-full lg:h-full lg:mx-0 mx-auto px-4 lg:px-0 lg:border-l lg:border-r lg:border-t lg:pt-8 pb-8 lg:border-amber-200 lg:flex lg:flex-col lg:justify-center lg:items-center lg:overflow-hidden">
         {/* Left side vector image - positioned near form bottom-left */}
         <img
           src="/images/signin_left.svg" 
           alt="Sign in decoration" 
-          className="absolute -left-1 bottom-20 z-10"
+          className="hidden lg:block absolute -left-1 bottom-20 z-10"
         />
         
         {/* Right side vector image - positioned near form bottom-right */}
         <img
           src="/images/signin_right.svg" 
           alt="Sign in decoration" 
-          className="absolute -right-1 bottom-20 z-10"
+          className="hidden lg:block absolute -right-1 bottom-20 z-10"
         />
         
         {/* Header section with icon, title, and subtitle */}
@@ -53,8 +53,8 @@ export default function AuthLayout({
             alt={iconAlt} 
             className="pb-4"
           />
-          <div className="text-stone-950 text-4xl font-normal pb-2 text-center">{title}</div>
-          <div className="text-neutral-400 text-base font-normal font-['Lato'] text-center">
+          <div className="text-stone-950 text-4xl font-normal pb-2 text-center font-merriweather">{title}</div>
+          <div className="text-neutral-400 text-base font-normal font-lato text-center">
             {renderSubtitle()}
           </div>
         </div>
