@@ -10,6 +10,7 @@ export default function Stories() {
     const [isFilterOpen, setIsFilterOpen] = useState(false);
     const [selectedButtons, setSelectedButtons] = useState<Set<string>>(new Set());
     const [currentPages, setCurrentPages] = useState<{ [key: string]: number }>({});
+    const [searchQuery, setSearchQuery] = useState("");
 
     const toggleFilter = () => {
         setIsFilterOpen(!isFilterOpen);
@@ -32,10 +33,38 @@ export default function Stories() {
     // stories data from JSON
     const stories = storiesData;
 
-    // filtered stories
+    // search function
+    const searchStories = (stories: any[], query: string) => {
+        if (!query.trim()) return stories;
+        
+        const lowerQuery = query.toLowerCase();
+        return stories.filter(story => {
+            // Search in level
+            if (story.level && story.level.toLowerCase().includes(lowerQuery)) return true;
+            
+            // Search in category
+            if (story.category && story.category.toLowerCase().includes(lowerQuery)) return true;
+            
+            // Search in topic (if exists)
+            if (story.topic && story.topic.toLowerCase().includes(lowerQuery)) return true;
+            
+            // Search in title
+            if (story.title && story.title.toLowerCase().includes(lowerQuery)) return true;
+            
+            // Search in description
+            if (story.description && story.description.toLowerCase().includes(lowerQuery)) return true;
+            
+            return false;
+        });
+    };
+
+    // filtered stories with search
     const getFilteredStories = (category: string) => {
         // filter stories by category
-        const categoryStories = stories.filter(story => story.category === category);
+        let categoryStories = stories.filter(story => story.category === category);
+        
+        // apply search filter
+        categoryStories = searchStories(categoryStories, searchQuery);
         
         // when no filters are applied, only show stories in the selected category
         if (selectedButtons.size === 0) {
@@ -94,7 +123,7 @@ export default function Stories() {
     return (
         <div className="flex justify-center w-full">
             <div className="pt-20 flex flex-col">
-                <div className="text-center justify-start text-stone-950 text-6xl font-bold font-merriweather tracking-wide">
+                <div className="text-center text-stone-950 text-6xl font-bold font-merriweather tracking-wide">
                     Korean mate stories
                 </div>
                 <div className="h-28 pt-5 flex justify-center items-center gap-3">
@@ -102,18 +131,20 @@ export default function Stories() {
                         placeholder="Search here"
                         icon="search"
                         iconPosition="right"
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
                     />
                     <button
                         onClick={toggleFilter}
                         className="bg-white rounded-full p-2 shadow-sm w-12 h-10 flex items-center justify-center outline outline-amber-200 hover:outline-amber-300 transition-colors"
                     >
-                    <Icon name="filter" />
+                    <Icon name="filter"  />
                     </button>
                 </div>
                 {isFilterOpen && (
                     <div className="px-10 py-8 bg-white rounded-3xl flex flex-col justify-start items-start gap-4">
                         <div className="flex flex-row">
-                            <div className="w-28 pr-8 pt-2 justify-start text-stone-950 text-lg font-medium font-['Pretendard'] leading-relaxed tracking-tight">Topics</div>
+                            <div className="w-28 pr-8 pt-2 justify-start text-stone-950 text-lg font-medium font-pretendard">Topics</div>
                             <div className="flex flex-row gap-4">
                                 <SmallButton 
                                     variant="filter" 
@@ -121,7 +152,6 @@ export default function Stories() {
                                     className={isButtonSelected("All stories") ? "!bg-yellow-600 !text-white" : ""}
                                 >
                                     <span>All stories</span>
-                                    <Icon name="check" className="ml-2" />
                                 </SmallButton>
                                 <SmallButton 
                                     variant="filter" 
@@ -129,7 +159,6 @@ export default function Stories() {
                                     className={isButtonSelected("Dear diary") ? "!bg-yellow-600 !text-white" : ""}
                                 >
                                     <span>Dear diary</span>
-                                    <Icon name="check" className="ml-2" />
                                 </SmallButton>
                                 <SmallButton 
                                     variant="filter" 
@@ -137,7 +166,6 @@ export default function Stories() {
                                     className={isButtonSelected("k-days") ? "!bg-yellow-600 !text-white" : ""}
                                 >
                                     <span>k-days</span>
-                                    <Icon name="check" className="ml-2" />
                                 </SmallButton>
                                 <SmallButton 
                                     variant="filter" 
@@ -145,12 +173,11 @@ export default function Stories() {
                                     className={isButtonSelected("Seasonal stories") ? "!bg-yellow-600 !text-white" : ""}
                                 >
                                     <span>Seasonal stories</span>
-                                    <Icon name="check" className="ml-2" />
                                 </SmallButton>
                             </div>
                         </div>
                         <div className="flex flex-row">
-                            <div className="w-28 pr-8 justify-start text-stone-950 text-lg font-medium font-['Pretendard'] leading-relaxed tracking-tight">Categories</div>
+                            <div className="w-28 pr-8 justify-start text-stone-950 text-lg font-medium font-pretendard">Categories</div>
                             <div className="flex flex-row gap-5">
                                 <SmallButton 
                                     variant="filter" 
@@ -158,7 +185,6 @@ export default function Stories() {
                                     className={isButtonSelected("Reading for Fun") ? "!bg-yellow-600 !text-white" : ""}
                                 >
                                     <span>Reading for Fun</span>
-                                    <Icon name="check" className="ml-2" />
                                 </SmallButton>
                                 <SmallButton 
                                     variant="filter" 
@@ -166,7 +192,6 @@ export default function Stories() {
                                     className={isButtonSelected("Living in Korea") ? "!bg-yellow-600 !text-white" : ""}
                                 >
                                     <span>Living in Korea</span>
-                                    <Icon name="check" className="ml-2" />
                                 </SmallButton>
                                 <SmallButton 
                                     variant="filter" 
@@ -174,7 +199,6 @@ export default function Stories() {
                                     className={isButtonSelected("Studying in Korea") ? "!bg-yellow-600 !text-white" : ""}
                                 >
                                     <span>Studying in Korea</span>
-                                    <Icon name="check" className="ml-2" />
                                 </SmallButton>
                                 <SmallButton 
                                     variant="filter" 
@@ -182,7 +206,6 @@ export default function Stories() {
                                     className={isButtonSelected("First time in Korea") ? "!bg-yellow-600 !text-white" : ""}
                                 >
                                     <span>First time in Korea</span>
-                                    <Icon name="check" className="ml-2" />
                                 </SmallButton>
                                 <SmallButton 
                                     variant="filter" 
@@ -190,12 +213,11 @@ export default function Stories() {
                                     className={isButtonSelected("I Love Korean Culture") ? "!bg-yellow-600 !text-white" : ""}
                                 >
                                     <span>I Love Korean Culture</span>
-                                    <Icon name="check" className="ml-2" />
                                 </SmallButton>
                             </div>                        
                         </div>
                         <div className="flex flex-row">
-                            <div className="w-28 pr-8 justify-start text-stone-950 text-lg font-medium font-['Pretendard'] leading-relaxed tracking-tight">All levels</div>
+                            <div className="w-28 pr-8 text-stone-950 text-lg font-medium font-pretendard leading-relaxed tracking-tight">All levels</div>
                             <div className="flex flex-row gap-3">
                                 <SmallButton 
                                     variant="filter" 
@@ -203,7 +225,6 @@ export default function Stories() {
                                     className={isButtonSelected("A1") ? "!bg-yellow-600 !text-white" : ""}
                                 >
                                     <span>A1</span>
-                                    <Icon name="check" className="ml-2" />
                                 </SmallButton>
                                 <SmallButton 
                                     variant="filter" 
@@ -211,7 +232,6 @@ export default function Stories() {
                                     className={isButtonSelected("A2") ? "!bg-yellow-600 !text-white" : ""}
                                 >
                                     <span>A2</span>
-                                    <Icon name="check" className="ml-2" />
                                 </SmallButton>
                                 <SmallButton 
                                     variant="filter" 
@@ -219,7 +239,6 @@ export default function Stories() {
                                     className={isButtonSelected("B1") ? "!bg-yellow-600 !text-white" : ""}
                                 >
                                     <span>B1</span>
-                                    <Icon name="check" className="ml-2" />
                                 </SmallButton>
                             </div>
                         </div>
@@ -230,13 +249,14 @@ export default function Stories() {
                     {sections.map((section, sectionIndex) => {
                         const filteredStories = getFilteredStories(section.category);
                         const currentPageStories = getCurrentPageStories(section.category, filteredStories);
-                        const totalPages = Math.ceil(filteredStories.length / 4);
                         
                         return (
                             <div key={sectionIndex} className="w-full flex flex-col">
                                 <div className="flex flex-row w-full justify-between">
-                                    <div className="text-stone-950 text-3xl font-bold font-merriweather tracking-tight">
-                                        {section.title}
+                                    <div className="flex flex-col">
+                                        <div className="text-stone-950 text-3xl font-bold font-merriweather tracking-tight">
+                                            {section.title}
+                                        </div>
                                     </div>
                                     <NavigationButtons
                                         category={section.category}
@@ -261,7 +281,13 @@ export default function Stories() {
                                     </div>
                                 ) : (
                                     <div className="mt-8 text-center text-gray-500 font-medium">
-                                        No stories match the selected filters
+                                        {searchQuery.trim() ? (
+                                            <div className="flex flex-col items-center gap-2">
+                                                <div>No stories found for "{searchQuery}"</div>
+                                            </div>
+                                        ) : (
+                                            "No stories match the selected filters"
+                                        )}
                                     </div>
                                 )}
                             </div>
