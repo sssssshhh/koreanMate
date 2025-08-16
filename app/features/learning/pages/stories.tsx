@@ -122,7 +122,7 @@ export default function Stories() {
 
     return (
         <div className="flex justify-center w-full">
-            <div className="pt-20 flex flex-col">
+            <div className="pt-20 flex flex-col px-4 lg:px-0">
                 <div className="text-center text-stone-950 text-6xl font-bold font-merriweather tracking-wide">
                     Korean mate stories
                 </div>
@@ -142,10 +142,10 @@ export default function Stories() {
                     </button>
                 </div>
                 {isFilterOpen && (
-                    <div className="px-10 py-8 bg-white rounded-3xl flex flex-col justify-start items-start gap-4">
-                        <div className="flex flex-row">
-                            <div className="w-28 pr-8 pt-2 justify-start text-stone-950 text-lg font-medium font-pretendard">Topics</div>
-                            <div className="flex flex-row gap-4">
+                    <div className="px-4 lg:px-10 py-8 bg-white rounded-3xl flex flex-col justify-start items-start gap-6 lg:gap-4">
+                        <div className="flex flex-col lg:flex-row w-full">
+                            <div className="w-full lg:w-28 pr-0 lg:pr-8 pt-2 justify-start text-stone-950 text-lg font-medium font-pretendard mb-3 lg:mb-0">Topics</div>
+                            <div className="flex flex-wrap gap-3 lg:gap-4">
                                 <SmallButton 
                                     variant="filter" 
                                     onClick={() => toggleButtonSelection("All stories")}
@@ -176,9 +176,9 @@ export default function Stories() {
                                 </SmallButton>
                             </div>
                         </div>
-                        <div className="flex flex-row">
-                            <div className="w-28 pr-8 justify-start text-stone-950 text-lg font-medium font-pretendard">Categories</div>
-                            <div className="flex flex-row gap-5">
+                        <div className="flex flex-col lg:flex-row w-full">
+                            <div className="w-full lg:w-28 pr-0 lg:pr-8 justify-start text-stone-950 text-lg font-medium font-pretendard mb-3 lg:mb-0">Categories</div>
+                            <div className="flex flex-wrap gap-3 lg:gap-5">
                                 <SmallButton 
                                     variant="filter" 
                                     onClick={() => toggleButtonSelection("Reading for Fun")}
@@ -216,9 +216,9 @@ export default function Stories() {
                                 </SmallButton>
                             </div>                        
                         </div>
-                        <div className="flex flex-row">
-                            <div className="w-28 pr-8 text-stone-950 text-lg font-medium font-pretendard leading-relaxed tracking-tight">All levels</div>
-                            <div className="flex flex-row gap-3">
+                        <div className="flex flex-col lg:flex-row w-full">
+                            <div className="w-full lg:w-28 pr-0 lg:pr-8 text-stone-950 text-lg font-medium font-pretendard leading-relaxed tracking-tight mb-3 lg:mb-0">All levels</div>
+                            <div className="flex flex-wrap gap-3">
                                 <SmallButton 
                                     variant="filter" 
                                     onClick={() => toggleButtonSelection("A1")}
