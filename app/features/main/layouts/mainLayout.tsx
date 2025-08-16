@@ -55,52 +55,96 @@ export default function MainLayout() {
               </div>
             <img src="/images/color_heart_right.png" alt="color_heart_right" className="w-1/3 h-full" />
           </div>
-          <div className="w-full h-1/3 px-20 flex flex-row items-center justify-center">
+          <div className="w-full h-2/3 flex flex-col px-7">
             {/* 1/3 main */}
-            <div className="w-1/3 h-1/3 flex flex-col items-start justify-start">
-              <span className="text-blue-600 text-4xl font-bold font-merriweather leading-[49px] tracking-tight">
-                01
-              </span>
-              <span className="text-stone-950 text-4xl font-bold font-merriweather leading-[49px] tracking-tight">
-                Interactive Stories
-              </span>
-              <div className="pt-5 text-neutral-400 text-xl font-normal font-lato tracking-tight">
-                Level-based stories you actually enjoy. 
-                <br/>
-                Tap for meanings, pronunciations, and grammar notes.
-              </div>
-              <div className="flex flex-col pt-5 text-stone-950 text-2xl font-normal font-handlee">
-                <div className="w-2/3">Read more naturally</div>
-                <div className="w-fit">
-                  <img src="/images/underline.svg" alt="underline" className="w-full" />
+            <div className="h-1/3 flex flex-row items-center justify-center">
+              <div className="w-1/3 h-1/3 flex flex-col items-start justify-start">
+                <div className="flex flex-row items-center gap-2">
+                  <span className="text-blue-600 text-4xl font-bold font-merriweather leading-[49px] tracking-tight">
+                      01
+                    </span>
+                    <span className="text-stone-950 text-4xl font-bold font-merriweather leading-[49px] tracking-tight">
+                    Interactive Stories
+                  </span>
+                </div>
+                <div className="pt-5 text-neutral-400 text-xl font-normal font-lato tracking-tight">
+                  Level-based stories you actually enjoy. 
+                  <br/>
+                  Tap for meanings, pronunciations, and grammar notes.
+                </div>
+                <div className="w-full flex flex-col pt-5 text-stone-950 text-2xl font-normal font-handlee">
+                  <div className="w-2/3">Read more naturally</div>
+                  <div className="w-fit">
+                    <img src="/images/underline.svg" alt="underline" className="w-full" />
+                  </div>
+                </div>
+                <div className="pt-2 text-yellow-600 text-lg font-normal font-handlee">
+                  With guided pronunciation
+                </div>
+                <div className="w-full pt-8 text-stone-950 text-2xl font-normal font-handlee">
+                  <div className="w-2/3">Understand deeply</div>
+                  <div className="w-fit">
+                    <img src="/images/underline.svg" alt="underline" className="w-full" />
+                  </div>
+                </div>
+                <div className="pt-2 text-yellow-600 text-lg font-normal font-handlee">
+                  With word-by-word breakdowns
                 </div>
               </div>
-              <div className="pt-2 text-yellow-600 text-lg font-normal font-handlee">
-                With guided pronunciation
+              <div className="w-2/3 flex justify-center items-center">
+                <img src="/images/main1.png" alt="main1" />
               </div>
-              <div className="pt-8 text-stone-950 text-2xl font-normal font-handlee">
-                <div className="w-2/3">Understand deeply</div>
-                <div className="w-fit">
-                  <img src="/images/underline.svg" alt="underline" className="w-full" />
+            </div>
+            {/* 2/3 main */}
+            <div className="h-1/3 flex flex-row items-center justify-center">
+              <div className="w-2/3 flex justify-center items-center">
+                  <img src="/images/main2.png" alt="main2" />
+              </div>
+              <div className="w-1/3 flex flex-col items-start justify-start">
+                <div className="flex flex-row items-center gap-2">
+                  <span className="text-blue-600 text-4xl font-bold font-merriweather">
+                    02
+                  </span>
+                  <span className="text-stone-950 text-4xl font-bold font-merriweather leading-[49px]">
+                    Korean Constellation
+                  </span>
+                </div>
+                <div className="pt-5 text-neutral-400 text-xl font-normal font-lato">
+                  Every time you finish a story, a new star appears.
+                  <br/>
+                  Your constellation grows with each step you take in Korean.<br/>Visualize your progress — and stay motivated to keep going.
+                </div>
+                <div className="w-full pt-8 text-stone-950 text-2xl font-normal font-handlee">
+                  <div className="w-2/3">Your stars are growing</div>
+                  <div className="w-fit">
+                    <img src="/images/underline.svg" alt="underline" className="w-full" />
+                  </div>
                 </div>
               </div>
-              <div className="pt-2 text-yellow-600 text-lg font-normal font-handlee">
-                With word-by-word breakdowns
+            </div>
+            {/* 3/3 main */}
+            <div className="h-1/3 flex flex-row items-center justify-center">
+              <div className="w-1/3 flex flex-col items-start justify-start">
+                <div className="flex flex-row items-center gap-2">
+                  <span className="text-blue-600 text-4xl font-bold font-merriweather">
+                    03
+                  </span>
+                  <span className="text-stone-950 text-4xl font-bold font-merriweather whitespace-nowrap">
+                    Learning with Impact
+                  </span>
+                </div>
+                <div className="pt-5 text-neutral-400 text-xl font-normal font-lato">
+                  Earn points, collect stars, and unlock donations.
+                  <br/>
+                  Each month, KoreanMate donates to real-world causes — powered by your progress.<br/>Study with purpose. Make a difference.
+                </div>
+              </div>
+              <div className="w-2/3 flex justify-center items-center">
+                <img src="/images/main3.png" alt="main3" />
               </div>
             </div>
-            <div className="w-2/3 flex justify-center items-center">
-              <img src="/images/main1.png" alt="main1" />
-            </div>
-            
-          </div>
-          
-          <div className="w-full h-1/3 flex flex-row items-center justify-center">
-          
           </div>
 
-          <div className="w-full h-1/3 flex flex-row items-center justify-center">
-          
-          </div>
 
       </div>
       <div>
