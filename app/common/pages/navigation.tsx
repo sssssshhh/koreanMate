@@ -18,7 +18,9 @@ export default function Navigation({isLoggedIn, isLoading}: {isLoggedIn: boolean
         <nav>
             <div className="w-full h-20 flex flex-row justify-between items-center bg-white px-32">
                 {/* Logo - always visible */}
-                <img src="/images/logo.svg" alt="logo" className="w-36 h-8" />
+                <Link to="/">
+                    <img src="/images/logo.svg" alt="logo" className="w-36 h-8" />
+                </Link>
                 
                 {/* Desktop Navigation - hidden below 744px */}
                 <div className="hidden lg:flex flex-row items-center gap-28">
@@ -47,23 +49,63 @@ export default function Navigation({isLoggedIn, isLoading}: {isLoggedIn: boolean
                             {/* Menu Items */}
                             <div className="flex flex-col items-center gap-10">
                                 {/* Navigation Links */}
-                                <Link to="/stories" className="text-3xl font-bold font-merriweathertext-stone-950 hover:text-blue-600 transition-colors">
+                                <Link 
+                                    to="/stories" 
+                                    className="text-3xl font-bold font-merriweather text-stone-950 hover:text-blue-600 transition-colors"
+                                    onClick={() => {
+                                        // Force hide the menu by removing hover state
+                                        const event = new MouseEvent('mouseleave', { bubbles: true });
+                                        document.dispatchEvent(event);
+                                    }}
+                                >
                                     Learn
                                 </Link>
-                                <Link to="/" className="text-3xl font-bold font-merriweather text-stone-950 hover:text-blue-600 transition-colors">
+                                <Link 
+                                    to="/" 
+                                    className="text-3xl font-bold font-merriweather text-stone-950 hover:text-blue-600 transition-colors"
+                                    onClick={() => {
+                                        const event = new MouseEvent('mouseleave', { bubbles: true });
+                                        document.dispatchEvent(event);
+                                    }}
+                                >
                                     Give
                                 </Link>
-                                <Link to="/" className="text-3xl font-bold font-merriweather text-stone-950 hover:text-blue-600 transition-colors">
+                                <Link 
+                                    to="/" 
+                                    className="text-3xl font-bold font-merriweather text-stone-950 hover:text-blue-600 transition-colors"
+                                    onClick={() => {
+                                        const event = new MouseEvent('mouseleave', { bubbles: true });
+                                        document.dispatchEvent(event);
+                                    }}
+                                >
                                     My page
                                 </Link>
 
                                 {/* Action Buttons */}
                                 <div className="pt-24 flex flex-col items-center gap-10">
                                     <Link to="/login">
-                                        <LargeButton variant="blue" className="w-60 h-10">Log in</LargeButton>
+                                        <LargeButton 
+                                            variant="blue" 
+                                            className="w-60 h-10"
+                                            onClick={() => {
+                                                const event = new MouseEvent('mouseleave', { bubbles: true });
+                                                document.dispatchEvent(event);
+                                            }}
+                                        >
+                                            Log in
+                                        </LargeButton>
                                     </Link>
                                     <Link to="/register">
-                                        <LargeButton variant="orange" className="w-60 h-9">Join us!</LargeButton>
+                                        <LargeButton 
+                                            variant="orange" 
+                                            className="w-60 h-9"
+                                            onClick={() => {
+                                                const event = new MouseEvent('mouseleave', { bubbles: true });
+                                                document.dispatchEvent(event);
+                                            }}
+                                        >
+                                            Join us!
+                                        </LargeButton>
                                     </Link>
                                 </div>
                             </div>
