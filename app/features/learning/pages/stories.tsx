@@ -252,22 +252,24 @@ export default function Stories() {
                         
                         return (
                             <div key={sectionIndex} className="w-full flex flex-col">
-                                <div className="flex flex-row w-full justify-between">
+                                <div className="flex flex-col lg:flex-row w-full justify-between gap-4 lg:gap-0">
                                     <div className="flex flex-col">
-                                        <div className="text-stone-950 text-3xl font-bold font-merriweather tracking-tight">
+                                        <div className="text-stone-950 text-2xl lg:text-3xl font-bold font-merriweather tracking-tight text-center lg:text-left">
                                             {section.title}
                                         </div>
                                     </div>
-                                    <NavigationButtons
-                                        category={section.category}
-                                        onPageChange={changePage}
-                                        isNavigationDisabled={isNavigationDisabled}
-                                    />
+                                    <div className="flex justify-center lg:justify-end">
+                                        <NavigationButtons
+                                            category={section.category}
+                                            onPageChange={changePage}
+                                            isNavigationDisabled={isNavigationDisabled}
+                                        />
+                                    </div>
                                 </div>
                                 
                                 {/* Stories Grid with Slide Animation */}
                                 {currentPageStories.length > 0 ? (
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-8 transition-all duration-500 ease-in-out">
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-6 mt-8 transition-all duration-500 ease-in-out px-2 lg:px-0">
                                         {currentPageStories.map((story, index) => (
                                             <StoryCard
                                                 key={`${sectionIndex}-${index}-${currentPages[section.category] || 0}`}
@@ -280,7 +282,7 @@ export default function Stories() {
                                         ))}
                                     </div>
                                 ) : (
-                                    <div className="mt-8 text-center text-gray-500 font-medium">
+                                    <div className="mt-8 text-center text-gray-500 font-medium px-4">
                                         {searchQuery.trim() ? (
                                             <div className="flex flex-col items-center gap-2">
                                                 <div>No stories found for "{searchQuery}"</div>
