@@ -65,7 +65,7 @@ export default function ForgotPassword() {
             )}
 
             <div className="space-y-2">
-              <label htmlFor="email" className="text-neutral-400 text-base font-pretendardormal font-['Lato']">
+              <label htmlFor="email" className="text-neutral-400 text-base font-normal font-['Lato']">
                 Email address <span className="text-red-500 ml-1">*</span>
               </label>
               <Input

@@ -23,10 +23,10 @@ export default function CourseCompletion() {
                 
                 {/* Completion Message */}
                 <div className="text-center">
-                    <div className="text-center justify-start text-stone-950 text-4xl font-pretendardormal font-merriweather tracking-tight">
+                    <div className="text-center justify-start text-stone-950 text-4xl font-normal font-merriweather tracking-tight">
                         Chpater Complete!
                     </div>
-                    <div className="pt-3 pb-5 w-[560px] text-center text-neutral-400 text-base font-pretendardormal font-['Lato'] leading-normal tracking-tight">
+                    <div className="pt-3 pb-5 w-[560px] text-center text-neutral-400 text-base font-normal font-['Lato'] leading-normal tracking-tight">
                         You're doing amazing! 
                         <br />
                         Keep going to light up the world with your Korean learning journey!
@@ -34,10 +34,10 @@ export default function CourseCompletion() {
     
                     <div className="w-96 pt-3 pb-5 bg-white rounded-[20px] outline outline-1 outline-offset-[-1px] outline-amber-200 inline-flex flex-col justify-start items-center gap-2.5">
                         <img src="/images/welldone.svg" alt="welldone" className="w-12 h-12" />
-                        <div className="text-stone-950 text-base font-pretendardormal font-['Lato'] leading-normal tracking-tight">
+                        <div className="text-stone-950 text-base font-normal font-['Lato'] leading-normal tracking-tight">
                             Total Stars: 0/0
                         </div>
-                        <div className="text-center justify-start text-neutral-400 text-sm font-pretendardormal font-merriweather tracking-tight">
+                        <div className="text-center justify-start text-neutral-400 text-sm font-normal font-merriweather tracking-tight">
                             +5 points earned!
                         </div>
                     </div>

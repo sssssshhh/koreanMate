@@ -72,7 +72,7 @@ export default function SpeakingPractice() {
         return (
             <div className="w-full min-h-screen bg-[#FFFDD0] flex items-center justify-center p-6">
                 <div className="w-[1284px] px-6 py-14 bg-white rounded-[32px] border-l border-r border-t border-amber-200 inline-flex flex-col justify-start items-center gap-8">
-                    <h2 className="text-center text-stone-950 text-2xl font-pretendardormal font-merriweather tracking-tight">
+                    <h2 className="text-center text-stone-950 text-2xl font-normal font-merriweather tracking-tight">
                         No sentences found for this chapter
                     </h2>
                 </div>
@@ -92,7 +92,7 @@ export default function SpeakingPractice() {
                     total={currentSentences.length}
                 />
                 
-                <h2 className="text-center text-stone-950 text-2xl font-pretendardormal font-merriweather tracking-tight">
+                <h2 className="text-center text-stone-950 text-2xl font-normal font-merriweather tracking-tight">
                     Practice speaking the sentences out loud
                     <br />
                     Listen carefully and repeat what you hear.
