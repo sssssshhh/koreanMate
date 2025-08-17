@@ -258,7 +258,7 @@ export default function SentenceArrangement(){
                 </div>
 
                 {/* Completion Popup */}
-                <CompletionPopup 
+                <CompletionPopup
                     isVisible={showCompletionPopup}
                     onClose={() => setShowCompletionPopup(false)}
                     storyId={storyId}

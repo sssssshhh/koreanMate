@@ -1,5 +1,4 @@
 import { Link } from "react-router"
-import { LargeButton } from "@/common/ui/large-button"
 
 interface StoryLayoutProps {
     children: React.ReactNode;
