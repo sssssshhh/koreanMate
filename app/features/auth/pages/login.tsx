@@ -29,7 +29,7 @@ export default function Login() {
       if (accessToken) localStorage.setItem("access_token", accessToken);
       if (idToken) localStorage.setItem("id_token", idToken);
 
-      // update global auth state - Navigation에서 사용할 수 있는 변수들 갱신
+      // update global auth state
       login();
       
       // after login, navigate to main page

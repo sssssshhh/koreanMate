@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import MainLayout from "@/features/main/layouts/mainLayout";
 import { useAuth } from "@/features/auth/contexts/AuthContext";
 
-export default function HomePage() {
+export default function Main() {
   const navigate = useNavigate();
   const { login } = useAuth();
 

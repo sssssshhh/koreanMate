@@ -76,8 +76,8 @@ type RouteFiles = {
     id: "root";
     page: "/" | "/login" | "/forgot-password" | "/verification" | "/register" | "/registration-success" | "/reset-password" | "/stories" | "/stories/:storyId/chapters" | "/stories/:storyId/chapters/:chapterId" | "/stories/:storyId/chapters/:chapterId/sentence-arrangement" | "/stories/:storyId/chapters/:chapterId/speaking-practice" | "/stories/:storyId/chapters/:chapterId/completion" | "/blog" | "/grammer";
   };
-  "features/main/pages/home-page.tsx": {
-    id: "features/main/pages/home-page";
+  "features/main/pages/main.tsx": {
+    id: "features/main/pages/main";
     page: "/";
   };
   "features/auth/pages/login.tsx": {

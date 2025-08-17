@@ -1,7 +1,7 @@
 import { type RouteConfig, index, route } from "@react-router/dev/routes";
 
 export default [
-    index("features/main/pages/home-page.tsx"),
+    index("features/main/pages/main.tsx"),
     // auth routes
     route(
         "/login",
