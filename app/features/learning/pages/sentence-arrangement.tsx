@@ -4,7 +4,7 @@ import chaptersData from "@/features/learning/contents/chapters.json"
 import sentenceMeaningData from "@/features/learning/contents/sample.json"
 import { CustomProgress } from "@/common/ui/custom-progress"
 import { SmallButton } from "@/common/ui/small-button"
-import { CompletionPopup } from "@/features/learning/components/completionPopup"
+import { CompletionPopup } from "@/features/learning/components/completion-popup"
 
 export default function SentenceArrangement(){
     const { storyId, chapterId } = useParams()
