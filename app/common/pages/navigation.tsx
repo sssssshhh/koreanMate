@@ -4,7 +4,7 @@ import { SmallButton } from "@/common/ui/small-button";
 import { LargeButton } from "../ui/large-button";
 
 export default function Navigation({isLoggedIn, isLoading}: {isLoggedIn: boolean; isLoading: boolean}){
-    const { logout } = useAuth();
+    const { logout, user } = useAuth();
     
     const handleLogout = async () => {
         try {
@@ -13,6 +13,38 @@ export default function Navigation({isLoggedIn, isLoading}: {isLoggedIn: boolean
             console.error("Logout failed:", error);
         }
     };
+
+    // 로딩 중일 때 스켈레톤 UI 표시
+    if (isLoading) {
+        return (
+            <nav>
+                <div className="w-full h-20 flex flex-row justify-between items-center bg-white px-32">
+                    {/* Logo - always visible */}
+                    <Link to="/">
+                        <img src="/images/logo.svg" alt="logo" className="w-36 h-8" />
+                    </Link>
+                    
+                    {/* Desktop Navigation - hidden below 744px */}
+                    <div className="hidden lg:flex flex-row items-center gap-28">
+                        <div className="w-16 h-4 bg-gray-200 rounded animate-pulse"></div>
+                        <div className="w-16 h-4 bg-gray-200 rounded animate-pulse"></div>
+                        <div className="w-16 h-4 bg-gray-200 rounded animate-pulse"></div>
+                    </div>
+                    
+                    {/* Desktop Buttons - 로딩 중 스켈레톤 */}
+                    <div className="hidden lg:flex flex-row items-center gap-10">
+                        <div className="w-20 h-10 bg-gray-200 rounded-full animate-pulse"></div>
+                        <div className="w-24 h-10 bg-gray-200 rounded-full animate-pulse"></div>
+                    </div>
+                    
+                    {/* Mobile Menu Button */}
+                    <div className="lg:hidden">
+                        <div className="w-6 h-6 bg-gray-200 rounded animate-pulse"></div>
+                    </div>
+                </div>
+            </nav>
+        );
+    }
 
     return (
         <nav>
@@ -31,12 +63,38 @@ export default function Navigation({isLoggedIn, isLoading}: {isLoggedIn: boolean
                 
                 {/* Desktop Buttons - hidden below 744px */}
                 <div className="hidden lg:flex flex-row items-center gap-10">
-                    <Link to="/login">
-                        <SmallButton className="bg-blue-600 hover:bg-blue-500 text-white font-merriweather">Log in</SmallButton>
-                    </Link>
-                    <Link to="/register">
-                        <SmallButton className="bg-orange-600 hover:bg-orange-500 text-white border border-orange-600 font-merriweather">Join us!</SmallButton>
-                    </Link>
+                    {isLoggedIn ? (
+                        // logged in: show logout button
+                        <div className="flex items-center gap-4">
+                            {(() => {
+                                // console.log로 사용자 정보 출력
+                                console.log("🔑 User Info:", {
+                                    sub: user?.sub,
+                                    email: user?.email,
+                                    name: user?.name,
+                                    fullUser: user
+                                });
+                                return null;
+                            })()}
+                            <SmallButton
+                                variant="red"
+                                onClick={handleLogout}
+                                className="bg-red-600 hover:bg-red-500 text-white font-merriweather"
+                            >
+                                Logout
+                            </SmallButton>
+                        </div>
+                    ) : (
+                        // 비로그인 상태: 로그인/회원가입 버튼
+                        <>
+                            <Link to="/login">
+                                <SmallButton className="bg-blue-600 hover:bg-blue-500 text-white font-merriweather">Log in</SmallButton>
+                            </Link>
+                            <Link to="/register">
+                                <SmallButton className="bg-orange-600 hover:bg-orange-500 text-white border border-orange-600 font-merriweather">Join us!</SmallButton>
+                            </Link>
+                        </>
+                    )}
                 </div>
                 
                 {/* Mobile Menu Button - visible below 744px */}
@@ -83,58 +141,56 @@ export default function Navigation({isLoggedIn, isLoading}: {isLoggedIn: boolean
 
                                 {/* Action Buttons */}
                                 <div className="pt-24 flex flex-col items-center gap-10">
-                                    <Link to="/login">
-                                        <LargeButton 
-                                            variant="blue" 
-                                            className="w-60 h-10"
-                                            onClick={() => {
-                                                const event = new MouseEvent('mouseleave', { bubbles: true });
-                                                document.dispatchEvent(event);
-                                            }}
-                                        >
-                                            Log in
-                                        </LargeButton>
-                                    </Link>
-                                    <Link to="/register">
-                                        <LargeButton 
-                                            variant="orange" 
-                                            className="w-60 h-9"
-                                            onClick={() => {
-                                                const event = new MouseEvent('mouseleave', { bubbles: true });
-                                                document.dispatchEvent(event);
-                                            }}
-                                        >
-                                            Join us!
-                                        </LargeButton>
-                                    </Link>
+                                    {isLoggedIn ? (
+                                        // logged in: show logout button
+                                        <>
+                                            <LargeButton 
+                                                variant="orange" 
+                                                className="w-60 h-10"
+                                                onClick={() => {
+                                                    handleLogout();
+                                                    const event = new MouseEvent('mouseleave', { bubbles: true });
+                                                    document.dispatchEvent(event);
+                                                }}
+                                            >
+                                                Logout
+                                            </LargeButton>
+                                        </>
+                                    ) : (
+                                        // not logged in: show login/register buttons
+                                        <>
+                                            <Link to="/login">
+                                                <LargeButton 
+                                                    variant="blue" 
+                                                    className="w-60 h-10"
+                                                    onClick={() => {
+                                                        const event = new MouseEvent('mouseleave', { bubbles: true });
+                                                        document.dispatchEvent(event);
+                                                    }}
+                                                >
+                                                    Log in
+                                                </LargeButton>
+                                            </Link>
+                                            <Link to="/register">
+                                                <LargeButton 
+                                                    variant="orange" 
+                                                    className="w-60 h-9"
+                                                    onClick={() => {
+                                                        const event = new MouseEvent('mouseleave', { bubbles: true });
+                                                        document.dispatchEvent(event);
+                                                    }}
+                                                >
+                                                    Join us!
+                                                </LargeButton>
+                                            </Link>
+                                        </>
+                                    )}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-
-            {/* {isLoading ? (
-                <div className="flex items-center gap-6">
-                    <span className="text-sm text-gray-500">Loading...</span>
-                </div>
-            ) : isLoggedIn ? (
-                <div className="flex items-center gap-6">
-                    <Button asChild variant="secondary" onClick={handleLogout}>
-                        <span>Logout</span>
-                    </Button>
-                </div>
-            ) : (
-                <div className="flex items-center gap-6">
-                    <Button asChild variant="secondary">
-                        <Link to="/login">Login</Link>
-                    </Button>
-                    <Button asChild variant="secondary">
-                        <Link to="/register">Register</Link>
-                    </Button>
-                </div>
-            )} */}
         </nav>
     )
 }

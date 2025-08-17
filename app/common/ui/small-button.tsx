@@ -8,7 +8,7 @@ interface SmallButtonProps {
   disabled?: boolean;
   type?: "button" | "submit" | "reset";
   size?: "sm" | "md" | "lg";
-  variant?: "default" | "filter" | "primary" | "skip";
+  variant?: "default" | "filter" | "primary" | "skip" | "red";
   customColor?: {
     bgColor?: string;
     textColor?: string;
@@ -27,6 +27,7 @@ const variantClasses = {
   filter: "border-yellow-600 text-yellow-600 hover:text-white hover:bg-yellow-600",
   primary: "border-orange-600 text-orange-600 hover:bg-orange-50",
   skip: "border-gray-600 text-gray-600 hover:bg-gray-50",
+  red: "border-red-600 text-red-600 hover:bg-red-50",
 };
 
 export function SmallButton({ 
