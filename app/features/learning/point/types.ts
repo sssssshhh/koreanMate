@@ -15,3 +15,10 @@ export type Point = {
     pointId: String
     amount: number
 }
+
+export type Star = {
+    userId: String
+    star: number
+}
+
+

@@ -1,4 +1,4 @@
-import type { Point } from "@/features/point/type";
+import type { Point } from "../types";
 
 export async function grantPoint(point: Point): Promise<void> {
     const response = await fetch("https://s8kmgytpe1.execute-api.us-east-1.amazonaws.com/v1/points/grant", {

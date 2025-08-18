@@ -5,9 +5,13 @@ import { StoryLayout } from "@/features/learning/layouts/storyLayout"
 import sentenceMeaningData from "@/features/learning/contents/sample.json"
 import { SearchInput } from "@/common/ui/search-input"
 import { ToggleSwitch } from "@/common/ui/toggle-switch"
+import { grantStar } from "@/features/learning/APIs/statAPI"
+import type { Star } from "@/features/learning/point/types"
+import { useAuth } from "@/features/auth/contexts/AuthContext"
 
 export default function ChapterDetail(){
     const { storyId, chapterId } = useParams()
+    const { user } = useAuth()
     const [hoveredWord, setHoveredWord] = useState<string>("")
     const [hoveredSentenceIndex, setHoveredSentenceIndex] = useState<number>(-1)
     const [searchQuery, setSearchQuery] = useState<string>("")
@@ -61,14 +65,37 @@ export default function ChapterDetail(){
 
     // check if all items are hovered and automatically set "Mark as read"
     useEffect(() => {
-        // console.log("🎯 hoveredItems staus:", {
-        //     hoveredItemsSize: hoveredItems.size
-        // });
-        
         if (allHoverableItems.size > 0 && hoveredItems.size >= allHoverableItems.size) {
             setIsMarkedAsRead(true);
         }
     }, [hoveredItems, allHoverableItems]);
+
+    // grantStar API call function
+    const handleGrantStar = async () => {
+        try {
+            if (!user?.sub) {
+                console.warn("⚠️ User not authenticated, cannot grant star");
+                return;
+            }
+
+            const starData: Star = {
+                userId: user.sub,
+                star: 1
+            };
+            
+            await grantStar(starData);
+            console.log("⭐ Star granted successfully for chapter completion");
+        } catch (error) {
+            console.error("❌ Failed to grant star:", error);
+        }
+    };
+
+    // when "Mark as read" is true, automatically call grantStar API
+    useEffect(() => {
+        if (isMarkedAsRead) {
+            handleGrantStar();
+        }
+    }, [isMarkedAsRead]);
 
     // find word definition
     const findWordDefinition = (word: string) => {
