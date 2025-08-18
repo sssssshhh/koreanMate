@@ -57,14 +57,13 @@ export default function ChapterDetail(){
     useEffect(() => {
         setHoveredItems(new Set());
         setIsMarkedAsRead(false);
-        console.log("🔄 검색으로 인한 초기화");
     }, [searchQuery]);
 
-    // 모든 아이템을 hover했는지 확인하고 자동으로 "Mark as read" 설정
+    // check if all items are hovered and automatically set "Mark as read"
     useEffect(() => {
-        console.log("🎯 hoveredItems 상태:", {
-            hoveredItemsSize: hoveredItems.size
-        });
+        // console.log("🎯 hoveredItems staus:", {
+        //     hoveredItemsSize: hoveredItems.size
+        // });
         
         if (allHoverableItems.size > 0 && hoveredItems.size >= allHoverableItems.size) {
             setIsMarkedAsRead(true);
@@ -108,16 +107,7 @@ export default function ChapterDetail(){
                     onMouseEnter={() => {
                         setHoveredWord(word)
                         setHoveredSentenceIndex(sentenceIndex)
-                        setHoveredItems(prev => new Set([...prev, `word-${sentenceIndex}-${wordIndex}`]));
-                    }}
-                    onMouseLeave={() => {
-                        setHoveredWord("")
-                        setHoveredSentenceIndex(-1)
-                        setHoveredItems(prev => {
-                            const newSet = new Set(prev);
-                            newSet.delete(`word-${sentenceIndex}-${wordIndex}`);
-                            return newSet;
-                        });
+                        setHoveredItems(prev => new Set([...prev, `word-${sentenceIndex}-${wordIndex}`, `sentence-${sentenceIndex}`]));
                     }}
                 >
                     {word}
@@ -253,14 +243,8 @@ export default function ChapterDetail(){
                                             className="text-stone-950 font-normal leading-relaxed tracking-wide hover:bg-blue-50 hover:cursor-pointer transition-colors p-2 rounded"
                                             style={{ fontSize: `${textSize}%` }}
                                             onMouseEnter={() => {
+                                                console.log("🔍 sentence-${index}")
                                                 setHoveredItems(prev => new Set([...prev, `sentence-${index}`]));
-                                            }}
-                                            onMouseLeave={() => {
-                                                setHoveredItems(prev => {
-                                                    const newSet = new Set(prev);
-                                                    newSet.delete(`sentence-${index}`);
-                                                    return newSet;
-                                                });
                                             }}
                                         >
                                             {renderHoverableSentence(sentence.original, index)}
