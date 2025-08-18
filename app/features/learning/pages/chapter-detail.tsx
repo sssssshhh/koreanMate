@@ -8,6 +8,8 @@ import { ToggleSwitch } from "@/common/ui/toggle-switch"
 import { grantStar } from "@/features/learning/APIs/statAPI"
 import type { Star } from "@/features/learning/point/types"
 import { useAuth } from "@/features/auth/contexts/AuthContext"
+import { Popup, PopupHeader, PopupContent, PopupActions } from "@/common/ui/popup"
+import { SmallButton } from "@/common/ui/small-button";
 
 export default function ChapterDetail(){
     const { storyId, chapterId } = useParams()
@@ -23,6 +25,7 @@ export default function ChapterDetail(){
     const [isMarkedAsRead, setIsMarkedAsRead] = useState(false);
     const [hoveredItems, setHoveredItems] = useState<Set<string>>(new Set());
     const [allHoverableItems, setAllHoverableItems] = useState<Set<string>>(new Set());
+    const [showSuccessPopup, setShowSuccessPopup] = useState(false);
 
     // bring chapter data from chapters.json
     const storyTitle = chaptersData.title
@@ -49,12 +52,7 @@ export default function ChapterDetail(){
         });
         
         setAllHoverableItems(items);
-        
-        console.log("🔍 allHoverableItems 계산:", {
-            filteredSentencesLength: filteredSentences.length,
-            allHoverableItems: Array.from(items),
-            allHoverableItemsSize: items.size
-        });
+
     }, [filteredSentences]);
 
     // searchQuery가 변경될 때만 hoveredItems 초기화
@@ -85,6 +83,7 @@ export default function ChapterDetail(){
             
             await grantStar(starData);
             console.log("⭐ Star granted successfully for chapter completion");
+            setShowSuccessPopup(true);
         } catch (error) {
             console.error("❌ Failed to grant star:", error);
         }
@@ -300,6 +299,45 @@ export default function ChapterDetail(){
                     </Link>
                 </div>
             </div>
+
+            {/* Success Popup */}
+            <Popup 
+                isVisible={showSuccessPopup} 
+                onClose={() => setShowSuccessPopup(false)}
+                size="md"
+            >
+                <PopupHeader
+                    title="Great job!"
+                    subtitle="You’ve just finished reading. Ready to arrange the sentences and speak them aloud?"
+                    icon="/images/yelloStar.svg"
+                    iconAlt="yelloStar"
+                />
+                
+                <PopupContent>
+                    <div className="text-center text-green-600 text-lg font-medium">
+                        ⭐ +1 Star earned!
+                    </div>
+                </PopupContent>
+
+                <PopupActions>
+                    <Link to={`/stories/${storyId}/chapters/${chapterId}/speaking-practice`}>
+                        <SmallButton 
+                            size="lg" 
+                            variant="skip" 
+                            onClick={() => setShowSuccessPopup(false)}                        className="w-full bg-white text-blue-600 border-blue-600 hover:bg-gray-50"
+                            >
+                            Yes, let’s try it!
+                        </SmallButton>
+                    </Link>
+                    <SmallButton 
+                        size="lg" 
+                        variant="default" 
+                        onClick={() => setShowSuccessPopup(false)}                        className="w-full bg-white text-blue-600 border-blue-600 hover:bg-gray-50"
+                        >
+                        Back to story list
+                    </SmallButton>
+                </PopupActions>
+            </Popup>
         </StoryLayout>
     )
 } 
