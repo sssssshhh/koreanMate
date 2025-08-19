@@ -37,28 +37,7 @@ export default function ChapterDetail(){
 
     // bring sentence data from sentence-meaning.json
     const sentences = sentenceMeaningData.sentences
-
-    // Sample audio data for AudioLayout
-    const sampleAudios = [
-        {
-            id: "audio-1",
-            title: "Chapter 1 Audio",
-            audio: "/audio/sen1.mp3",
-            duration: 120,
-            transcript: "오늘 기숙사에 왔어요. 방에 친구가 있어요.",
-            chapterId: chapterId,
-            order: 1
-        },
-        {
-            id: "audio-2", 
-            title: "Chapter 1 Audio 2",
-            audio: "/audio/sen2.mp3",
-            duration: 90,
-            transcript: "이름은 미나예요. 미나는 '안녕!' 말해요.",
-            chapterId: chapterId,
-            order: 2
-        }
-    ];
+    const audios = sentenceMeaningData.audios
 
     // 모든 hover 가능한 아이템들 계산
     useEffect(() => {
@@ -314,7 +293,7 @@ export default function ChapterDetail(){
             </div>
 
             {/* Audio Control Area */}
-            <AudioLayout audios={sampleAudios} />
+            <AudioLayout audios={audios} />
 
             {/* Success Popup */}
             <Popup 

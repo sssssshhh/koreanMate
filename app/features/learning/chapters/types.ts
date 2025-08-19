@@ -25,11 +25,6 @@ export type SentenceLayoutProps = {
 }
 
 export type Audio = {
-  id: string;
-  title: string;
-  audio: string; // audio file URL or path
-  duration?: number; // duration in seconds
-  transcript?: string; // optional transcript text
-  chapterId?: string; // optional chapter ID for grouping
-  order?: number; // optional order for sequencing
+  id: number;
+  audio: string;
 }
