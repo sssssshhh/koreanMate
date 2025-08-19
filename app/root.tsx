@@ -38,6 +38,19 @@ export const links: Route.LinksFunction = () => [
 
 function LayoutContent({ children }: { children: React.ReactNode }) {
   const { isLoggedIn, isLoading } = useAuth();
+  const [currentPath, setCurrentPath] = React.useState("");
+
+  React.useEffect(() => {
+    setCurrentPath(window.location.pathname);
+  }, []);
+
+  // Footer를 숨길 경로들
+  const hideFooterPaths = [
+    "/stories/",
+    "/chapters/"
+  ];
+
+  const shouldHideFooter = hideFooterPaths.some(path => currentPath.includes(path));
 
   return (
     <html lang="en">
@@ -52,7 +65,7 @@ function LayoutContent({ children }: { children: React.ReactNode }) {
         <main className="flex-1">
           {children}
         </main>
-        <Footer />
+        {!shouldHideFooter && <Footer />}
         <ScrollRestoration />
         <Scripts />
       </body>

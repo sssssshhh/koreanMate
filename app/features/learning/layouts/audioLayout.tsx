@@ -1,5 +1,5 @@
-import type { Audio } from "@/features/content/types";
 import { useEffect, useRef, useState } from "react";
+import type { Audio } from "@/features/learning/chapters/types";
 
 export default function AudioLayout({ audios }: { audios: Audio[] }) {
   const audioRef = useRef<HTMLAudioElement>(null)
@@ -102,42 +102,36 @@ export default function AudioLayout({ audios }: { audios: Audio[] }) {
   }, [])
 
     return (
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4">
-        <button
-          onClick={skipBackward}
-          className="px-3 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 text-sm"
-          title="10초 뒤로"
-        >
-          ⏪ 10초
-        </button>
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-32 py-4 flex flex-row justify-between">
+        <div className="flex flex-row items-center gap-2">
+          <span className="text-sm font-lato text-neutral-400">Speed</span>
+          <button
+            onClick={handleSpeedClick}
+            className="p-2.5 rounded-full outline outline-offset-[-1px] outline-zinc-300 hover:outline-zinc-400 transition-colors cursor-pointer"
+            title="Speed"
+          >
+            <span className="text-sm font-lato text-neutral-400">{speed.toFixed(2)}x</span>
+          </button>
+        </div>
         <button
         onClick={togglePlayback}
-        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 text-sm"
+        className="hover:cursor-pointer"
         >
-        {isPlaying ? '⏹ pause' : '▶️ play'}
+        {isPlaying ? (
+          <img src="/images/pause.svg" alt="pause" className="w-9 h-9" />
+        ) : (
+          <img src="/images/play.svg" alt="play" className="w-9 h-9" />
+
+        )}
         </button>
-        <button
-            onClick={skipForward}
-            className="px-3 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 text-sm"
-            title="10초 앞으로"
-          >
-            10초 ⏩
-        </button>
-        <button
-          onClick={handleSpeedClick}
-          className="px-3 py-1 border rounded text-sm"
-          title="재생 속도 변경"
-        >
-          🔁 {speed.toFixed(2)}x
-        </button>
+
+
         <audio
           ref={audioRef}
           onEnded={playNextAudio}
           preload="auto"
         />
-        <div className="text-xs text-gray-500 mt-1">
-          {formatTime(currentTime)} / {formatTime(duration)}
-        </div>
+        <div></div>
       </div>
     )
   }

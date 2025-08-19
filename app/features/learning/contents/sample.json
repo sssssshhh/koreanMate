@@ -67,7 +67,7 @@
         }
       ]
     },
-    { 
+    {
       "id": "sen4",
       "original": "미나는 '안녕!' 말해요.",
       "pronunciation": "미나는 '안녕!' 말해요",
@@ -117,11 +117,23 @@
   "audios": [
     {
       "id": 1,
-      "audio": "/audio/sen1.mp3"
+      "audio": "https://koreanmate.s3.us-east-1.amazonaws.com/audio/A1/chapterA1-01-audio01.mp3"
     },
     {
       "id": 2,
-      "audio": "/audio/sen2.mp3"
+      "audio": "https://koreanmate.s3.us-east-1.amazonaws.com/audio/A1/chapterA1-01-audio02.mp3"
+    },
+    {
+      "id": 3,
+      "audio": "https://koreanmate.s3.us-east-1.amazonaws.com/audio/A1/chapterA1-01-audio03.mp3"
+    },
+    {
+      "id": 4,
+      "audio": "https://koreanmate.s3.us-east-1.amazonaws.com/audio/A1/chapterA1-01-audio04.mp3"
+    },
+    {
+      "id": 5,
+      "audio": "https://koreanmate.s3.us-east-1.amazonaws.com/audio/A1/chapterA1-01-audio04.mp3"
     }
   ],
   "grammer": {
