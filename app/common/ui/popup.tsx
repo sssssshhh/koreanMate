@@ -50,13 +50,31 @@ export function Popup({
 // Popup Header Component
 interface PopupHeaderProps {
     title: string
-    subtitle?: string
+    subtitle?: string | string[]
     icon?: string
     iconAlt?: string
     className?: string
 }
 
 export function PopupHeader({ title, subtitle, icon, iconAlt, className = "" }: PopupHeaderProps) {
+    const renderSubtitle = () => {
+        if (!subtitle) return null;
+        
+        if (Array.isArray(subtitle)) {
+            return subtitle.map((line, index) => (
+                <div key={index} className="text-neutral-400 text-base font-normal font-['Lato'] leading-normal tracking-tight">
+                    {line}
+                </div>
+            ));
+        }
+        
+        return (
+            <div className="text-neutral-400 text-base font-normal font-['Lato'] leading-normal tracking-tight">
+                {subtitle}
+            </div>
+        );
+    };
+
     return (
         <div className={`text-center ${className}`}>
             {icon && (
@@ -65,11 +83,7 @@ export function PopupHeader({ title, subtitle, icon, iconAlt, className = "" }: 
             <div className="text-stone-950 text-3xl font-normal font-merriweather tracking-tight mb-2">
                 {title}
             </div>
-            {subtitle && (
-                <div className="text-neutral-400 text-base font-normal font-['Lato'] leading-normal tracking-tight">
-                    {subtitle}
-                </div>
-            )}
+            {renderSubtitle()}
         </div>
     )
 }

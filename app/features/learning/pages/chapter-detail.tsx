@@ -281,22 +281,12 @@ export default function ChapterDetail(){
                         </div>
                         
                         {/* Navigation */}
-                        <div className="px-6 py-4 flex flex-row rounded-bl-[10px] rounded-br-[10px] outline-offset-[-1px] outline-amber-200 justify-between items-center text-sm font-semibold leading-tight tracking-tight">
+                        <div className="px-6 py-4 flex flex-row rounded-bl-[10px] rounded-br-[10px] outline-offset-[-1px] outline-amber-200 justify-between items-center text-sm font-semibold font-lato">
                             <div className="text-neutral-400">&lt; Previous Chapter</div>
-                            <div className="text-neutral-400">Story Overview</div>
+                            <div className="text-stone-950">Story Overview</div>
                             <div className="text-neutral-400">Next Chapter &gt;</div>
                         </div>
                     </div>
-                </div>
-                
-                {/* Practice Navigation */}
-                <div className="mt-4 flex justify-center">
-                    <Link 
-                        to={`/stories/${storyId}/chapters/${chapterId}/sentence-arrangement`}
-                        className="px-6 py-3 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors font-medium"
-                    >
-                        Practice Sentence Arrangement
-                    </Link>
                 </div>
             </div>
 
@@ -308,7 +298,10 @@ export default function ChapterDetail(){
             >
                 <PopupHeader
                     title="Great job!"
-                    subtitle="You’ve just finished reading. Ready to arrange the sentences and speak them aloud?"
+                    subtitle={[
+                        "You've just finished reading.",
+                        "Ready to arrange the sentences and speak them aloud?"
+                    ]}
                     icon="/images/yelloStar.svg"
                     iconAlt="yelloStar"
                 />
@@ -332,7 +325,12 @@ export default function ChapterDetail(){
                     <SmallButton 
                         size="lg" 
                         variant="default" 
-                        onClick={() => setShowSuccessPopup(false)}                        className="w-full bg-white text-blue-600 border-blue-600 hover:bg-gray-50"
+                        onClick={() => {
+                            setShowSuccessPopup(false);
+                            setHoveredItems(new Set());
+                            setIsMarkedAsRead(false);
+                        }}
+                        className="w-full bg-white text-blue-600 border-blue-600 hover:bg-gray-50"
                         >
                         Back to story list
                     </SmallButton>

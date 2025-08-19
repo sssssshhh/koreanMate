@@ -34,7 +34,10 @@ export function CompletionPopup({ isVisible, onClose, storyId, chapterId }: Comp
         >
             <PopupHeader
                 title="Well done!"
-                subtitle="You arranged all the sentences — that's amazing!"
+                subtitle={[
+                    "You arranged all the sentences — that's amazing!",
+                    "Want to try saying the sentences out loud?"
+                ]}
                 icon="/images/welldone.svg"
                 iconAlt="welldone"
             />
