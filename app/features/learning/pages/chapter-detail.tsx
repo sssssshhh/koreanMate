@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router"
+
+import { useParams, useNavigate } from "react-router"
 import chaptersData from "@/features/learning/contents/chapters.json"
 import { StoryLayout } from "@/features/learning/layouts/storyLayout"
 import sentenceMeaningData from "@/features/learning/contents/sample.json"
@@ -14,6 +15,7 @@ import AudioLayout from "@/features/learning/layouts/audioLayout";
 
 export default function ChapterDetail(){
     const { storyId, chapterId } = useParams()
+    const navigate = useNavigate()
     const { user } = useAuth()
     const [hoveredWord, setHoveredWord] = useState<string>("")
     const [hoveredSentenceIndex, setHoveredSentenceIndex] = useState<number>(-1)
@@ -147,6 +149,11 @@ export default function ChapterDetail(){
 
     if (!chapter) {
         return <div>Chapter not found</div>
+    }
+
+    const handleSpeakingPractice = () => {
+        setShowSuccessPopup(false)
+        navigate(`/stories/${storyId}/chapters/${chapterId}/speaking-practice`)
     }
 
     return (
@@ -318,15 +325,14 @@ export default function ChapterDetail(){
                 </PopupContent>
 
                 <PopupActions>
-                    <Link to={`/stories/${storyId}/chapters/${chapterId}/speaking-practice`}>
-                        <SmallButton 
-                            size="lg" 
-                            variant="skip" 
-                            onClick={() => setShowSuccessPopup(false)}                        className="w-full bg-white text-blue-600 border-blue-600 hover:bg-gray-50"
-                            >
-                            Yes, let’s try it!
-                        </SmallButton>
-                    </Link>
+                    <SmallButton 
+                        size="lg" 
+                        variant="skip"
+                        onClick={handleSpeakingPractice}
+                        className="w-full bg-white text-blue-600 border-blue-600 hover:bg-gray-50"
+                        >
+                        Yes, let’s try it!
+                    </SmallButton>
                     <SmallButton 
                         size="lg" 
                         variant="default" 

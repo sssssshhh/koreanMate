@@ -6,7 +6,6 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
-import { fetchAuthSession } from "aws-amplify/auth";
 
 import type { Route } from "./+types/root";
 import "./app.css";
@@ -44,13 +43,21 @@ function LayoutContent({ children }: { children: React.ReactNode }) {
     setCurrentPath(window.location.pathname);
   }, []);
 
-  // Footer를 숨길 경로들
+  // hide footer paths
   const hideFooterPaths = [
     "/stories/",
     "/chapters/"
   ];
 
-  const shouldHideFooter = hideFooterPaths.some(path => currentPath.includes(path));
+  // show footer paths
+  const showFooterPaths = [
+    "/speaking-practice",
+    "/sentence-arrangement"
+  ];
+
+  // Footer 숨김 여부 결정
+  const shouldHideFooter = hideFooterPaths.some(path => currentPath.includes(path)) && 
+    !showFooterPaths.some(path => currentPath.includes(path));
 
   return (
     <html lang="en">
