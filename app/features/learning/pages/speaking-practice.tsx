@@ -4,10 +4,15 @@ import chaptersData from "@/features/learning/contents/chapters.json"
 import sentenceMeaningData from "@/features/learning/contents/sample.json"
 import { CustomProgress } from "@/common/ui/custom-progress"
 import { SmallButton } from "@/common/ui/small-button"
+import { useAuth } from "@/features/auth/contexts/AuthContext"
+// S3 upload will be handled by backend API to avoid CORS issues
 
 export default function SpeakingPractice() {
     const { storyId, chapterId } = useParams()
     const navigate = useNavigate()
+    const { user } = useAuth()
+    
+    // S3 upload will be handled by backend API
     
     // bring chapter data from chapters.json
     const chapter = chaptersData.chapters.find(ch => ch.id === chapterId)
@@ -112,21 +117,40 @@ export default function SpeakingPractice() {
                     const url = URL.createObjectURL(audioBlob)
                     setAudioUrl(url)
                     
-                    // Save to public folder (simulate download)
-                    const link = document.createElement('a')
-                    link.href = url
-                    const extension = mimeType.includes('webm') ? 'webm' : 'wav'
-                    link.download = `recording-${Date.now()}.${extension}`
-                    link.click()
-                    
-                    setShowResult(true)
-                    setIsCorrect(true)
+                    // Upload to S3
+                    try {
+                        const s3Key = await uploadToS3(audioBlob)
+                        console.log('Recording uploaded to S3:', s3Key)
+                        
+                        // Also download locally for user convenience
+                        const link = document.createElement('a')
+                        link.href = url
+                        const extension = mimeType.includes('webm') ? 'webm' : 'wav'
+                        link.download = `recording-${Date.now()}.${extension}`
+                        link.click()
+                        
+                        setShowResult(true)
+                        setIsCorrect(true)
+                    } catch (uploadError) {
+                        console.error('S3 upload failed:', uploadError)
+                        alert('Failed to upload to S3. Please try again.')
+                        
+                        // Still show result and download locally
+                        const link = document.createElement('a')
+                        link.href = url
+                        const extension = mimeType.includes('webm') ? 'webm' : 'wav'
+                        link.download = `recording-${Date.now()}.${extension}`
+                        link.click()
+                        
+                        setShowResult(true)
+                        setIsCorrect(true)
+                    }
                     
                     // Stop all tracks
                     stream.getTracks().forEach(track => track.stop())
                 } catch (error) {
                     console.error('Error processing recording:', error)
-                    alert('녹음 처리 중 오류가 발생했습니다.')
+                    alert('failed to upload to S3')
                 }
             }
             
@@ -205,6 +229,82 @@ export default function SpeakingPractice() {
         }
         
         console.log('Reset for new recording')
+    }
+
+    // Upload recording to S3 via API Gateway + Lambda
+    const uploadToS3 = async (audioBlob: Blob) => {
+        try {
+            // Check if user is authenticated
+            if (!user?.sub) {
+                throw new Error('User not authenticated')
+            }
+            
+            // Generate unique filename with user ID
+            const timestamp = Date.now()
+            const randomId = Math.random().toString(36).substring(2, 15)
+            const key = `koreanmate/recordings/${user.sub}/${storyId}/${chapterId}/${timestamp}_${randomId}.webm`
+            
+            // Convert Blob to base64 for API upload
+            const arrayBuffer = await audioBlob.arrayBuffer()
+            const base64Data = btoa(String.fromCharCode(...new Uint8Array(arrayBuffer)))
+            
+            console.log('Uploading recording to API...', {
+                userId: user.sub,
+                storyId,
+                chapterId,
+                sentenceIndex: currentSentenceIndex,
+                fileName: key
+            })
+            
+            // Upload via API Gateway endpoint
+            const response = await fetch('https://cs25bxmgp7.execute-api.us-east-1.amazonaws.com/v1/stories', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    // User identification
+                    userId: user.sub,
+                    userEmail: user.email || '',
+                    
+                    // Recording data
+                    audioData: base64Data,
+                    fileName: key,
+                    contentType: 'audio/webm',
+                    
+                    // Context information
+                    storyId: storyId || '',
+                    chapterId: chapterId || '',
+                    sentenceIndex: currentSentenceIndex,
+                    sentenceText: currentSentence?.original || '',
+                    
+                    // Metadata
+                    metadata: {
+                        storyId: storyId || '',
+                        chapterId: chapterId || '',
+                        timestamp: timestamp.toString(),
+                        recordingType: 'speaking-practice',
+                        sentenceIndex: currentSentenceIndex,
+                        sentenceText: currentSentence?.original || '',
+                        userId: user.sub,
+                        userEmail: user.email || ''
+                    }
+                })
+            })
+            
+            if (!response.ok) {
+                const errorText = await response.text()
+                throw new Error(`Upload failed: ${response.status} - ${errorText}`)
+            }
+            
+            const result = await response.json()
+            console.log('Successfully uploaded to S3 via API:', key, result)
+            return key
+            
+        } catch (error) {
+            console.error('Error uploading to S3:', error)
+            throw error
+        }
     }
 
     const handleNext = () => {
@@ -349,11 +449,11 @@ export default function SpeakingPractice() {
                                     size="sm" 
                                     variant="primary"
                                     onClick={() => {
-                                        // 녹음 파일이 이미 다운로드됨
-                                        alert('녹음 파일이 이미 다운로드되었습니다!')
+                                        // 녹음 파일이 S3에 업로드됨
+                                        alert('녹음 파일이 S3에 업로드되었습니다!')
                                     }}
                                 >
-                                    File Downloaded
+                                    S3 Uploaded
                                 </SmallButton>
                                 <SmallButton 
                                     size="sm" 
