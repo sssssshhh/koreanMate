@@ -110,7 +110,7 @@ interface PopupActionsProps {
 
 export function PopupActions({ children, className = "" }: PopupActionsProps) {
     return (
-        <div className={`flex flex-row gap-3 w-full ${className}`}>
+        <div className={`flex flex-row gap-3 w-full ${className} justify-center`}>
             {children}
         </div>
     )

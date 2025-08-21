@@ -438,23 +438,13 @@ export default function SpeakingPractice() {
                             
                             {/* Three Buttons in a Row */}
                             <div className="flex flex-row justify-center items-center gap-4">
-                                <SmallButton 
+                                {/* <SmallButton 
                                     size="sm" 
                                     variant="skip"
                                     onClick={handlePlayRecording}
                                 >
                                     Play my voice
-                                </SmallButton>
-                                <SmallButton 
-                                    size="sm" 
-                                    variant="primary"
-                                    onClick={() => {
-                                        // 녹음 파일이 S3에 업로드됨
-                                        alert('녹음 파일이 S3에 업로드되었습니다!')
-                                    }}
-                                >
-                                    S3 Uploaded
-                                </SmallButton>
+                                </SmallButton> */}
                                 <SmallButton 
                                     size="sm" 
                                     variant="default"

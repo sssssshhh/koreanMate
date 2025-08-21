@@ -151,9 +151,9 @@ export default function ChapterDetail(){
         return <div>Chapter not found</div>
     }
 
-    const handleSpeakingPractice = () => {
+    const handleSentenceArrangement = () => {
         setShowSuccessPopup(false)
-        navigate(`/stories/${storyId}/chapters/${chapterId}/speaking-practice`)
+        navigate(`/stories/${storyId}/chapters/${chapterId}/sentence-arrangement`)
     }
 
     return (
@@ -328,7 +328,7 @@ export default function ChapterDetail(){
                     <SmallButton 
                         size="lg" 
                         variant="skip"
-                        onClick={handleSpeakingPractice}
+                        onClick={handleSentenceArrangement}
                         className="w-full bg-white text-blue-600 border-blue-600 hover:bg-gray-50"
                         >
                         Yes, let’s try it!
